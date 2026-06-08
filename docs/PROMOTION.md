@@ -1,8 +1,8 @@
 # Promotion kit — where & how to post
 
-Ready-to-paste posts to recruit contributors. **Replace `<REPO_URL>`** with the real GitHub link
-before posting. Read each community's rules first — most allow open-source/self-projects but some
-require a specific flair, a weekly thread, or a minimum-karma account.
+Ready-to-paste posts to recruit contributors. The repo link is already filled in
+(<https://github.com/MielPopsssssss/TFT_GOAT>). Read each community's rules first — most allow
+open-source/self-projects but some require a specific flair, a weekly thread, or a minimum-karma account.
 
 ---
 
@@ -55,7 +55,7 @@ you're looking for contributors.
 > and `good first issue`s. Combat fidelity is tracked openly — I document exactly what's faithfully
 > simulated vs. approximated.
 >
-> Repo + roadmap: **<REPO_URL>**
+> Repo + roadmap: **https://github.com/MielPopsssssss/TFT_GOAT**
 >
 > Would love feedback on the surrogate-vs-engine approach and the self-play setup — and
 > contributors of any level are very welcome.
@@ -85,7 +85,7 @@ you're looking for contributors.
 > augment/item does in combat, help me encode it." It's MIT-licensed with a roadmap and beginner
 > tasks tagged.
 >
-> Repo: **<REPO_URL>**
+> Repo: **https://github.com/MielPopsssssss/TFT_GOAT**
 >
 > Happy to answer anything about how it models the game.
 
@@ -97,7 +97,7 @@ you're looking for contributors.
 > PettingZoo 8-player env, a neural combat surrogate `P(win | A, B)` trained on real games *and* on a
 > tick-by-tick engine, custom PPO. Pipeline's complete but the agent still loses to a scripted
 > bot — training it at scale is the open challenge. Python 3.11, PyTorch, MIT, 113 tests, roadmap +
-> `good first issue`s. Contributors welcome: **<REPO_URL>**
+> `good first issue`s. Contributors welcome: **https://github.com/MielPopsssssss/TFT_GOAT**
 
 ---
 

@@ -6,7 +6,7 @@ augment's combat logic to scaling up the RL training loop. This guide gets you p
 ## TL;DR
 
 ```bash
-git clone https://github.com/<owner>/TFT_GOAT.git
+git clone https://github.com/MielPopsssssss/TFT_GOAT.git
 cd TFT_GOAT
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
