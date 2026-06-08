@@ -1,0 +1,327 @@
+{
+ "items": [
+  {
+   "apiName": "TFT_Item_InfinityEdge",
+   "associatedTraits": [],
+   "composition": [
+    "TFT_Item_BFSword",
+    "TFT_Item_SparringGloves"
+   ],
+   "desc": "Gain <TFTKeyword>Precision</TFTKeyword>.<br><br>{{TFT_Keyword_Precision}}",
+   "effects": {
+    "AD": 0.3499999940395355,
+    "CritChance": 35.0,
+    "CritDamageToGive": null
+   },
+   "from": null,
+   "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_InfinityEdge.TFT_Set13.tex",
+   "id": null,
+   "incompatibleTraits": [],
+   "name": "Infinity Edge",
+   "tags": [
+    "{7ea41d13}",
+    "CritChance"
+   ],
+   "unique": false
+  },
+  {
+   "apiName": "TFT_Item_BFSword",
+   "associatedTraits": [],
+   "composition": [],
+   "desc": "%i:scaleAD% +@AD*100@% Attack Damage",
+   "effects": {
+    "AD": 0.10000000149011612
+   },
+   "from": null,
+   "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_BFSword.TFT_Set13.tex",
+   "id": null,
+   "incompatibleTraits": [],
+   "name": "B.F. Sword",
+   "tags": [
+    "component"
+   ],
+   "unique": false
+  },
+  {
+   "apiName": "TFT_Item_SparringGloves",
+   "associatedTraits": [],
+   "composition": [],
+   "desc": "+@CritChance@ Critical Strike Chance",
+   "effects": {
+    "CritChance": 20.0
+   },
+   "from": null,
+   "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SparringGloves.TFT_Set13.tex",
+   "id": null,
+   "incompatibleTraits": [],
+   "name": "Sparring Gloves",
+   "tags": [
+    "component"
+   ],
+   "unique": false
+  },
+  {
+   "apiName": "TFT10_Augment_CrashTestDummies",
+   "associatedTraits": [],
+   "composition": [],
+   "desc": "Gain @Numdummies@ Training Dummies. Combat start: Your Training Dummies launch themselves towards a group of enemies and Stun them for @stun@ seconds. ",
+   "effects": {
+    "NumDummies": 2.0,
+    "SearchRange": 4.0,
+    "Stun": 1.0
+   },
+   "from": null,
+   "icon": "ASSETS/Maps/TFT/Icons/Augments/Hexcore/Crash-Test-Dummies-II.tex",
+   "id": null,
+   "incompatibleTraits": [],
+   "name": "Crash Test Dummies",
+   "tags": [
+    "{b72bd3bf}",
+    "{d02ae323}",
+    "{807eed8a}",
+    "{ce1fd21c}"
+   ],
+   "unique": false
+  }
+ ],
+ "setData": [
+  {
+   "mutator": "TFTSet17",
+   "name": "Set17",
+   "number": 17,
+   "champions": [
+    {
+     "ability": {
+      "desc": "Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleAP%)</TFTBonus> shield for @ShieldDuration@ seconds. Then, strike enemies in a three hex line, dealing <magicDamage>@ModifiedDamage@ (%i:scaleAP%%i:scaleArmor%)</magicDamage> magic damage.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> Reduce the damage of incoming attacks by <TFTBonus>@ModifiedFlatDR@ (%i:set14AmpIcon%)</TFTBonus>. After being attacked @AttacksPerPassiveTrigger@ times, deal <magicDamage>@ModifiedPassiveDamage@&nbsp;(%i:scaleArmor%%i:set14AmpIcon%)</magicDamage> magic damage in a two hex radius.</mainText>",
+      "icon": "ASSETS/Characters/TFT17_Rammus/HUD/Icons2D/Armordillo_Powerball.TFT_Set17.tex",
+      "name": "Gravitational Spin",
+      "variables": [
+       {
+        "name": "ShieldAP",
+        "value": [
+         300.0,
+         675.0,
+         825.0,
+         2000.0,
+         2500.0,
+         300.0,
+         300.0
+        ]
+       },
+       {
+        "name": "ShieldDuration",
+        "value": [
+         4.0,
+         4.0,
+         4.0,
+         4.0,
+         4.0,
+         4.0,
+         4.0
+        ]
+       },
+       {
+        "name": "DamageAP",
+        "value": [
+         100.0,
+         50.0,
+         75.0,
+         700.0,
+         600.0,
+         800.0,
+         800.0
+        ]
+       },
+       {
+        "name": "DamageArmor",
+        "value": [
+         3.0,
+         0.5,
+         0.75,
+         11.0,
+         12.0,
+         12.0,
+         12.0
+        ]
+       },
+       {
+        "name": "AttacksPerPassiveTrigger",
+        "value": [
+         20.0,
+         20.0,
+         20.0,
+         20.0,
+         20.0,
+         20.0,
+         20.0
+        ]
+       },
+       {
+        "name": "PassivePercentArmor",
+        "value": [
+         0.5,
+         0.20000000298023224,
+         0.30000001192092896,
+         5.0,
+         10.0,
+         10.0,
+         10.0
+        ]
+       },
+       {
+        "name": "FlatDRPerMeep",
+        "value": [
+         4.0,
+         4.0,
+         4.0,
+         4.0,
+         4.0,
+         4.0,
+         4.0
+        ]
+       },
+       {
+        "name": "MeepsPerAstro",
+        "value": [
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0
+        ]
+       }
+      ]
+     },
+     "apiName": "TFT17_Rammus",
+     "characterName": "TFT17_Rammus",
+     "cost": 4,
+     "icon": "ASSETS/Characters/TFT17_Rammus/Skins/Base/Images/TFT17_Rammus_splash_centered_17.TFT_Set17.tex",
+     "name": "Rammus",
+     "role": "APTank",
+     "squareIcon": "ASSETS/Characters/TFT17_Rammus/Skins/Base/Images/TFT17_Rammus_splash_tile_17.TFT_Set17.tex",
+     "stats": {
+      "armor": 60.0,
+      "attackSpeed": 0.6499999761581421,
+      "critChance": 0.25,
+      "critMultiplier": 1.399999976158142,
+      "damage": 60.0,
+      "hp": 1300.0,
+      "initialMana": 20.0,
+      "magicResist": 60.0,
+      "mana": 90.0,
+      "range": 1.0
+     },
+     "tileIcon": "ASSETS/Characters/TFT17_Rammus/HUD/TFT17_Rammus_Square.TFT_Set17.tex",
+     "traits": [
+      "Meeple",
+      "Bastion"
+     ]
+    }
+   ],
+   "traits": [
+    {
+     "apiName": "TFT17_ResistTank",
+     "desc": "Your team gains @TeamwideResists@ Armor and Magic Resist.<br><br>Bastions gain more, and the value doubles in the first @Duration@ seconds of combat.<br><br><row>(@MinUnits@) @BonusArmor@ %i:scaleArmor%%i:scaleMR%</row><br><row>(@MinUnits@) @BonusArmor@ %i:scaleArmor%%i:scaleMR%</row><br><row>(@MinUnits@) @BonusArmor@ %i:scaleArmor%%i:scaleMR%; Non-Bastions gain an additional @EnhancedTeamwideArmor@ %i:scaleArmor%%i:scaleMR%.</row>",
+     "effects": [
+      {
+       "maxUnits": 3,
+       "minUnits": 2,
+       "style": 1,
+       "variables": {
+        "BonusArmor": 16.0,
+        "BonusMR": 16.0,
+        "Duration": 10.0,
+        "EnhancedTeamwideArmor": 20.0,
+        "StatMultiplier": 2.0,
+        "TeamwideResists": 15.0
+       }
+      },
+      {
+       "maxUnits": 5,
+       "minUnits": 4,
+       "style": 3,
+       "variables": {
+        "BonusArmor": 40.0,
+        "BonusMR": 40.0,
+        "Duration": 10.0,
+        "EnhancedTeamwideArmor": 20.0,
+        "StatMultiplier": 2.0,
+        "TeamwideResists": 15.0
+       }
+      },
+      {
+       "maxUnits": 25000,
+       "minUnits": 6,
+       "style": 5,
+       "variables": {
+        "BonusArmor": 60.0,
+        "BonusMR": 60.0,
+        "Duration": 10.0,
+        "EnhancedTeamwideArmor": 20.0,
+        "StatMultiplier": 2.0,
+        "TeamwideResists": 15.0
+       }
+      }
+     ],
+     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_9_Bastion.tex",
+     "name": "Bastion"
+    },
+    {
+     "apiName": "TFT17_Astronaut",
+     "desc": "Meeple attract Meeps that empower Meeple abilities in meepy ways. They also gain bonus Health.<br><br><row>(@MinUnits@) @Meeps@ %i:set14AmpIcon%, @BonusHealth@ %i:scaleHealth%</row><br><row>(@MinUnits@) @Meeps@ %i:set14AmpIcon%, @BonusHealth@ %i:scaleHealth%</row><br><row>(@MinUnits@) @Meeps@ %i:set14AmpIcon%, @BonusHealth@ %i:scaleHealth%. Create a Cloning Slot on your bench. Gain gold and a 1-star copy of the champion placed there when cloning completes.</row><br><row>(@MinUnits@) @Meeps@ %i:set14AmpIcon%, @BonusHealth@ %i:scaleHealth%. SUMMON THE FOUR MEEPLORDS!</row><br><br><rules>Cloning time = Champion cost</rules>",
+     "effects": [
+      {
+       "maxUnits": 4,
+       "minUnits": 3,
+       "style": 1,
+       "variables": {
+        "BonusHealth": 100.0,
+        "Meeps": 2.0
+       }
+      },
+      {
+       "maxUnits": 6,
+       "minUnits": 5,
+       "style": 3,
+       "variables": {
+        "BonusHealth": 400.0,
+        "Meeps": 3.0
+       }
+      },
+      {
+       "maxUnits": 9,
+       "minUnits": 7,
+       "style": 5,
+       "variables": {
+        "BonusHealth": 400.0,
+        "Meeps": 4.0
+       }
+      },
+      {
+       "maxUnits": 25000,
+       "minUnits": 10,
+       "style": 6,
+       "variables": {
+        "BonusHealth": 500.0,
+        "Meeps": 6.0
+       }
+      }
+     ],
+     "icon": "ASSETS/UX/TraitIcons/Trait_Icon_17_Astronaut.TFT_Set17.tex",
+     "name": "Meeple"
+    }
+   ],
+   "items": [
+    "TFT_Item_InfinityEdge",
+    "TFT_Item_BFSword",
+    "TFT_Item_SparringGloves"
+   ],
+   "augments": [
+    "TFT10_Augment_CrashTestDummies"
+   ]
+  }
+ ],
+ "sets": {}
+}

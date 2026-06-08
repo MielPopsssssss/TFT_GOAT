@@ -1,0 +1,3899 @@
+{
+ "TFT_BlueGolem": {
+  "name": "Golem",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "Slam the target dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage.",
+  "ability_name": "Golem Smash",
+  "variables": {
+   "Damage": [
+    100.0,
+    300.0,
+    480.0,
+    750.0,
+    1125.0,
+    100.0,
+    100.0
+   ]
+  }
+ },
+ "TFT9_SLIME_Crab": {
+  "name": "Rift Scuttler",
+  "cost": 1,
+  "role": "",
+  "desc": "<spellPassive>Passive:</spellPassive> Occasionally dash around the board.",
+  "ability_name": "Swimming Speed",
+  "variables": {}
+ },
+ "TFT_TrainingDummy": {
+  "name": "Training Dummy",
+  "cost": 1,
+  "role": "ADTank",
+  "desc": "The Training Dummy cannot move or attack. It is also dressed like a devilishly handsome Yordle.",
+  "ability_name": "On Duty!",
+  "variables": {}
+ },
+ "TFT17_Briar": {
+  "name": "Briar",
+  "cost": 1,
+  "role": "ADFighter",
+  "desc": "Passive: For every @PercentMissingHealth@% missing Health, gain <TFTBonus>@ModifiedAS@% (%i:scaleAP%)</TFTBonus> Attack Speed<br><br>Active: Deal <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage to the target, increased by <TFTBonus>@PercentBonusDamage*100@%</TFTBonus> if they're a tank.",
+  "ability_name": "Fish Frenzy",
+  "variables": {
+   "PercentMissingHealth": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ADDamage": [
+    3.299999952316284,
+    120.0,
+    180.0,
+    285.0,
+    485.0,
+    3.299999952316284,
+    3.299999952316284
+   ],
+   "APDamage": [
+    0.0,
+    10.0,
+    15.0,
+    25.0,
+    45.0,
+    0.0,
+    0.0
+   ],
+   "PercentBonusDamage": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "AS": [
+    2.0,
+    2.0,
+    2.0,
+    2.5,
+    2.5,
+    2.0,
+    2.0
+   ]
+  }
+ },
+ "TFT17_Belveth": {
+  "name": "Bel'Veth",
+  "cost": 2,
+  "role": "ADFighter",
+  "desc": "Unleash a flurry of <TFTBonus>@TotalNumSlashes@ (%i:scaleAS%)</TFTBonus> slashes at the current target over @SlashDuration@ seconds, dealing <physicalDamage>@TotalDamage@ (%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage each.",
+  "ability_name": "Tidal Slashes",
+  "variables": {
+   "ADDamage": [
+    50.0,
+    20.0,
+    30.0,
+    45.0,
+    77.0,
+    0.0,
+    0.0
+   ],
+   "APDamage": [
+    0.0,
+    3.0,
+    5.0,
+    7.0,
+    12.0,
+    0.0,
+    0.0
+   ],
+   "BaseNumSlashes": [
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0
+   ],
+   "BonusASBreakpoint": [
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0
+   ],
+   "SlashDuration": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "NumProcsPerSimulatedAttack": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ]
+  }
+ },
+ "TFT17_MissFortune": {
+  "name": "Miss Fortune",
+  "cost": 3,
+  "role": "",
+  "desc": "Field Miss Fortune to choose whether she activates Conduit Mode, Challenger Mode, or Replicator Mode. The chosen mode determines her ability and her trait.",
+  "ability_name": "Gun Goddess Arsenal",
+  "variables": {
+   "Tier1Damage": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "Tier2Damage": [
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5
+   ],
+   "Tier3Damage": [
+    3.299999952316284,
+    3.299999952316284,
+    3.299999952316284,
+    3.299999952316284,
+    3.299999952316284,
+    3.299999952316284,
+    3.299999952316284
+   ],
+   "Tier4Damage": [
+    0.0,
+    4.5,
+    4.5,
+    9.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "Tier5Damage": [
+    0.0,
+    6.0,
+    6.0,
+    60.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_Akali": {
+  "name": "Akali",
+  "cost": 2,
+  "role": "ADFighter",
+  "desc": "Reposition next to the target to strike the most enemies. Then throw @NumShurikens@ piercing kunai, each dealing <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage to the first enemy hit, reduced to <physicalDamage>@ModifiedSecondaryDamage@&nbsp;(%i:scaleAD%)</physicalDamage> for each subsequent target. Kunai remove <TFTBonus>@ArmorShred@</TFTBonus> Armor, <TFTBonus>@ArmorShredCrit@</TFTBonus> if they crit.<br><br><ShowIf.TFT17_DRX_CapstoneActive><scaleLevel enabled=TFT17_DRX_isSelected alternate=TFTGuildInactive>N.O.V.A. Strike: Slice all enemies, applying Wound and a bleed that deals <physicalDamage enabled=TFT17_DRX_isSelected>@ModifiedNovaDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage each second. Kunai increase the damage of the bleed by @NovaShurikenBonusDamage*100@%.</scaleLevel></ShowIf.TFT17_DRX_CapstoneActive>",
+  "ability_name": "Star Strike",
+  "variables": {
+   "NumShurikens": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "DamageAP": [
+    6.0,
+    4.0,
+    6.0,
+    9.0,
+    15.0,
+    6.0,
+    6.0
+   ],
+   "DamageAD": [
+    27.0,
+    37.0,
+    56.0,
+    84.0,
+    140.0,
+    72.0,
+    72.0
+   ],
+   "SecondaryDamageModifier": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ],
+   "ArmorShred": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ArmorShredCrit": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "NovaDamagePerSecond": [
+    12.0,
+    12.0,
+    18.0,
+    24.0,
+    30.0,
+    22.0,
+    22.0
+   ],
+   "NovaShurikenBonusDamage": [
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099
+   ]
+  }
+ },
+ "TFT17_Bard": {
+  "name": "Bard",
+  "cost": 5,
+  "role": "APCaster",
+  "desc": "Summon a flying saucer over the current target that lasts <ShowIf.TFT17_Augment_Concentration_Active><TFTRadiantItemBonus>@AugmentedDuration@</TFTRadiantItemBonus></ShowIf.TFT17_Augment_Concentration_Active><ShowIfNot.TFT17_Augment_Concentration_Active>@Duration@</ShowIfNot.TFT17_Augment_Concentration_Active> seconds. Each second it deals <magicDamage>@ModifiedDamagePerSecond@&nbsp;(%i:scaleAP%)</magicDamage>&nbsp;magic damage to the target, plus <magicDamage>@ModifiedSplitDamagePerSecond@&nbsp;(%i:scaleAP%)</magicDamage>&nbsp;magic damage split between all enemies within @SecondaryHexRange@&nbsp;hex. The saucer deals <TFTBonus>@TankDamageIncrease*100@%</TFTBonus> increased damage to Tanks.<br><br>If an enemy under the UFO dies, Bard has a <TFTBonus>@AbductChance*100@%&nbsp;</TFTBonus>chance to abduct them and create a 1-star copy on your bench.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep bonus:</spellActive> On combat start, grant the nearest <TFTBonus>@ModifiedNumAllies@</TFTBonus>&nbsp;(%i:set14AmpIcon%) Meeple allies an additional Meep.</mainText><br><br><rules>Friends abducted: @TFTUnitProperty.:TFT17_Bard_FriendsAbducted@</rules>",
+  "ability_name": "Ultra Friendly Object",
+  "variables": {
+   "DamagePerSecond": [
+    2.0,
+    220.0,
+    330.0,
+    3000.0,
+    5000.0,
+    2.0,
+    2.0
+   ],
+   "SplitDamagePerSecond": [
+    0.0,
+    135.0,
+    205.0,
+    1500.0,
+    2500.0,
+    0.0,
+    0.0
+   ],
+   "Duration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "AugmentedDuration": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "AbductChance": [
+    0.4000000059604645,
+    0.15000000596046448,
+    0.20000000298023224,
+    1.0,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ],
+   "PVEAbductionChanceModifier": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "MeepsPerMeep": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "TankDamageIncrease": [
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896
+   ],
+   "SecondaryHexRange": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "CanAbductSecondaryTargets": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_Jinx": {
+  "name": "Jinx",
+  "cost": 2,
+  "role": "ADCarry",
+  "desc": "Fire a barrage of <TFTBonus>@ModifiedNumRockets@&nbsp;(%i:scaleAS%)</TFTBonus> rockets in a cone, each dealing <physicalDamage>@TotalDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage to the first target hit.",
+  "ability_name": "Explosive Attitude",
+  "variables": {
+   "BaseBullets": [
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0
+   ],
+   "ASPerBullet": [
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355
+   ],
+   "ADDamage": [
+    3.0,
+    29.0,
+    44.0,
+    70.0,
+    110.0,
+    3.0,
+    3.0
+   ],
+   "TotalSpellTime": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "BulletTravelDistance": [
+    1500.0,
+    1500.0,
+    1500.0,
+    1500.0,
+    1500.0,
+    1500.0,
+    1500.0
+   ],
+   "APDamage": [
+    0.0,
+    3.0,
+    5.0,
+    7.0,
+    12.0,
+    0.0,
+    0.0
+   ],
+   "MinimumNumTargets": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "RocketsPerLaunchAttack": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+   ]
+  }
+ },
+ "TFT17_Illaoi": {
+  "name": "Illaoi",
+  "cost": 3,
+  "role": "APTank",
+  "desc": "Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleAP%)</TFTBonus> Shield for @Duration@ seconds. Over the duration, drain <trueDamage>@ModifiedHealthDrain@&nbsp;(%i:scaleAP%)</trueDamage> Health from the nearest @NumEnemies@ enemies. Then slam down, dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to all enemies within 2&nbsp;hexes.",
+  "ability_name": "Test of Spirit",
+  "variables": {
+   "Shield": [
+    250.0,
+    450.0,
+    525.0,
+    650.0,
+    775.0,
+    400.0,
+    400.0
+   ],
+   "Duration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "HealthDrain": [
+    40.0,
+    55.0,
+    85.0,
+    130.0,
+    175.0,
+    240.0,
+    240.0
+   ],
+   "NumEnemies": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "Damage": [
+    80.0,
+    80.0,
+    120.0,
+    180.0,
+    240.0,
+    240.0,
+    240.0
+   ]
+  }
+ },
+ "TFT17_Aurora": {
+  "name": "Aurora",
+  "cost": 3,
+  "role": "APCaster",
+  "desc": "Open a @SpellHexRadius@ hex rift containing the target, Hacking enemies within for @HexDuration@ seconds and dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to each, plus <magicDamage>@ModifiedSplitDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage split between all enemies hit.<br><br>Hacked enemies store @HexPercent*100@% of all damage they take. When the Hack ends, they take true damage equal to the stored damage. The Hack ends early if it would kill the target.",
+  "ability_name": "Hopped-Up Hacks",
+  "variables": {
+   "SplitDamage": [
+    3.0,
+    400.0,
+    600.0,
+    960.0,
+    1650.0,
+    3.0,
+    3.0
+   ],
+   "Damage": [
+    2.5,
+    80.0,
+    120.0,
+    190.0,
+    340.0,
+    2.5,
+    2.5
+   ],
+   "HexPercent": [
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612
+   ],
+   "HexDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "SpellHexRadius": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ]
+  }
+ },
+ "TFT17_Fiora": {
+  "name": "Fiora",
+  "cost": 5,
+  "role": "ADFighter",
+  "desc": "<spellPassive>Passive:</spellPassive> Every @NumAttacks@ attacks, reveal a Vital on the target. If a Vital exists, dash to attack it dealing <trueDamage>@ModifiedVitalDamage@&nbsp;(%i:scaleAD%)</trueDamage> bonus true damage and heal for @PercentHealing*100@% of the damage dealt.<br><br><spellActive>Active:</spellActive> Reveal @NumVitals@ Vitals on the target and quickly attack them all. If the target dies, remaining Vitals transfer to the nearest enemy. Upon striking the final Vital, create a two hex aura that heals allies within for <scaleHealth>@ModifiedHealing@&nbsp;(%i:scaleAP%)</scaleHealth> over @AuraDuration@ seconds.",
+  "ability_name": "Perfect Bladework",
+  "variables": {
+   "NumAttacks": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "VitalDamage": [
+    50.0,
+    37.0,
+    56.0,
+    777.0,
+    777.0,
+    777.0,
+    777.0
+   ],
+   "PercentHealing": [
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448
+   ],
+   "NumVitals": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+   ],
+   "AuraHealing": [
+    250.0,
+    200.0,
+    250.0,
+    999.0,
+    999.0,
+    999.0,
+    999.0
+   ],
+   "AuraDuration": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ]
+  }
+ },
+ "TFT17_Gnar": {
+  "name": "Gnar",
+  "cost": 2,
+  "role": "ADSpecialist",
+  "desc": "<spellPassive>Passive:</spellPassive> Every 5th attack, launch a returning boomerang at the target that travels two hexes past the first enemy it hits. It deals <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage, reduced by @DamageReductionPerHit*100@% per hit.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> <TFTBonus>@ModifiedNumMeeps@ (%i:set14AmpIcon%)</TFTBonus> Meeps attack alongside Gnar, dealing <physicalDamage>@ModifiedMeepDPS@&nbsp;(%i:scaleAD%%i:scaleAS%)</physicalDamage> physical damage per second.</mainText>",
+  "ability_name": "Slingshot Maneuver",
+  "variables": {
+   "DamageAD": [
+    200.0,
+    225.0,
+    340.0,
+    560.0,
+    860.0,
+    600.0,
+    600.0
+   ],
+   "DamageAP": [
+    30.0,
+    20.0,
+    30.0,
+    45.0,
+    75.0,
+    95.0,
+    95.0
+   ],
+   "DamageReductionPerHit": [
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75
+   ],
+   "NumMeepsPerAstro": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "MeepPercentBAD": [
+    0.23000000417232513,
+    0.23000000417232513,
+    0.23000000417232513,
+    0.23000000417232513,
+    0.23000000417232513,
+    0.23000000417232513,
+    0.23000000417232513
+   ],
+   "MeepASScaling": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ]
+  }
+ },
+ "TFT17_Fizz": {
+  "name": "Fizz",
+  "cost": 3,
+  "role": "APReaper",
+  "desc": "Dash through the current target, dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. Every third cast also summons a Mega Meep after a delay, briefly knocking the target up and dealing <magicDamage>@ModifiedChompDamage@&nbsp;(%i:scaleAP%%i:set14AmpIcon%)</magicDamage> magic damage. Adjacent enemies take @SecondaryDamage*100@% damage.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> Add <TFTBonus>@ModifiedNumMeeps@ (%i:set14AmpIcon%)</TFTBonus> Meep to the bait, increasing Mega Meep damage by <magicDamage>@ModifiedMeepBonusDamage@ (%i:scaleAP%)</magicDamage>.</mainText>",
+  "ability_name": "Meep Bait",
+  "variables": {
+   "DashDamage": [
+    80.0,
+    120.0,
+    180.0,
+    290.0,
+    470.0,
+    250.0,
+    250.0
+   ],
+   "BiteDamageAP": [
+    100.0,
+    185.0,
+    280.0,
+    445.0,
+    785.0,
+    660.0,
+    660.0
+   ],
+   "BiteDamageMeep": [
+    70.0,
+    75.0,
+    115.0,
+    180.0,
+    320.0,
+    400.0,
+    400.0
+   ],
+   "MeepsPerAstro": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "MegaMeepStunDuration": [
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25
+   ],
+   "SecondaryDamage": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "TFT17_Rammus": {
+  "name": "Rammus",
+  "cost": 4,
+  "role": "APTank",
+  "desc": "Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleAP%)</TFTBonus> shield for @ShieldDuration@ seconds. Then, strike enemies in a three hex line, dealing <magicDamage>@ModifiedDamage@ (%i:scaleAP%%i:scaleArmor%)</magicDamage> magic damage.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> Reduce the damage of incoming attacks by <TFTBonus>@ModifiedFlatDR@ (%i:set14AmpIcon%)</TFTBonus>. After being attacked @AttacksPerPassiveTrigger@ times, deal <magicDamage>@ModifiedPassiveDamage@&nbsp;(%i:scaleArmor%%i:set14AmpIcon%)</magicDamage> magic damage in a two hex radius.</mainText>",
+  "ability_name": "Gravitational Spin",
+  "variables": {
+   "ShieldAP": [
+    300.0,
+    675.0,
+    825.0,
+    2000.0,
+    2500.0,
+    300.0,
+    300.0
+   ],
+   "ShieldDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "DamageAP": [
+    100.0,
+    50.0,
+    75.0,
+    700.0,
+    600.0,
+    800.0,
+    800.0
+   ],
+   "DamageArmor": [
+    3.0,
+    0.5,
+    0.75,
+    11.0,
+    12.0,
+    12.0,
+    12.0
+   ],
+   "AttacksPerPassiveTrigger": [
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0
+   ],
+   "PassivePercentArmor": [
+    0.5,
+    0.20000000298023224,
+    0.30000001192092896,
+    5.0,
+    10.0,
+    10.0,
+    10.0
+   ],
+   "FlatDRPerMeep": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "MeepsPerAstro": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_Poppy": {
+  "name": "Poppy",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "Gain <TFTBonus>@ModifiedShield@ (%i:scaleAP%)</TFTBonus> Shield for @ShieldDuration@ seconds. For the duration, allies within two hexes gain <TFTBonus>@ModifiedResists@ (%i:scaleAP%)</TFTBonus> Armor and Magic Resistance.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> Meeps grant <TFTBonus>@ModifiedMeepShield@ (%i:scaleAP%)</TFTBonus> Shield to the nearest <TFTBonus>@ModifiedNumMeeps@ (%i:set14AmpIcon%)</TFTBonus> allies for @ShieldDuration@ seconds.</mainText>",
+  "ability_name": "Huddle Up!",
+  "variables": {
+   "Shield": [
+    300.0,
+    400.0,
+    475.0,
+    575.0,
+    675.0,
+    390.0,
+    390.0
+   ],
+   "ShieldDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "Resists": [
+    36.0,
+    15.0,
+    25.0,
+    60.0,
+    100.0,
+    36.0,
+    36.0
+   ],
+   "MeepShield": [
+    100.0,
+    125.0,
+    160.0,
+    210.0,
+    260.0,
+    300.0,
+    300.0
+   ],
+   "MeepsPerAstro": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_Corki": {
+  "name": "Corki",
+  "cost": 4,
+  "role": "ADCaster",
+  "desc": "Strafe to a nearby position, unleashing @BaseMissiles@ missiles split between the target and all enemies within two hexes. Missiles deal <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage with a @ProcChance@%<ShowIf.TFT17_Fateweaver_LuckyAbility> <TFTKeyword>Lucky</TFTKeyword></ShowIf.TFT17_Fateweaver_LuckyAbility> chance of firing a mega missile that deals <physicalDamage>@ModifiedProcDamage@&nbsp;(%i:scaleAD%)</physicalDamage> instead.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> Every <TFTBonus>@ModifiedMeepCooldown@ (%i:set14AmpIcon%)</TFTBonus> seconds, launch an Explosive Meep at the target, dealing <physicalDamage>@ModifiedMeepDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage in a one hex radius on impact.</mainText><br><br><ShowIf.TFT17_Fateweaver_LuckyAbility><rules>Lucky: Check twice and take the better outcome.</rules></ShowIf.TFT17_Fateweaver_LuckyAbility>",
+  "ability_name": "Asteroid Blaster",
+  "variables": {
+   "BaseMissiles": [
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0,
+    21.0
+   ],
+   "MissileAD": [
+    25.0,
+    28.0,
+    42.0,
+    280.0,
+    200.0,
+    25.0,
+    25.0
+   ],
+   "MissileAP": [
+    6.0,
+    5.0,
+    7.0,
+    24.0,
+    30.0,
+    25.0,
+    25.0
+   ],
+   "ProcChance": [
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0
+   ],
+   "ProcDamageMult": [
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5
+   ],
+   "MissilesPerLaunchAttack": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "BaseMeepCooldown": [
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "CooldownReductionPerAstro": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "MeepDamage": [
+    150.0,
+    110.0,
+    165.0,
+    900.0,
+    1200.0,
+    1200.0,
+    1200.0
+   ],
+   "CDRPerMeep": [
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612
+   ]
+  }
+ },
+ "TFT17_Veigar": {
+  "name": "Veigar",
+  "cost": 1,
+  "role": "APCaster",
+  "desc": "Call down a Meepteor on the target that deals <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> An additional <TFTBonus>@ModifiedMiniMeeps@&nbsp;(%i:set14AmpIcon%)</TFTBonus> mini Meepteor are called down on nearby targets dealing <magicDamage>@ModifiedMiniDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage each.</mainText>",
+  "ability_name": "Meepteor Shower",
+  "variables": {
+   "Damage": [
+    250.0,
+    310.0,
+    465.0,
+    700.0,
+    1190.0,
+    825.0,
+    825.0
+   ],
+   "MiniMeepsPerAstro": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "MiniDamage": [
+    40.0,
+    31.0,
+    47.0,
+    70.0,
+    130.0,
+    120.0,
+    120.0
+   ]
+  }
+ },
+ "TFT17_Aatrox": {
+  "name": "Aatrox",
+  "cost": 1,
+  "role": "ADTank",
+  "desc": "Heal <scaleHealth>@ModifiedHeal@&nbsp;(%i:scaleAP%)</scaleHealth>, then deal <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%%i:scaleArmor%)</physicalDamage> physical damage to the current target.<br><br><ShowIf.TFT17_DRX_CapstoneActive><scaleLevel enabled=TFT17_DRX_isSelected alternate=TFTGuildInactive>N.O.V.A. Strike: Cleave the battlefield, briefly knocking up all enemies and dealing <physicalDamage enabled=TFT17_DRX_isSelected>@ModifiedNovaDamage@&nbsp;(%i:scaleAD%%i:scaleArmor%)</physicalDamage> physical damage.</scaleLevel></ShowIf.TFT17_DRX_CapstoneActive>",
+  "ability_name": "Stellar Slash",
+  "variables": {
+   "HealHP": [
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612
+   ],
+   "HealAP": [
+    150.0,
+    325.0,
+    400.0,
+    650.0,
+    900.0,
+    180.0,
+    180.0
+   ],
+   "DamageAD": [
+    200.0,
+    80.0,
+    120.0,
+    180.0,
+    300.0,
+    600.0,
+    600.0
+   ],
+   "DamagePercentArmor": [
+    1.0,
+    1.7999999523162842,
+    2.700000047683716,
+    4.050000190734863,
+    6.900000095367432,
+    3.0,
+    3.0
+   ],
+   "NOVAModifier": [
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421
+   ]
+  }
+ },
+ "TFT17_Caitlyn": {
+  "name": "Caitlyn",
+  "cost": 1,
+  "role": "ADSpecialist",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks have a @ProcChance@%<ShowIf.TFT17_Fateweaver_LuckyAbility> <TFTKeyword>Lucky</TFTKeyword></ShowIf.TFT17_Fateweaver_LuckyAbility> chance to fire an empowered Headshot, dealing <physicalDamage>@ModifiedHeadshotDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage.<br><br><ShowIf.TFT17_DRX_CapstoneActive><scaleLevel enabled=TFT17_DRX_isSelected alternate=TFTGuildInactive>N.O.V.A. Strike: Mark all enemies, increasing damage taken by @NovaMarkDamageAmp*100@%. The first time marked targets drop below @NovaMarkThreshold*100@% Health, Headshot them for <physicalDamage enabled=TFT17_DRX_isSelected>@ModifiedNovaHeadshotDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage.<br><br></scaleLevel></ShowIf.TFT17_DRX_CapstoneActive><ShowIf.TFT17_Fateweaver_LuckyAbility><rules>Lucky: Check twice and take the better outcome.</rules></ShowIf.TFT17_Fateweaver_LuckyAbility>",
+  "ability_name": "Aim For The Head",
+  "variables": {
+   "ProcChance": [
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0
+   ],
+   "Damage": [
+    145.0,
+    170.0,
+    255.0,
+    510.0,
+    875.0,
+    455.0,
+    455.0
+   ],
+   "BonusDamage": [
+    20.0,
+    20.0,
+    30.0,
+    45.0,
+    77.0,
+    60.0,
+    60.0
+   ],
+   "NovaMarkDamageAmp": [
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612
+   ],
+   "NovaMarkThreshold": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "NovaHeadshotModifier": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ]
+  }
+ },
+ "TFT17_Maokai": {
+  "name": "Maokai",
+  "cost": 3,
+  "role": "APTank",
+  "desc": "<spellPassive>Passive:</spellPassive> Gain <TFTBonus>@PassiveRatio*100@%</TFTBonus> more max Health from all sources.<br><br><spellActive>Active:</spellActive> Converge an X-shape of vines on the target, dealing <magicDamage>@DamageTotal@ (%i:scaleAP%)</magicDamage> magic damage to each enemy hit and Stunning them for <scaleLevel>@StunDuration@</scaleLevel> seconds. <br><br><ShowIf.TFT17_DRX_CapstoneActive><scaleLevel enabled=TFT17_DRX_isSelected alternate=TFTGuildInactive>N.O.V.A. Strike: Send forth a wave of dragons that stun all enemies for @NovaStunDuration@ seconds. For the rest of combat, Maokai's attacks deal <physicalDamage enabled=TFT17_DRX_isSelected>@ModifiedNovaDamage@ (%i:scaleHealth%)</physicalDamage> bonus physical damage.</scaleLevel></ShowIf.TFT17_DRX_CapstoneActive>",
+  "ability_name": "Grasp of Convergence",
+  "variables": {
+   "PassiveRatio": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "Damage": [
+    100.0,
+    100.0,
+    150.0,
+    225.0,
+    300.0,
+    0.0,
+    0.0
+   ],
+   "StunDuration": [
+    1.5,
+    1.5,
+    1.5,
+    1.75,
+    2.0,
+    2.0,
+    0.0
+   ],
+   "NovaStunDuration": [
+    1.5,
+    1.5,
+    1.5,
+    1.75,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "NovaHealthDamage": [
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066
+   ]
+  }
+ },
+ "TFT17_Kindred": {
+  "name": "Kindred",
+  "cost": 4,
+  "role": "ADCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks and Abilities mark the target. When an enemy reaches @MaxMarks@ marks, Wolf consumes the marks, dealing <physicalDamage>@TotalDamage@ (%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage. <br><br><spellActive>Active:</spellActive> Jump up to @HexDistance@ hex away and fire arrows at the nearest <scaleLevel>@NumTargets@</scaleLevel> targets, each dealing <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage. <br><br><ShowIf.TFT17_DRX_CapstoneActive><scaleLevel enabled=TFT17_DRX_isSelected alternate=TFTGuildInactive>N.O.V.A. Strike: Gain @NovaDamageAmp*100@% Damage Amp. Now and every @NovaRepeatTimer@ seconds after, add a mark to all enemies.</scaleLevel></ShowIf.TFT17_DRX_CapstoneActive>",
+  "ability_name": "Cosmic Pursuit",
+  "variables": {
+   "MaxMarks": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "NumTargets": [
+    3.0,
+    3.0,
+    3.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "SpellDamage": [
+    0.0,
+    75.0,
+    115.0,
+    600.0,
+    810.0,
+    0.0,
+    0.0
+   ],
+   "ADDamage": [
+    0.0,
+    115.0,
+    175.0,
+    900.0,
+    1050.0,
+    0.0,
+    0.0
+   ],
+   "APDamage": [
+    0.0,
+    10.0,
+    15.0,
+    100.0,
+    75.0,
+    0.0,
+    0.0
+   ],
+   "HexDistance": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "NovaRepeatTimer": [
+    4.5,
+    4.5,
+    4.5,
+    4.5,
+    4.5,
+    4.5,
+    4.5
+   ],
+   "NovaDamageAmp": [
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612
+   ]
+  }
+ },
+ "TFT17_Kaisa": {
+  "name": "Kai'Sa",
+  "cost": 3,
+  "role": "ADCaster",
+  "desc": "<tftPassive>Passive:</tftPassive> On takedown, gain @ManaPerKill@ mana.<br><br><tftActive>Active:</tftActive> Fire @BaseNumMissiles@ missiles in a @HexRange@-hex radius around the current target, dealing <physicalDamage>@TotalDamage@ (%i:scaleAD%)</physicalDamage> physical damage each.<br>",
+  "ability_name": "Bullet Cluster",
+  "variables": {
+   "BaseNumMissiles": [
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0
+   ],
+   "HexRange": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "ADDamage": [
+    0.0,
+    30.0,
+    45.0,
+    72.0,
+    136.0,
+    0.0,
+    0.0
+   ],
+   "APDamage": [
+    0.0,
+    3.0,
+    5.0,
+    7.0,
+    13.0,
+    0.0,
+    0.0
+   ],
+   "SpellDuration": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ManaPerKill": [
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0
+   ],
+   "PercentTargetedMissiles": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "TFT17_Karma": {
+  "name": "Karma",
+  "cost": 4,
+  "role": "APCaster",
+  "desc": "Gather the force of a black hole, dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage split between the target and the <scaleLevel>@NumEnemies@</scaleLevel> closest enemies to them. The target takes an additional <magicDamage>@ModifiedSecondaryDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage.",
+  "ability_name": "Singularity",
+  "variables": {
+   "Damage": [
+    0.0,
+    570.0,
+    855.0,
+    5000.0,
+    6000.0,
+    0.0,
+    0.0
+   ],
+   "SecondaryDamage": [
+    0.0,
+    180.0,
+    270.0,
+    1000.0,
+    1320.0,
+    0.0,
+    0.0
+   ],
+   "BaseHexRange": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "NumCastsToExpand": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "HexPerExpansion": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "MaximumHexes": [
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "NumEnemies": [
+    2.0,
+    2.0,
+    2.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ]
+  }
+ },
+ "TFT17_Jhin": {
+  "name": "Jhin",
+  "cost": 5,
+  "role": "ADCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Jhin has a fixed attack speed of <scaleLevel>@FixedAS@</scaleLevel> and converts every @PercentBonusASToConvert*100@% of bonus Attack Speed into @ADConversionRate@ bonus Attack Damage.<br><br><spellActive>Active:</spellActive> Summon @NumHands@ spectral hands that fire alongside Jhin for the next @NumAttacks@ attacks. Each hand deals <physicalDamage>@TotalDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage per shot. The final shots deal <TFTBonus>@FinalShotPercentDamageIncrease*100@%</TFTBonus> more damage and pierce through the most enemies in a line, dealing @PercentDamageReductionPerTargetHit*100@% reduced damage per target hit. ",
+  "ability_name": "Space Opera",
+  "variables": {
+   "FixedAS": [
+    0.0,
+    0.8999999761581421,
+    0.8999999761581421,
+    1.399999976158142,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "PercentBonusASToConvert": [
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582
+   ],
+   "ADConversionRate": [
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75
+   ],
+   "NumHands": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "NumAttacks": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "APDamage": [
+    0.0,
+    4.0,
+    6.0,
+    44.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ADDamage": [
+    0.0,
+    41.0,
+    62.0,
+    644.0,
+    444.0,
+    0.0,
+    0.0
+   ],
+   "ArmorReduction": [],
+   "FinalShotPercentDamageIncrease": [
+    2.440000057220459,
+    2.440000057220459,
+    2.440000057220459,
+    2.440000057220459,
+    2.440000057220459,
+    2.440000057220459,
+    2.440000057220459
+   ],
+   "PercentDamageReductionPerTargetHit": [
+    0.4399999976158142,
+    0.4399999976158142,
+    0.4399999976158142,
+    0.4399999976158142,
+    0.4399999976158142,
+    0.4399999976158142,
+    0.4399999976158142
+   ]
+  }
+ },
+ "TFT17_Urgot": {
+  "name": "Urgot",
+  "cost": 3,
+  "role": "ADFighter",
+  "desc": "<spellPassive>Passive - Proximity Blast:</spellPassive> Whenever an enemy enters a <TFTBonus>@ShotgunRange@ (%i:scaleRange%)</TFTBonus> hex radius, fire a blast in a cone towards the closest adjacent hex that deals <physicalDamage>@ModifiedShotgunDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage with @FalloffPerHex*100@% falloff per hex. Each adjacent hex has a @ShotgunCooldown@ second cooldown, and starts combat on cooldown.<br><br><spellActive>Active:</spellActive> Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleAP%)</TFTBonus> Shield for @ShieldDuration@ seconds and reposition up to one hex to maximize the number of targets within Proximity Blast's radius. Reset Proximity Blast's cooldowns.",
+  "ability_name": "Unstoppable Dreadnought",
+  "variables": {
+   "ShotgunDamage": [
+    90.0,
+    85.0,
+    125.0,
+    200.0,
+    275.0,
+    1.7999999523162842,
+    1.7999999523162842
+   ],
+   "ShotgunCooldown": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "ShieldAmount": [
+    200.0,
+    150.0,
+    175.0,
+    200.0,
+    225.0,
+    420.0,
+    420.0
+   ],
+   "ShieldDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "FalloffPerHex": [
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896
+   ]
+  }
+ },
+ "TFT17_AurelionSol": {
+  "name": "Aurelion Sol",
+  "cost": 4,
+  "role": "APCaster",
+  "desc": "Channel a deathbeam in a line towards the current target for <ShowIf.TFT17_Augment_Concentration_Active><TFTRadiantItemBonus>@AugmentedDuration@</TFTRadiantItemBonus></ShowIf.TFT17_Augment_Concentration_Active><ShowIfNot.TFT17_Augment_Concentration_Active>@Duration@</ShowIfNot.TFT17_Augment_Concentration_Active> seconds. It deals <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage per second, reduced by @DamageReductionPerTarget*100@% per enemy it passes through. Deathbeam ignores @MagicPen*100@% of the enemy's Magic Resist.",
+  "ability_name": "Deathbeam",
+  "variables": {
+   "Duration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "AugmentedDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "DamagePerSecond": [
+    250.0,
+    320.0,
+    480.0,
+    2000.0,
+    2000.0,
+    1650.0,
+    1650.0
+   ],
+   "MagicPen": [
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896
+   ],
+   "DamageReductionPerTarget": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929
+   ]
+  }
+ },
+ "TFT17_Galio": {
+  "name": "The Mighty Mech",
+  "cost": 4,
+  "role": "ADTank",
+  "desc": "Enter a defensive stance for @DurabilityDuration@&nbsp;seconds gaining <TFTBonus>@Durability*100@%&nbsp;</TFTBonus>Durability. While in the defensive stance, attract nearby enemy projectiles and heal <scaleHealth>@ModifiedHeal@&nbsp;(%i:scaleAP%)</scaleHealth> over the duration. When this ends, release a shockwave that deals <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleArmor%%i:scaleMR%)</physicalDamage> as physical damage in a @HexRange@-hex range.",
+  "ability_name": "Gravity Matrix",
+  "variables": {
+   "HexRange": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "Durability": [
+    0.0,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.0,
+    0.0
+   ],
+   "DurabilityDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "ARMARScaling": [
+    0.0,
+    0.800000011920929,
+    1.2000000476837158,
+    30.0,
+    25.0,
+    0.0,
+    0.0
+   ],
+   "Heal": [
+    0.0,
+    900.0,
+    1300.0,
+    3000.0,
+    5000.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_Viktor": {
+  "name": "Viktor",
+  "cost": 3,
+  "role": "APCaster",
+  "desc": "Channel a one-hex psionic storm that follows enemies for <ShowIf.TFT17_Augment_Concentration_Active><TFTRadiantItemBonus>@AugmentedDuration@</TFTRadiantItemBonus></ShowIf.TFT17_Augment_Concentration_Active><ShowIfNot.TFT17_Augment_Concentration_Active>@Duration@</ShowIfNot.TFT17_Augment_Concentration_Active> seconds. Each second, it grows larger and deals <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to enemies within, reduced by @FalloffPerHex*100@% per hex from the epicenter.",
+  "ability_name": "Psionic Storm",
+  "variables": {
+   "Duration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "AugmentedDuration": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "Damage": [
+    200.0,
+    190.0,
+    290.0,
+    500.0,
+    850.0,
+    505.0,
+    505.0
+   ],
+   "RadiusIncreasePerSecond": [
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896
+   ],
+   "FalloffPerHex": [
+    0.6000000238418579,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.6000000238418579
+   ]
+  }
+ },
+ "TFT17_Pyke": {
+  "name": "Pyke",
+  "cost": 2,
+  "role": "ADReaper",
+  "desc": "Reposition up to one hex to throw a harpoon at the furthest enemy. The harpoon pulls the first enemy hit one hex forward and deals <physicalDamage>@ModifiedDamage@ (%i:scaleAP%)</physicalDamage> physical damage. Then, teleport behind them and cleave, dealing <physicalDamage>@ModifiedTargetDamage@ (%i:scaleAD%)</physicalDamage> physical damage to them and <physicalDamage>@ModifiedAreaDamage@ (%i:scaleAD%)</physicalDamage> physical damage to nearby enemies.",
+  "ability_name": "Marked for Death",
+  "variables": {
+   "SpearDamage": [
+    60.0,
+    60.0,
+    90.0,
+    135.0,
+    180.0,
+    180.0,
+    180.0
+   ],
+   "AoEDamage": [
+    150.0,
+    120.0,
+    180.0,
+    360.0,
+    615.0,
+    475.0,
+    475.0
+   ],
+   "TargetDamage": [
+    0.0,
+    210.0,
+    315.0,
+    720.0,
+    1225.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_MasterYi": {
+  "name": "Master Yi",
+  "cost": 4,
+  "role": "ADFighter",
+  "desc": "<spellPassive>Passive:</spellPassive> Every third attack is a doubleslash that deals <physicalDamage>@ModifiedPassiveDamage@ (%i:scaleAD%)</physicalDamage> bonus physical damage.<br><br><spellActive>Active:</spellActive> After brief meditation, enter a Psi-State for @Duration@ seconds, gaining <TFTBonus>@Omnivamp*100@%</TFTBonus> Omnivamp, <TFTBonus>@AttackSpeed*100@%</TFTBonus> Attack Speed, and increased movement speed. Twice a second, fire a psychic projection at a random nearby enemy that deals <physicalDamage>@ModifiedDamage@ (%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage",
+  "ability_name": "Psi Strikes",
+  "variables": {
+   "PassiveDamage": [
+    60.0,
+    70.0,
+    105.0,
+    550.0,
+    720.0,
+    720.0,
+    720.0
+   ],
+   "DamageAD": [
+    60.0,
+    50.0,
+    75.0,
+    600.0,
+    720.0,
+    450.0,
+    450.0
+   ],
+   "DamageAP": [
+    30.0,
+    20.0,
+    30.0,
+    200.0,
+    360.0,
+    360.0,
+    360.0
+   ],
+   "Omnivamp": [
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612,
+    0.10000000149011612
+   ],
+   "AttackSpeed": [
+    0.699999988079071,
+    0.699999988079071,
+    0.699999988079071,
+    0.699999988079071,
+    0.699999988079071,
+    0.699999988079071,
+    0.699999988079071
+   ],
+   "Duration": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ]
+  }
+ },
+ "TFT17_Gragas": {
+  "name": "Gragas",
+  "cost": 2,
+  "role": "APTank",
+  "desc": "Heal <scaleHealth>@ModifiedHeal@ (%i:scaleHealth%%i:scaleAP%)</scaleHealth> over @Duration@ seconds. Then, deal <magicDamage>@DamageTotal@ (%i:scaleAP%)</magicDamage> magic damage to target and enemies adjacent to them and @ASSlow*100@% <TFTKeyword>Chill</TFTKeyword> them for @CCDuration@ seconds.<br><br>{{TFT_Keyword_Chill}}",
+  "ability_name": "Chemical Rage",
+  "variables": {
+   "DURATION": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "HEALING": [
+    0.0,
+    415.0,
+    470.0,
+    630.0,
+    790.0,
+    0.0,
+    0.0
+   ],
+   "Damage": [
+    0.0,
+    200.0,
+    300.0,
+    450.0,
+    765.0,
+    0.0,
+    0.0
+   ],
+   "CCDuration": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "HealingPercentHealth": [
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967
+   ],
+   "ASSlow": [
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896
+   ]
+  }
+ },
+ "TFT17_Teemo": {
+  "name": "Teemo",
+  "cost": 1,
+  "role": "APCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks deal <magicDamage>@ModifiedHitDamage@ (%i:scaleAP%)</magicDamage> bonus magic damage and an additional <magicDamage>@ModifiedMagicDamage@ (%i:scaleAP%)</magicDamage> stacking magic damage over @PoisonDuration@ seconds. While an enemy has @GrooveStacks@ or more stacks, Teemo is in {{TFT17_SpaceGroove_TheGroove}}.<br><br><spellActive>Active:</spellActive> Gain <TFTBonus>@AttackSpeed*100@%</TFTBonus> Attack Speed for @ActiveAttacks@ attacks.",
+  "ability_name": "Double Time",
+  "variables": {
+   "HitDamage": [
+    100.0,
+    30.0,
+    45.0,
+    100.0,
+    170.0,
+    95.0,
+    95.0
+   ],
+   "MagicDamage": [
+    60.0,
+    65.0,
+    95.0,
+    170.0,
+    300.0,
+    180.0,
+    180.0
+   ],
+   "PoisonDuration": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+   ],
+   "GrooveStacks": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "AttackSpeed": [
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5
+   ],
+   "ActiveAttacks": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "TFT17_Nasus": {
+  "name": "Nasus",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "Transform for @Duration@ seconds, temporarily gaining <scaleLevel>@MaxHealth@</scaleLevel> max Health, entering {{TFT17_SpaceGroove_TheGroove}}, and dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleHealth%%i:scaleAP%)</magicDamage> magic damage to adjacent enemies each second. ",
+  "ability_name": "Groovin' Susan",
+  "variables": {
+   "MaxHealth": [
+    400.0,
+    250.0,
+    350.0,
+    550.0,
+    750.0,
+    700.0,
+    700.0
+   ],
+   "Duration": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+   ],
+   "DamageAP": [
+    18.0,
+    30.0,
+    45.0,
+    70.0,
+    120.0,
+    48.0,
+    48.0
+   ],
+   "DamageHealth": [
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164
+   ]
+  }
+ },
+ "TFT17_Gwen": {
+  "name": "Gwen",
+  "cost": 2,
+  "role": "APReaper",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks deal magic damage. Gwen is in {{TFT17_SpaceGroove_TheGroove}} while targeting an enemy below @GrooveThreshold*100@% Health.<br><br><spellActive>Active:</spellActive> Dash to a nearby hex to snip the lowest percent Health enemy, dealing <magicDamage>@ModifiedDamage@ (%i:scaleAP%)</magicDamage> magic damage to the target and <magicDamage>@ModifiedAreaDamage@ (%i:scaleAP%)</magicDamage> magic damage to enemies in a cone. If this kills, dash and snip again at @ResetDamage*100@% damage!",
+  "ability_name": "Dance n' Dice",
+  "variables": {
+   "GrooveThreshold": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ],
+   "BonusDashRange": [],
+   "Damage": [
+    180.0,
+    145.0,
+    220.0,
+    410.0,
+    700.0,
+    840.0,
+    840.0
+   ],
+   "AreaDamage": [
+    120.0,
+    75.0,
+    110.0,
+    190.0,
+    325.0,
+    420.0,
+    420.0
+   ],
+   "ResetDamage": [
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421,
+    0.6499999761581421
+   ]
+  }
+ },
+ "TFT17_Samira": {
+  "name": "Samira",
+  "cost": 3,
+  "role": "ADCaster",
+  "desc": "<spellPassive>Passive:</spellPassive> Whenever an enemy is knocked up, shoot them, dealing <physicalDamage>@ModifiedPassiveDamage@ (%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage and entering {{TFT17_SpaceGroove_TheGroove}} for @GrooveDuration@ seconds.<br><br><spellActive>Active:</spellActive> Unleash a volley of bullets at the target, dealing <physicalDamage>@ModifiedDamage@ (%i:scaleAD%)</physicalDamage> physical damage and knocking up for @StunDuration@ seconds.",
+  "ability_name": "Jump and Jive",
+  "variables": {
+   "PassiveAD": [
+    60.0,
+    55.0,
+    80.0,
+    130.0,
+    220.0,
+    210.0,
+    210.0
+   ],
+   "PassiveAP": [
+    20.0,
+    10.0,
+    15.0,
+    25.0,
+    35.0,
+    70.0,
+    70.0
+   ],
+   "GrooveDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "Damage": [
+    260.0,
+    375.0,
+    560.0,
+    900.0,
+    1555.0,
+    810.0,
+    810.0
+   ],
+   "StunDuration": [
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25
+   ]
+  }
+ },
+ "TFT17_Ornn": {
+  "name": "Ornn",
+  "cost": 3,
+  "role": "APTank",
+  "desc": "<spellPassive>Passive:</spellPassive> On combat start, forge a temporary completed item. If 3 items are already equipped, a random completed item becomes <TFTRadiantItemBonus>Radiant</TFTRadiantItemBonus> this combat instead.<br><br><spellActive>Active:</spellActive> Gain <TFTBonus>@ModifiedShield@ (%i:scaleAP%)</TFTBonus> Shield for @ShieldDuration@ seconds, then breath fire in a cone dealing <magicDamage>@ModifiedDamage@ (%i:scaleAP%)</magicDamage> magic damage. After any Shield on Ornn expires, Ornn enters {{TFT17_SpaceGroove_TheGroove}} for @GrooveDuration@ seconds.",
+  "ability_name": "Disco Inferno",
+  "variables": {
+   "Shield": [
+    100.0,
+    125.0,
+    200.0,
+    500.0,
+    1050.0,
+    300.0,
+    300.0
+   ],
+   "ShieldDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "Damage": [
+    200.0,
+    180.0,
+    270.0,
+    430.0,
+    590.0,
+    600.0,
+    600.0
+   ],
+   "GrooveDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "TFT17_Nami": {
+  "name": "Nami",
+  "cost": 4,
+  "role": "APCaster",
+  "desc": "Toss a disco bubble at the target that deals <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> split between enemies in a one hex radius. The explosion sends @NumProjectiles@ globs towards nearby enemies that deal <magicDamage>@ModifiedFirstBounceDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. On cast, Nami enters {{TFT17_SpaceGroove_TheGroove}} for @GrooveDuration@ seconds.",
+  "ability_name": "Bubble Pop",
+  "variables": {
+   "Damage": [
+    260.0,
+    440.0,
+    660.0,
+    5000.0,
+    3600.0,
+    4000.0,
+    4000.0
+   ],
+   "NumProjectiles": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "FirstBounceDamage": [
+    120.0,
+    110.0,
+    165.0,
+    1000.0,
+    2000.0,
+    1200.0,
+    1200.0
+   ],
+   "GrooveDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "TFT17_Blitzcrank": {
+  "name": "Blitzcrank",
+  "cost": 5,
+  "role": "APFighter",
+  "desc": "<spellPassive>Passive:</spellPassive> Every <scaleLevel>@BoltCooldown@</scaleLevel> seconds, call down a bolt on the highest Health nearby enemy that deals <magicDamage>@ModifiedBoltDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage.<br><br><spellActive>Active:</spellActive> Summon a disco ball at the largest clump of enemies, then knock up the current target into it, dealing <magicDamage>@ModifiedUppercutDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. They crash down into the disco ball, dealing <magicDamage>@ModifiedExplosionDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage in a three hex radius. Enter {{TFT17_SpaceGroove_TheGroove}} for @GrooveDurationPerTarget@ second per enemy hit.",
+  "ability_name": "Party Crasher",
+  "variables": {
+   "BoltCooldown": [
+    2.0,
+    2.0,
+    2.0,
+    0.5,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "BoltDamage": [
+    90.0,
+    60.0,
+    90.0,
+    150.0,
+    150.0,
+    150.0,
+    150.0
+   ],
+   "UppercutDamage": [
+    170.0,
+    150.0,
+    225.0,
+    999.0,
+    2000.0,
+    789.0,
+    5000.0
+   ],
+   "ExplosionDamage": [
+    200.0,
+    175.0,
+    265.0,
+    5000.0,
+    5000.0,
+    5000.0,
+    5000.0
+   ],
+   "GrooveDurationPerTarget": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_Sona": {
+  "name": "Sona",
+  "cost": 5,
+  "role": "APCaster",
+  "desc": "Hurl a chunk of magnetic debris at the nearest target without one, dealing <magicDamage>@ModifiedDebrisDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage and sticking it to them. If an enemy with debris dies, it passes to the nearest enemy without one.<br><br>Every @NumCasts@ casts, instead rip off all debris dealing <magicDamage>@ModifiedDebrisRipDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage, then crush all the debris onto the target, dealing <magicDamage>@ModifiedSlamDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage and briefly stunning them.",
+  "ability_name": "Psionic Crush",
+  "variables": {
+   "DebrisDamage": [
+    300.0,
+    300.0,
+    450.0,
+    999.0,
+    999.0,
+    2.0,
+    2.0
+   ],
+   "SlamDamage": [
+    2.5,
+    720.0,
+    1100.0,
+    9999.0,
+    9999.0,
+    2.5,
+    2.5
+   ],
+   "NumCasts": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "DebrisRipDamage": [
+    160.0,
+    120.0,
+    180.0,
+    999.0,
+    2000.0,
+    0.0,
+    0.0
+   ],
+   "StunDuration": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_TwistedFate": {
+  "name": "Twisted Fate",
+  "cost": 1,
+  "role": "APCaster",
+  "desc": "Draw a card with a value between 1 and 9 by<ShowIf.TFT17_Fateweaver_LuckyAbility> <TFTKeyword>Lucky</TFTKeyword></ShowIf.TFT17_Fateweaver_LuckyAbility> chance, then throw it at the target. Based on the card drawn, deal between <magicDamage>@ModifiedDamageMin@&nbsp;(%i:scaleAP%)</magicDamage> and <magicDamage>@ModifiedDamageMax@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. Overkill damage bounces to the nearest enemy. <br><br><spellActive>3-Star Bonus:</spellActive> If a 9 is thrown, generate 1 gold.<br><br><ShowIf.TFT17_Fateweaver_LuckyAbility><rules>Lucky: Check twice and take the better outcome.</rules></ShowIf.TFT17_Fateweaver_LuckyAbility>",
+  "ability_name": "Fate's Gambit",
+  "variables": {
+   "DamageMin": [
+    180.0,
+    190.0,
+    285.0,
+    430.0,
+    730.0,
+    500.0,
+    500.0
+   ],
+   "DamageMax": [
+    330.0,
+    380.0,
+    570.0,
+    860.0,
+    1460.0,
+    1000.0,
+    1000.0
+   ]
+  }
+ },
+ "TFT17_Talon": {
+  "name": "Talon",
+  "cost": 1,
+  "role": "ADReaper",
+  "desc": "Stab the target, causing them to bleed for <physicalDamage>@ModifiedBleedDamage@ (%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage over @BleedDuration@ seconds. After the attack, leap to the highest percent Health enemy within @HexDistance@ hexes.",
+  "ability_name": "Diviner's Judgment",
+  "variables": {
+   "HexDistance": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "BleedDuration": [
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0
+   ],
+   "ADBleedDamage": [
+    2.5,
+    430.0,
+    645.0,
+    1000.0,
+    1700.0,
+    2.5,
+    2.5
+   ],
+   "APBleedDamage": [
+    0.0,
+    60.0,
+    90.0,
+    135.0,
+    230.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_Jax": {
+  "name": "Jax",
+  "cost": 2,
+  "role": "APTank",
+  "desc": "Enter a defensive stance for @Duration@ seconds, reducing incoming damage by <TFTBonus>@ModifiedFlatDR@</TFTBonus> and gaining <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleAP%)</TFTBonus> Shield. When the stance ends, strike all nearby enemies, dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleArmor%%i:scaleMR%)</magicDamage> magic damage and Stunning them for <scaleLevel>@StunDuration@</scaleLevel> second(s).",
+  "ability_name": "Counter Star-ike",
+  "variables": {
+   "Duration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "ArmorMRScale": [
+    50.0,
+    0.75,
+    1.149999976158142,
+    1.7000000476837158,
+    2.9000000953674316,
+    500.0,
+    500.0
+   ],
+   "AttackRadius": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "StunDuration": [
+    1.5,
+    1.0,
+    1.25,
+    1.5,
+    1.75,
+    1.5,
+    1.5
+   ],
+   "FlatDR": [
+    0.0,
+    20.0,
+    25.0,
+    30.0,
+    35.0,
+    0.0,
+    0.0
+   ],
+   "ShieldAP": [
+    0.0,
+    400.0,
+    450.0,
+    500.0,
+    600.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_Lulu": {
+  "name": "Lulu",
+  "cost": 3,
+  "role": "APCaster",
+  "desc": "<spellPassive>Passive:</spellPassive> Gain a different <TFTStargazer>secondary effect</TFTStargazer> each game based on the Stargazer constellation.<br><br><spellActive>Active:</spellActive> Call down something from the sky, dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to @NumEnemies@ nearby enemies <TFTStargazer>and do some special effect based on this game's Stargazer Constellation</TFTStargazer>.",
+  "ability_name": "It's Raining Stars",
+  "variables": {
+   "Damage": [
+    2.0,
+    150.0,
+    225.0,
+    360.0,
+    495.0,
+    2.0,
+    2.0
+   ],
+   "NumEnemies": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "TFT17_Nunu": {
+  "name": "Nunu & Willump",
+  "cost": 4,
+  "role": "APTank",
+  "desc": "Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleAP%)</TFTBonus> Shield for @ShieldDuration@ seconds. Summon an astrolabe to crash down on a nearby hex, dealing <magicDamage>@ModifiedInitialDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to enemies within 2 hexes. Then, push the astrolabe towards the end of the board, dealing <magicDamage>@ModifiedFollowupDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. All enemies hit by the astrolabe are knocked up for @StunDuration@ seconds.",
+  "ability_name": "Calamity",
+  "variables": {
+   "Shield": [
+    0.0,
+    475.0,
+    575.0,
+    2000.0,
+    4000.0,
+    0.0,
+    0.0
+   ],
+   "InitialDamage": [
+    0.0,
+    120.0,
+    180.0,
+    2000.0,
+    4000.0,
+    0.0,
+    0.0
+   ],
+   "StunDuration": [
+    0.0,
+    1.5,
+    1.75,
+    8.0,
+    16.0,
+    0.0,
+    0.0
+   ],
+   "FollowupDamage": [
+    0.0,
+    100.0,
+    150.0,
+    2000.0,
+    3000.0,
+    0.0,
+    0.0
+   ],
+   "LockoutTime": [
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5
+   ],
+   "ShieldDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ]
+  }
+ },
+ "TFT17_Vex": {
+  "name": "Vex",
+  "cost": 5,
+  "role": "APCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Every time Vex attacks, Shadow strikes a nearby enemy, dealing <magicDamage>@ModifiedShadowHandDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. Whenever an enemy is struck @NumStrikesForPassive@ times by Shadow, Shadow strikes them again.<br><br><spellActive>Active:</spellActive> Shadow launches @NumActiveStrikes@ empowered strikes, dealing <magicDamage>@ModifiedShadowHandMagicDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage instead.",
+  "ability_name": "Lend Me a Hand, Shadow!",
+  "variables": {
+   "ShadowHandDamage": [
+    2.5,
+    30.0,
+    45.0,
+    250.0,
+    1000.0,
+    2.5,
+    2.5
+   ],
+   "ShadowHandMagicDamage": [
+    200.0,
+    130.0,
+    195.0,
+    1000.0,
+    9999.0,
+    200.0,
+    200.0
+   ],
+   "NumActiveStrikes": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "NumStrikesForPassive": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ]
+  }
+ },
+ "TFT17_Riven": {
+  "name": "Riven",
+  "cost": 4,
+  "role": "HFighter",
+  "desc": "<spellPassive>Passive:</spellPassive> This Ability adapts to Attack Damage or Ability Power, whichever is higher. Attacks deal <ShowIfNot.TFT17_Riven_IsAD><magicDamage>@ModifiedPassiveAPDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic</ShowIfNot.TFT17_Riven_IsAD><ShowIf.TFT17_Riven_IsAD><physicalDamage>@ModifiedPassiveADDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical</ShowIf.TFT17_Riven_IsAD> damage.<br><br><spellActive>Active:</spellActive> Dash to a nearby hex, gaining <TFTBonus>@Shield@&nbsp;</TFTBonus>Shield for @ShieldDuration@ seconds and slashing adjacent enemies for <ShowIfNot.TFT17_Riven_IsAD><magicDamage>@ModifiedAPDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic</ShowIfNot.TFT17_Riven_IsAD><ShowIf.TFT17_Riven_IsAD><physicalDamage>@ModifiedADDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical</ShowIf.TFT17_Riven_IsAD> damage. Every third cast, leap into the air and launch a wave of energy that deals <ShowIfNot.TFT17_Riven_IsAD><magicDamage>@ModifiedAPWaveDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic</ShowIfNot.TFT17_Riven_IsAD><ShowIf.TFT17_Riven_IsAD><physicalDamage>@ModifiedADWaveDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical</ShowIf.TFT17_Riven_IsAD> damage to enemies in a line.",
+  "ability_name": "Time Warp",
+  "variables": {
+   "PassiveDamage": [
+    50.0,
+    75.0,
+    115.0,
+    300.0,
+    400.0,
+    170.0,
+    170.0
+   ],
+   "DashRange": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "Shield": [
+    160.0,
+    100.0,
+    150.0,
+    1200.0,
+    900.0,
+    0.0,
+    0.0
+   ],
+   "ShieldDuration": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "Damage": [
+    180.0,
+    90.0,
+    135.0,
+    1000.0,
+    1250.0,
+    0.0,
+    0.0
+   ],
+   "WaveDamage": [
+    300.0,
+    160.0,
+    240.0,
+    2000.0,
+    1350.0,
+    0.0,
+    0.0
+   ],
+   "SpecialCastCount": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "ThirdCastConeHexRange": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ]
+  }
+ },
+ "TFT17_Shen": {
+  "name": "Shen",
+  "cost": 5,
+  "role": "APFighter",
+  "desc": "<spellPassive>Passive:</spellPassive> On cast, attacks gain <magicDamage>@ModifiedBonusDamage@&nbsp;(%i:scaleHealth%%i:scaleAP%)</magicDamage> stacking bonus magic damage. Starting from the third cast, gain <trueDamage>true damage</trueDamage> instead.<br><br><spellActive>Active:</spellActive> Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleHealth%%i:scaleAP%)</TFTBonus> Shield for @ShieldDuration@ seconds, then slice open a rift on the largest group of champions dealing the Passive's bonus damage to all enemies within. Enemies have their Attack Speed slowed by <TFTBonus>@ASSlow*100@%</TFTBonus> while allies within gain <TFTBonus>@BonusAS*100@%</TFTBonus> Attack Speed, both rapidly decaying over @BuffDebuffDuration@ seconds.",
+  "ability_name": "Reality Tear",
+  "variables": {
+   "BonusDamageOnAttack": [
+    50.0,
+    25.0,
+    40.0,
+    777.0,
+    777.0,
+    777.0,
+    777.0
+   ],
+   "ShieldHP": [
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448
+   ],
+   "ShieldAP": [
+    0.0,
+    200.0,
+    250.0,
+    3456.0,
+    3456.0,
+    3456.0,
+    3456.0
+   ],
+   "ShieldDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "ASSlow": [
+    0.5,
+    0.5,
+    0.5,
+    0.9900000095367432,
+    0.9900000095367432,
+    0.9900000095367432,
+    0.9900000095367432
+   ],
+   "BonusAS": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    9.989999771118164,
+    99.0,
+    99.0,
+    99.0
+   ],
+   "BuffDebuffDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "DamageHP": [
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582,
+    0.009999999776482582
+   ]
+  }
+ },
+ "TFT17_Milio": {
+  "name": "Milio",
+  "cost": 2,
+  "role": "APCaster",
+  "desc": "Kick a ball at the current target that deals <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. On impact, the ball has a 100%&nbsp;<ShowIf.TFT17_Fateweaver_LuckyAbility><TFTKeyword>Lucky </TFTKeyword></ShowIf.TFT17_Fateweaver_LuckyAbility>chance to bounce to a new target dealing <magicDamage>@ModifiedBounceDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage. These bounces can trigger additional bounces, but the odds halve with each bounce.<br><br><ShowIf.TFT17_Fateweaver_LuckyAbility><rules>Lucky: Check twice and take the better outcome.</rules></ShowIf.TFT17_Fateweaver_LuckyAbility>",
+  "ability_name": "Mega Time Kick",
+  "variables": {
+   "Damage": [
+    200.0,
+    255.0,
+    380.0,
+    575.0,
+    975.0,
+    900.0,
+    700.0
+   ],
+   "BounceDamage": [
+    80.0,
+    85.0,
+    130.0,
+    190.0,
+    325.0,
+    330.0,
+    330.0
+   ]
+  }
+ },
+ "TFT17_Ezreal": {
+  "name": "Ezreal",
+  "cost": 1,
+  "role": "ADCaster",
+  "desc": "<spellActive>Active:</spellActive> Fire a blast at the current target that deals <physicalDamage>@TotalDamage@ (%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage. Every @TakedownsToDrone@ takedowns, gain a drone that deals <physicalDamage>@ModifiedDroneDamage@ (%i:scaleAD%)</physicalDamage> physical damage to the current target on cast. <br><rules>(Total Takedowns: @TFTUnitProperty.:TFT17_Ezreal_Takedowns@)</rules>",
+  "ability_name": "Temporal Shot",
+  "variables": {
+   "ADDamage": [
+    0.0,
+    160.0,
+    240.0,
+    365.0,
+    620.0,
+    0.0,
+    0.0
+   ],
+   "APDamage": [
+    0.0,
+    14.0,
+    21.0,
+    32.0,
+    54.0,
+    0.0,
+    0.0
+   ],
+   "DroneDamage": [
+    0.0,
+    8.0,
+    12.0,
+    18.0,
+    30.0,
+    0.0,
+    0.0
+   ],
+   "TakedownsToDrone": [
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0
+   ],
+   "TakedownsToForm3": [
+    60.0,
+    60.0,
+    60.0,
+    60.0,
+    60.0,
+    60.0,
+    60.0
+   ],
+   "TakedownTimerThreshold": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ]
+  }
+ },
+ "TFT17_Leona": {
+  "name": "Leona",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "Gain <TFTBonus>@ModifiedShield@ (%i:scaleAP%)</TFTBonus> Shield for @ShieldDuration@ seconds. Bash the current target, dealing <magicDamage>@ModifiedDamage@ (%i:scaleArmor%%i:scaleMR%)</magicDamage> magic damage and stunning them for <scaleLevel>@StunDuration@</scaleLevel> seconds.",
+  "ability_name": "Shield of Daybreak",
+  "variables": {
+   "ShieldAmount": [
+    0.0,
+    420.0,
+    480.0,
+    620.0,
+    760.0,
+    0.0,
+    0.0
+   ],
+   "Damage": [
+    0.0,
+    100.0,
+    150.0,
+    225.0,
+    385.0,
+    0.0,
+    0.0
+   ],
+   "StunDuration": [
+    0.0,
+    1.75,
+    1.75,
+    2.0,
+    2.25,
+    0.0,
+    0.0
+   ],
+   "DefenseToDamageRatio": [
+    0.0,
+    1.2000000476837158,
+    1.7999999523162842,
+    2.700000047683716,
+    4.599999904632568,
+    0.0,
+    0.0
+   ],
+   "ShieldDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ]
+  }
+ },
+ "TFT17_Zoe": {
+  "name": "Zoe",
+  "cost": 2,
+  "role": "APCaster",
+  "desc": "Fire a paddle star at the current target, dealing <magicDamage>@ModifiedDamage@ (%i:scaleAP%)</magicDamage> magic damage to the first target hit and <magicDamage>@ModifiedSecondaryDamage@ (%i:scaleAP%)</magicDamage> to others it passes through. When the missile reaches its destination, redirect it to a distant enemy, increasing its speed and repeating the damage. This redirect can occur <ShowIf.TFT17_Augment_Concentration_Active><TFTRadiantItemBonus>@AugmentedNumRedirects@</TFTRadiantItemBonus></ShowIf.TFT17_Augment_Concentration_Active><ShowIfNot.TFT17_Augment_Concentration_Active>@NumRedirects@</ShowIfNot.TFT17_Augment_Concentration_Active> times.<br><br>",
+  "ability_name": "Paddle Star",
+  "variables": {
+   "Damage": [
+    50.0,
+    73.0,
+    110.0,
+    180.0,
+    300.0,
+    210.0,
+    155.0
+   ],
+   "SecondaryDamage": [
+    20.0,
+    34.0,
+    51.0,
+    77.0,
+    130.0,
+    105.0,
+    60.0
+   ],
+   "NumRedirects": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "AugmentedNumRedirects": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "BaseSpeed": [
+    1600.0,
+    1600.0,
+    1600.0,
+    1600.0,
+    1600.0,
+    1600.0,
+    1600.0
+   ],
+   "SpeedPerBounce": [
+    800.0,
+    800.0,
+    800.0,
+    800.0,
+    800.0,
+    800.0,
+    800.0
+   ]
+  }
+ },
+ "TFT17_Diana": {
+  "name": "Diana",
+  "cost": 3,
+  "role": "APFighter",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks deal <magicDamage>@ModifiedBonusDamageToAttacks@ (%i:scaleAP%)</magicDamage> bonus magic damage.<br><br><spellPassive>Active:</spellPassive> Gain <TFTBonus>@ModifiedShield@ (%i:scaleAP%)</TFTBonus> Shield and summon 3 encircling orbs for @ShieldDuration@ seconds. Orbs deal <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to enemies they pass through, and rotate faster based on Attack Speed.",
+  "ability_name": "Pale Cascade",
+  "variables": {
+   "ASDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "Shield": [
+    100.0,
+    275.0,
+    325.0,
+    475.0,
+    460.0,
+    100.0,
+    100.0
+   ],
+   "ShieldPercent": [
+    0.05000000074505806,
+    0.05000000074505806,
+    0.07000000029802322,
+    0.10000000149011612,
+    0.12999999523162842,
+    0.05000000074505806,
+    0.05000000074505806
+   ],
+   "NumAttacks": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "BaseAttackDamagePercent": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "AttackSpeed": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "CleaveDamage": [
+    100.0,
+    100.0,
+    150.0,
+    240.0,
+    330.0,
+    330.0,
+    330.0
+   ],
+   "ShieldDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "BaseDamage": [
+    50.0,
+    60.0,
+    90.0,
+    145.0,
+    250.0,
+    240.0,
+    330.0
+   ],
+   "BonusDamageToAttacks": [
+    0.0,
+    52.0,
+    78.0,
+    135.0,
+    230.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_Leblanc": {
+  "name": "LeBlanc",
+  "cost": 4,
+  "role": "APCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks deal <magicDamage>@ModifiedBaseAttackDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage instead.<br><br><spellActive>Active:</spellActive> Summon @NumClones@ clones that attack alongside for @NumAttacks@ attacks, dealing <scaleLevel>@CloneDamageMultiplier*100@%</scaleLevel> damage. For their final attack, clones fire a bolt that deals <magicDamage>@ModifiedBoltDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage.",
+  "ability_name": "Fracture Reality",
+  "variables": {
+   "BasicAttackDamage": [
+    0.0,
+    62.0,
+    93.0,
+    250.0,
+    450.0,
+    0.0,
+    0.0
+   ],
+   "CloneDamageMultiplier": [
+    0.0,
+    0.25,
+    0.25,
+    1.5,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "BoltDamage": [
+    0.0,
+    80.0,
+    120.0,
+    750.0,
+    540.0,
+    0.0,
+    0.0
+   ],
+   "NumClones": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "NumAttacks": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ]
+  }
+ },
+ "TFT17_Chogath": {
+  "name": "Cho'Gath",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "Deal <magicDamage>@TotalDamage@&nbsp;(%i:scaleHealth%%i:scaleAP%)</magicDamage>&nbsp; magic damage to the lowest Health enemy in range and permanently gain <scaleHealth>@BonusHealthPerCast@</scaleHealth>&nbsp;maximum Health. If this kills them, permanently gain <scaleHealth>@BonusHealthOnKill@</scaleHealth>&nbsp;maximum Health instead.<br><br><rules>(Current Bonus: +@TFTUnitProperty.:TFT17_ChoGathBonusHealth@ Health)</rules>",
+  "ability_name": "Accretion",
+  "variables": {
+   "PercentMaximumHealthDamage": [
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066
+   ],
+   "BonusDamage": [
+    140.0,
+    210.0,
+    290.0,
+    420.0,
+    715.0,
+    450.0,
+    450.0
+   ],
+   "BonusHealthOnKill": [
+    35.0,
+    30.0,
+    40.0,
+    70.0,
+    115.0,
+    35.0,
+    35.0
+   ],
+   "HPToTier2": [
+    1000.0,
+    1000.0,
+    1000.0,
+    1000.0,
+    1000.0,
+    1000.0,
+    1000.0
+   ],
+   "HPToTier3": [
+    2000.0,
+    2000.0,
+    2000.0,
+    2000.0,
+    2000.0,
+    2000.0,
+    2000.0
+   ],
+   "BonusHealthPerCast": [
+    0.0,
+    12.0,
+    18.0,
+    33.0,
+    50.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_Lissandra": {
+  "name": "Lissandra",
+  "cost": 1,
+  "role": "APCaster",
+  "desc": "Hurl a shard towards the current target, dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to the first target it hits. After hitting its initial target or at its final destination, the dagger explodes dealing <magicDamage>@ModifiedSecondaryDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to nearby targets.",
+  "ability_name": "Dark Matter",
+  "variables": {
+   "Damage": [
+    200.0,
+    250.0,
+    375.0,
+    600.0,
+    1020.0,
+    660.0,
+    660.0
+   ],
+   "SecondaryDamage": [
+    100.0,
+    50.0,
+    75.0,
+    115.0,
+    195.0,
+    300.0,
+    300.0
+   ]
+  }
+ },
+ "TFT17_Zed": {
+  "name": "Zed",
+  "cost": 5,
+  "role": "ADFighter",
+  "desc": "Create a clone behind the target with @HPPenalty*100@% reduced max Health and @ManaCostIncrease@ increased Mana cost. The clone inherits its creator's items, stats, and current Health, and can cast Quantum Clone.",
+  "ability_name": "Quantum Clone",
+  "variables": {
+   "HPPenalty": [
+    0.33000001311302185,
+    0.33000001311302185,
+    0.44999998807907104,
+    0.44999998807907104,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.33000001311302185
+   ],
+   "ManaCostIncrease": [
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0
+   ]
+  }
+ },
+ "TFT17_IvernMinion": {
+  "name": "Meepsie",
+  "cost": 2,
+  "role": "APTank",
+  "desc": "Heal <scaleHealth>@ModifiedHeal@ (%i:scaleHealth%%i:scaleAP%)</scaleHealth> Health over @HealDuration@ seconds. Slam the target, dealing <magicDamage>@ModifiedDamage@ (%i:scaleAP%)</magicDamage> magic damage and knocking up for <scaleLevel>@StunDuration@</scaleLevel> seconds. The impact creates meepwaves that deal @PercentEffects*100@% of these effects in the target's row.<br><br><mainText enabled=TFT17_Astronaut_IsActive alternate=rules><spellActive enabled=TFT17_Astronaut_IsActive alternate=rules>Meep Bonus:</spellActive><TFTBonus><ShowIfNot.TFT17_Astronaut_IsActive></ShowIfNot.TFT17_Astronaut_IsActive><ShowIf.TFT17_Astronaut_IsActive></ShowIf.TFT17_Astronaut_IsActive></TFTBonus> Meeps water Meepsie's flower, increasing all incoming Healing and Shielding by <TFTBonus>@ModifiedHealingAndShielding@ (%i:set14AmpIcon%)</TFTBonus>.</mainText>",
+  "ability_name": "Meep Impact",
+  "variables": {
+   "HealingPercentHealth": [
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066,
+    0.07999999821186066
+   ],
+   "HealingAP": [
+    80.0,
+    380.0,
+    430.0,
+    600.0,
+    770.0,
+    80.0,
+    80.0
+   ],
+   "HealDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "Damage": [
+    200.0,
+    160.0,
+    240.0,
+    360.0,
+    600.0,
+    450.0,
+    450.0
+   ],
+   "StunDuration": [
+    1.5,
+    1.5,
+    1.75,
+    2.0,
+    2.25,
+    1.5,
+    1.5
+   ],
+   "PercentEffects": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "HealingAndShieldingPerAstro": [
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099,
+    0.11999999731779099
+   ],
+   "MeepsPerAstro": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_Mordekaiser": {
+  "name": "Mordekaiser",
+  "cost": 2,
+  "role": "APTank",
+  "desc": "Gain <TFTBonus>@ModifiedInitialShield@&nbsp;(%i:scaleAP%)</TFTBonus> Shield. Each second for the next <ShowIf.TFT17_Augment_Concentration_Active><TFTRadiantItemBonus>@AugmentedDuration@</TFTRadiantItemBonus></ShowIf.TFT17_Augment_Concentration_Active><ShowIfNot.TFT17_Augment_Concentration_Active>@Duration@</ShowIfNot.TFT17_Augment_Concentration_Active> seconds, gain <TFTBonus>@ModifiedShieldPerProc@&nbsp;(%i:scaleAP%)</TFTBonus> more Shield and deal <magicDamage>@ModifiedDamagePerProc@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to adjacent enemies. When this ability ends, consume the remaining Shield and heal for <scaleHealth>@HealRefund*100@%</scaleHealth> of its value.",
+  "ability_name": "Indestructible",
+  "variables": {
+   "InitialShield": [
+    0.0,
+    300.0,
+    375.0,
+    500.0,
+    650.0,
+    200.0,
+    240.0
+   ],
+   "ShieldPerProc": [
+    0.0,
+    75.0,
+    90.0,
+    105.0,
+    120.0,
+    0.0,
+    0.0
+   ],
+   "DamagePerProc": [
+    0.0,
+    45.0,
+    70.0,
+    100.0,
+    170.0,
+    0.0,
+    0.0
+   ],
+   "HealRefund": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ],
+   "Duration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "AugmentedDuration": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+   ]
+  }
+ },
+ "TFT17_Xayah": {
+  "name": "Xayah",
+  "cost": 4,
+  "role": "ADCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks bounce to strike <scaleLevel>@AttackNumEnemies@</scaleLevel> times, dealing <scaleLevel>@PassivePercentReducedDamage*100@%</scaleLevel> reduced damage per target hit and leaving a Feather behind the final target.<br><br><spellActive>Active:</spellActive> Gain <TFTBonus>@AttackSpeed*100@%</TFTBonus> Attack Speed for the next @NumAttacks@ attacks. At the end, recall all Feathers split between the closest @RecallFeatherTargets@ enemies, dealing <physicalDamage>@TotalDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage each. Xayah's current target takes <physicalDamage>@ModifiedPrimaryTargetBonusDamage@&nbsp;(%i:scaleAD%)</physicalDamage> additional physical damage per feather.",
+  "ability_name": "Stellar Ricochet",
+  "variables": {
+   "AttackNumEnemies": [
+    3.0,
+    3.0,
+    3.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "PassivePercentReducedDamage": [
+    0.6000000238418579,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896,
+    0.30000001192092896
+   ],
+   "ADDamage": [
+    40.0,
+    45.0,
+    68.0,
+    900.0,
+    375.0,
+    300.0,
+    300.0
+   ],
+   "APDamage": [
+    10.0,
+    6.0,
+    9.0,
+    60.0,
+    75.0,
+    75.0,
+    75.0
+   ],
+   "ActivePercentReducedDamage": [
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224
+   ],
+   "RecallFeatherTargets": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "AttackSpeed": [
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75
+   ],
+   "Duration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "NumAttacks": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+   ],
+   "PrimaryTargetBonusDamage": [
+    10.0,
+    25.0,
+    40.0,
+    200.0,
+    10.0,
+    10.0,
+    10.0
+   ]
+  }
+ },
+ "TFT17_Graves": {
+  "name": "Graves",
+  "cost": 5,
+  "role": "ADCarry",
+  "desc": "<spellPassive>Passive:</spellPassive> Attacks fire @NumProjectiles@ projectiles in a cone that deal <physicalDamage>@ModifiedPassiveDamage@ (%i:TFTBaseAD%)</physicalDamage> physical damage each.<br><br><spellActive>Active:</spellActive> Fire an explosive shell that deals <physicalDamage>@ModifiedDamage@ (%i:scaleAD%)</physicalDamage> physical damage to the target, and <physicalDamage>@ModifiedSecondaryDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage to adjacent enemies.",
+  "ability_name": "Collateral Damage",
+  "variables": {
+   "NumProjectiles": [
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0,
+    5.0
+   ],
+   "PassivePercentBAD": [
+    0.33000001311302185,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.33000001311302185
+   ],
+   "Damage": [
+    400.0,
+    390.0,
+    585.0,
+    5555.0,
+    5555.0,
+    5555.0,
+    5555.0
+   ],
+   "SecondaryDamageAD": [
+    120.0,
+    135.0,
+    200.0,
+    3333.0,
+    3333.0,
+    3333.0,
+    3333.0
+   ],
+   "SecondaryDamageAP": [
+    30.0,
+    30.0,
+    45.0,
+    777.0,
+    777.0,
+    777.0,
+    777.0
+   ]
+  }
+ },
+ "TFT17_TahmKench": {
+  "name": "Tahm Kench",
+  "cost": 4,
+  "role": "APTank",
+  "desc": "<spellPassive>Passive:</spellPassive> Once per combat after dropping below @HPThreshold*100@% Health, gain Shield for @ShieldDuration@ seconds equal to @PercentHealingToShield*100@% of healing received this combat.<br><br><spellActive>Active:</spellActive> Heal <scaleHealth>@ModifiedHeal@&nbsp;(%i:scaleHealth%%i:scaleAP%)</scaleHealth>, then tongue lash all enemies within two hexes dealing <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%%i:scaleHealth%)</magicDamage> magic damage.",
+  "ability_name": "Tounge Lash",
+  "variables": {
+   "PercentHealingToShield": [
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.4000000059604645
+   ],
+   "HealHP": [
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967,
+    0.08500000089406967
+   ],
+   "HealAP": [
+    0.0,
+    300.0,
+    360.0,
+    1500.0,
+    2500.0,
+    0.0,
+    0.0
+   ],
+   "DamageHP": [
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164,
+    0.019999999552965164
+   ],
+   "DamageAP": [
+    120.0,
+    45.0,
+    60.0,
+    1500.0,
+    1500.0,
+    870.0,
+    870.0
+   ],
+   "HPThreshold": [
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355,
+    0.3499999940395355
+   ],
+   "ShieldDuration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ]
+  }
+ },
+ "TFT17_Rhaast": {
+  "name": "Rhaast",
+  "cost": 3,
+  "role": "ADTank",
+  "desc": "Gain <TFTBonus>@Durability*100@%</TFTBonus> Durability for @Duration@ seconds, healing <scaleHealth>@ModifiedHeal@&nbsp;(%i:scaleAP%)</scaleHealth> over the duration. Afterwards, slash forward in a line, dealing <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage to enemies hit and knocking them up for @KnockupDuration@ second.",
+  "ability_name": "Divine Scythe",
+  "variables": {
+   "Duration": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "Durability": [
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224,
+    0.20000000298023224
+   ],
+   "HealAmount": [
+    1.0,
+    500.0,
+    550.0,
+    650.0,
+    850.0,
+    0.0,
+    0.0
+   ],
+   "KnockupDuration": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "Damage": [
+    0.20000000298023224,
+    120.0,
+    180.0,
+    300.0,
+    510.0,
+    0.20000000298023224,
+    0.20000000298023224
+   ]
+  }
+ },
+ "TFT17_RekSai": {
+  "name": "Rek'Sai",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "Heal <scaleHealth>@TotalHealing@&nbsp;(%i:scaleHealth%%i:scaleAP%)</scaleHealth>, then briefly knock up adjacent enemies and deal <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage>&nbsp;magic damage.<br>",
+  "ability_name": "Upheaval",
+  "variables": {
+   "PercentMaximumHealthHealing": [
+    0.06499999761581421,
+    0.06499999761581421,
+    0.06499999761581421,
+    0.06499999761581421,
+    0.06499999761581421,
+    0.06499999761581421,
+    0.06499999761581421
+   ],
+   "APHealing": [
+    90.0,
+    200.0,
+    220.0,
+    260.0,
+    300.0,
+    90.0,
+    90.0
+   ],
+   "Damage": [
+    0.0,
+    80.0,
+    120.0,
+    180.0,
+    315.0,
+    0.0,
+    0.0
+   ],
+   "StunDuration": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "TFT17_Pantheon": {
+  "name": "Pantheon",
+  "cost": 2,
+  "role": "ADTank",
+  "desc": "Gain <TFTBonus>@ModifiedShield@&nbsp;(%i:scaleHealth%%i:scaleAP%)</TFTBonus> Shield and <TFTBonus>@Durability*100@%</TFTBonus> Durability for @Duration@ seconds. Over the duration, deal <physicalDamage>@ModifiedDamage@&nbsp;(%i:scaleAD%)</physicalDamage> physical damage each second to enemies in a cone.",
+  "ability_name": "Advanced Defences",
+  "variables": {
+   "APShield": [
+    0.0,
+    275.0,
+    300.0,
+    500.0,
+    700.0,
+    0.0,
+    0.0
+   ],
+   "Duration": [
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0,
+    4.0
+   ],
+   "Durability": [
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.15000000596046448
+   ],
+   "TrueDamagePerSecond": [
+    0.0,
+    30.0,
+    45.0,
+    70.0,
+    120.0,
+    0.0,
+    0.0
+   ],
+   "PercentHealthShield": [
+    0.05999999865889549,
+    0.05999999865889549,
+    0.05999999865889549,
+    0.05999999865889549,
+    0.05999999865889549,
+    0.05999999865889549,
+    0.05999999865889549
+   ]
+  }
+ },
+ "TFT17_Morgana": {
+  "name": "Morgana",
+  "cost": 4,
+  "role": "APTank",
+  "desc": "Transform for @HealthGainDuration@&nbsp;seconds, gaining <scaleHealth>@ModifiedHealthGain@&nbsp;(%i:scaleAP%%i:scaleHealth%)</scaleHealth> Health and tethering to nearby champions. Over the duration, deal <magicDamage>@ModifiedDamage@&nbsp;(%i:scaleAP%)</magicDamage> magic damage to the closest @NumEnemies@ enemies and restore <scaleHealth>@ModifiedHeal@&nbsp;(%i:scaleAP%)</scaleHealth> health to the closest @NumAllies@ injured allies.",
+  "ability_name": "Dark Form",
+  "variables": {
+   "APHealthGain": [
+    0.0,
+    525.0,
+    625.0,
+    2500.0,
+    2500.0,
+    2500.0,
+    2500.0
+   ],
+   "PercentHPHealthGain": [
+    0.0,
+    0.15000000596046448,
+    0.15000000596046448,
+    0.5,
+    3000.0,
+    0.0,
+    0.0
+   ],
+   "HealthGainDuration": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "NumEnemies": [
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0,
+    3.0
+   ],
+   "NumAllies": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+   ],
+   "APDamage": [
+    0.0,
+    100.0,
+    150.0,
+    3000.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "APHealing": [
+    0.0,
+    100.0,
+    150.0,
+    3000.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "TFT17_DarkStar_FakeUnit": {
+  "name": "Mini Black Hole",
+  "cost": 1,
+  "role": "APTank",
+  "desc": "A miniature black hole created by a supernova.<br><br>Gains max health equal to <scaleHealth>@TOOLTIPDarkStarPercentHP@%</scaleHealth> of ally Dark Star Health.",
+  "ability_name": "Gravitational Collapse",
+  "variables": {
+   "TOOLTIPDarkStarPercentHP": [
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0
+   ]
+  }
+ },
+ "TFT17_Enemy_Aatrox": {
+  "name": "Apex Primordian",
+  "cost": 5,
+  "role": "ADTank",
+  "desc": "Passive: Swords fly out in a grid dealing <physicalDamage>@TotalGridDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage to enemies they hit. <br><br>Active: Launch @NumSwords@ swords into the air and gain <TFTBonus>@Durability*100@%</TFTBonus> Durability. When they land, they deal <physicalDamage>@TotalSwordAoEDamage@&nbsp;(%i:scaleAD%%i:scaleAP%)</physicalDamage> physical damage to enemies they hit in a @HexRange@-hex range.",
+  "ability_name": "Harbinger of The End",
+  "variables": {
+   "GridADDamage": [
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0
+   ],
+   "GridAPDamage": [
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0,
+    50.0
+   ],
+   "SwordAoEADDamage": [
+    200.0,
+    200.0,
+    200.0,
+    200.0,
+    200.0,
+    200.0,
+    200.0
+   ],
+   "SwordAoEAPDamage": [
+    200.0,
+    200.0,
+    200.0,
+    200.0,
+    200.0,
+    200.0,
+    200.0
+   ],
+   "NumSwords": [
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0
+   ],
+   "HexRange": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "Durability": [
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ]
+  }
+ }
+}

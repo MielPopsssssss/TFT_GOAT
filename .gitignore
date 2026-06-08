@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Donnees lourdes : snapshots CDragon pines (24+ MB) — pas dans le repo
+/data/cdragon/*.json
+# Snapshots datatft pines (regenerables via scrape_datatft)
+/data/datatft/*.json
+# Parties collectees (regenerables via collect_matches)
+/data/matches/
+
+# Checkpoints / runs d'entrainement
+/runs/
+
+# Secrets
+.env
+
+# Claude Code runtime (keep skills, drop local/runtime state)
+.claude/scheduled_tasks.lock
+.claude/settings.local.json

@@ -1,0 +1,55 @@
+{
+ "patch": "17.4",
+ "units": [
+  {
+   "place3": 1.0709,
+   "won": 18.9,
+   "rate3": 0.4,
+   "count": 754436,
+   "top4": 60.0,
+   "place": 3.9506,
+   "equips": [
+    "535",
+    "551",
+    "521",
+    "539",
+    "519"
+   ],
+   "key": "TFT17_Jhin"
+  },
+  {
+   "place3": 4.7664,
+   "won": 5.9,
+   "rate3": 59.09,
+   "count": 119516,
+   "top4": 34.7,
+   "place": 5.4711,
+   "equips": [
+    "529",
+    "618",
+    "613",
+    "577",
+    "595"
+   ],
+   "key": "TFT17_Briar"
+  }
+ ],
+ "traits": [
+  {
+   "tier": "1",
+   "won": 16.0,
+   "count": 1902341,
+   "top4": 53.3,
+   "place": 4.2959,
+   "key": "TFT17_SpaceGroove"
+  },
+  {
+   "tier": "5",
+   "won": 27.8,
+   "count": 32617,
+   "top4": 75.9,
+   "place": 3.1321,
+   "key": "TFT17_Stargazer_Mountain"
+  }
+ ]
+}

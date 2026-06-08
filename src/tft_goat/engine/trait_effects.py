@@ -1,0 +1,105 @@
+"""Application des bonus de STATS des traits actifs (vraies variables data Set 17).
+
+Gère le vocabulaire réel des clés (BonusArmor, BonusMR, Mountain_AS, Wolf_ADAP, Serpent_DR,
+TeamwideResists, ...), distingue les effets **team-wide** (suffixe/préfixe Teamwide) des effets
+réservés aux porteurs du trait, et **cumule** (chaque trait/tier s'ajoute ; durability multiplicatif).
+
+Les effets NON-stat (invocations, exécutions, dégâts, durées, économie) et les clés obfusquées
+({hex}) sont ignorés ici (long tail). Heuristique %/flat : valeur > 1 traitée comme pourcentage.
+"""
+
+from __future__ import annotations
+
+from ..data.models import SetContent
+from ..env.traits import active_traits
+from .unit import CombatUnit
+
+# tokens de clés a IGNORER (non applicables comme stat plate sur l'unite)
+_SKIP = (
+    "round", "gold", "nummark", "duration", "threshold", "poison", "sharepercent",
+    "interval", "numdeaths", "increaseper", "statincrease", "percenthealth", "executehp",
+    "burst", "supermassive", "heal", "cashout", "stacks", "count", "mana", "omnivamp",
+)
+
+
+def _pct(v: float) -> float:
+    return v / 100.0 if abs(v) > 1.0 else v
+
+
+def _attrs_for(key: str) -> list[str]:
+    """Liste des attributs de stat vises par une cle de trait (vide si non-stat)."""
+    if key.startswith("{"):
+        return []
+    k = key.lower()
+    if any(tok in k for tok in _SKIP):
+        return []
+    attrs: list[str] = []
+    if "adap" in k:
+        attrs += ["ad", "ap"]
+    else:
+        if "ad" in k:
+            attrs.append("ad")
+        if "ap" in k:
+            attrs.append("ap")
+    if "resist" in k:
+        attrs += ["armor", "mr"]
+    if "armor" in k:
+        attrs.append("armor")
+    if "mr" in k or "magicresist" in k:
+        attrs.append("mr")
+    if "health" in k or k.endswith("hp") or "_hp" in k:
+        attrs.append("hp")
+    if "attackspeed" in k or k == "as" or "_as" in k or k.endswith("as"):
+        attrs.append("as")
+    if k.endswith("dr") or "_dr" in k or "damagereduction" in k or "durability" in k:
+        attrs.append("dr")
+    if k.endswith("da") or "_da" in k or "damageamp" in k:
+        attrs.append("amp")
+    return list(dict.fromkeys(attrs))
+
+
+def _apply_stat(u: CombatUnit, attr: str, v: float) -> None:
+    if attr == "hp":
+        u.max_hp += v
+        u.hp += v
+    elif attr == "armor":
+        u.armor += v
+    elif attr == "mr":
+        u.mr += v
+    elif attr == "ap":
+        u.ap += v  # AP : ajout plat
+    elif attr == "ad":
+        u.ad *= 1.0 + _pct(v)
+    elif attr == "as":
+        u.attack_speed *= 1.0 + _pct(v)
+    elif attr == "dr":
+        u.incoming_reduction = 1.0 - (1.0 - u.incoming_reduction) * (1.0 - _pct(v))  # multiplicatif
+    elif attr == "amp":
+        u.damage_amp += _pct(v)  # additif
+
+
+def apply_team_traits(units: list[CombatUnit], content: SetContent) -> None:
+    """Calcule les traits actifs de l'equipe et applique leurs bonus de stats (cumul)."""
+    if not units:
+        return
+    active = active_traits([u.champion_api for u in units], content)
+    if not active:
+        return
+    by_name = {t.name: t for t in content.traits.values()}
+    for trait_name, tier in active.items():
+        trait = by_name.get(trait_name)
+        if trait is None or not trait.effects:
+            continue
+        effs = sorted(trait.effects, key=lambda e: e.min_units)
+        eff = effs[min(tier - 1, len(effs) - 1)]
+        members = [
+            u for u in units
+            if (c := content.champions.get(u.champion_api)) and trait_name in c.traits
+        ]
+        for key, val in eff.variables.items():
+            if not isinstance(val, (int, float)) or val == 0:
+                continue
+            targets = units if "teamwide" in key.lower() else members  # team-wide vs porteurs
+            for attr in _attrs_for(key):
+                for u in targets:
+                    _apply_stat(u, attr, float(val))

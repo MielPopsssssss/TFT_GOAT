@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "data_version": "2",
+    "match_id": "EUW1_SAMPLE000001",
+    "participants": ["puuid-0", "puuid-1", "puuid-2", "puuid-3", "puuid-4", "puuid-5", "puuid-6", "puuid-7"]
+  },
+  "info": {
+    "game_datetime": 1748800000000,
+    "game_length": 2100.0,
+    "game_version": "Version 17.4.0",
+    "queue_id": 1100,
+    "tft_set_number": 17,
+    "participants": [
+      {
+        "puuid": "puuid-0", "placement": 1, "level": 9, "gold_left": 4, "last_round": 34,
+        "players_eliminated": 3, "total_damage_to_players": 142,
+        "augments": ["TFT10_Augment_GoingLong", "TFT17_Augment_Sample2", "TFT17_Augment_Sample3"],
+        "traits": [{"name": "Bastion", "num_units": 4, "style": 3, "tier_current": 2, "tier_total": 3}],
+        "units": [
+          {"character_id": "TFT17_Rammus", "tier": 2, "rarity": 3, "itemNames": ["TFT_Item_InfinityEdge"]},
+          {"character_id": "TFT17_Astronaut", "tier": 3, "rarity": 0, "itemNames": []}
+        ]
+      },
+      {"puuid": "puuid-1", "placement": 2, "level": 9, "gold_left": 10, "last_round": 33, "augments": [], "traits": [], "units": [{"character_id": "TFT17_Rammus", "tier": 1, "rarity": 3, "itemNames": []}]},
+      {"puuid": "puuid-2", "placement": 3, "level": 8, "gold_left": 0, "last_round": 32, "augments": [], "traits": [], "units": []},
+      {"puuid": "puuid-3", "placement": 4, "level": 8, "gold_left": 2, "last_round": 31, "augments": [], "traits": [], "units": []},
+      {"puuid": "puuid-4", "placement": 5, "level": 8, "gold_left": 6, "last_round": 30, "augments": [], "traits": [], "units": []},
+      {"puuid": "puuid-5", "placement": 6, "level": 7, "gold_left": 1, "last_round": 28, "augments": [], "traits": [], "units": []},
+      {"puuid": "puuid-6", "placement": 7, "level": 7, "gold_left": 3, "last_round": 26, "augments": [], "traits": [], "units": []},
+      {"puuid": "puuid-7", "placement": 8, "level": 6, "gold_left": 0, "last_round": 24, "augments": [], "traits": [], "units": []}
+    ]
+  }
+}
