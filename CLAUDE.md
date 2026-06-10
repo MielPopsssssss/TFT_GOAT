@@ -55,6 +55,7 @@ Doc complète : `docs/ARCHITECTURE.md`. Backlog fin : `TODOS.md`. Axes publics :
 .venv/bin/python -m pytest -q                      # suite complète (~75 s)
 .venv/bin/python -m scripts.check_coherence 20     # invariants de cohérence sur 20 parties
 .venv/bin/python -m scripts.realism_vs_datatft     # réalisme vs méta datatft
+.venv/bin/python -m scripts.realism_vs_matches     # vérité terrain : moteur vs vraies parties (Spearman +0.44)
 .venv/bin/python -m tft_goat.scripts.random_rollout  # une partie aléatoire complète
 ```
 
