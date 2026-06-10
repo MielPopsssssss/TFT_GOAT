@@ -49,6 +49,16 @@ def test_round_income():
     assert round_income(30, 3) == 5 + 3 + 2
 
 
+def test_round_income_is_bounded_no_runaway():
+    """Revenu/round plafonné = base 5 + interest 5 (cap) + streak 3 (cap) = 13, quel que soit l'or.
+
+    Garde-fou anti-runaway éco : même à 1000 gold et streak 99, le revenu reste borné (l'or qui
+    s'accumule en jeu aléatoire = thésaurisation par non-dépense, PAS un revenu cassé).
+    """
+    assert round_income(1000, 99) == 5 + 5 + 3
+    assert round_income(0, 0) == 5  # plancher = base
+
+
 def test_apply_xp_levels_up():
     # niveau 1, 0 xp, +2 xp : seuil L1->L2 = 2 => passe lvl 2, 0 xp restant
     level, xp = apply_xp(1, 0, 2)

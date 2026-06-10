@@ -80,6 +80,35 @@ def test_set17_trait_breakpoints_match_real_data():
         )
 
 
+def test_every_trait_first_breakpoint_reachable_from_roster():
+    """Invariant data : le 1er palier de chaque trait est atteignable avec le roster Set 17 seul.
+
+    Sinon le trait ne s'activerait JAMAIS (bug). Les hauts paliers (Dark Star 9, Space Groove 10…)
+    nécessitent des emblèmes = design TFT correct, hors scope ici. Vérifié 2026-06-08.
+    """
+    from collections import defaultdict
+
+    from tft_goat.data.content import load_set
+
+    sc = load_set()
+    members: dict[str, int] = defaultdict(int)
+    for api, c in sc.champions.items():
+        if not api.startswith("TFT17_"):
+            continue
+        for t in c.traits:
+            members[t] += 1
+
+    for trait in sc.traits.values():
+        positive = [b for b in trait.breakpoints if b > 0]
+        if not positive:
+            continue
+        first = min(positive)
+        n = members.get(trait.name, 0)
+        assert first <= max(n, 1), (
+            f"{trait.name}: 1er palier {first} > {n} membres -> trait inactivable"
+        )
+
+
 def test_stargazer_is_constellation_variable():
     """Stargazer = trait spécial : breakpoints variables par constellation.
 
