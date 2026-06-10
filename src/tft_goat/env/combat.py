@@ -18,12 +18,38 @@ import numpy as np
 
 from ..data.models import SetContent
 from ..data.stats_models import MetaStats
+# Import direct (pas de cycle : engine.augments_set17 n'importe jamais env.*) — évite le
+# lookup d'import par appel dans le chemin chaud du self-play (augment_power par combat).
+from ..engine.augments_set17 import AUGMENT_REGISTRY
 from .economy import ITEM_BONUS
 from .state import BoardUnit
 from .traits import active_traits
 
 STAR_MULT = {1: 1, 2: 3, 3: 9}
 TRAIT_WEIGHT = 3.0  # poids d'un palier de trait dans la force de board
+
+# Poids heuristiques par tier d'augment à effet COMBAT — constantes ASSUMÉES (pas de la
+# data jeu : aucune source de winrate d'augment exploitable ; le moteur reste la vérité
+# terrain). Ordre de grandeur : un God Boon « plus fort qu'un item, définit l'endgame »
+# (skill tft-knowledge) => ~+15% de force d'équipe.
+AUGMENT_TIER_WEIGHT = {"silver": 0.03, "gold": 0.06, "prismatic": 0.12, "god": 0.15}
+
+
+def augment_power(augments: tuple[str, ...], set_content: SetContent) -> float:
+    """Multiplicateur heuristique de force pour les augments à effet COMBAT.
+
+    Seuls les augments présents dans le registre moteur (`AUGMENT_REGISTRY`) comptent :
+    un augment éco/utilitaire paye déjà sa valeur via l'économie de l'env — le compter
+    ici serait du double-comptage. Utilisé par le HeuristicResolver pour que les God
+    Boons (et augments de combat) ne soient plus inertes hors EngineResolver.
+    """
+    mult = 1.0
+    for api in augments:
+        if api not in AUGMENT_REGISTRY:
+            continue
+        aug = set_content.augments.get(api)
+        mult += AUGMENT_TIER_WEIGHT.get(aug.tier if aug else "", 0.0)
+    return mult
 
 
 @dataclass(frozen=True)
@@ -95,8 +121,8 @@ class HeuristicResolver:
         augments_a: tuple[str, ...] = (),
         augments_b: tuple[str, ...] = (),
     ) -> CombatResult:
-        sa = board_strength(board_a, set_content, self.meta_stats)
-        sb = board_strength(board_b, set_content, self.meta_stats)
+        sa = board_strength(board_a, set_content, self.meta_stats) * augment_power(augments_a, set_content)
+        sb = board_strength(board_b, set_content, self.meta_stats) * augment_power(augments_b, set_content)
         if sa == 0 and sb == 0:
             return CombatResult(winner=0, survivors=0)
         p_a = sa / (sa + sb) if (sa + sb) > 0 else 0.5

@@ -85,3 +85,46 @@ def test_resolver_substitution(sample_content):
 
     res = AlwaysB().resolve([BoardUnit("c8", 3)], [], sample_content, None)
     assert res.winner == 1 and res.survivors == 2
+
+
+def test_augment_power_counts_only_combat_augments():
+    """`augment_power` : seuls les augments à effet COMBAT (registre moteur) boostent.
+
+    Les augments éco/utilitaires payent déjà leur valeur via l'économie de l'env —
+    les compter ici serait du double-comptage (investigation 2026-06-10, backlog
+    « Décider du sort du God Boon hors moteur réel »)."""
+    from tft_goat.data.content import load_set
+    from tft_goat.engine.augments_set17 import AUGMENT_REGISTRY
+    from tft_goat.env.combat import augment_power
+
+    c = load_set()
+    god = "TFT17_Augment_SorakaGodAugment"  # God Boon câblé au moteur
+    assert god in AUGMENT_REGISTRY
+    assert augment_power((god,), c) > 1.0
+    eco = next(api for api, a in sorted(c.augments.items())
+               if a.tier == "gold" and api not in AUGMENT_REGISTRY)
+    assert augment_power((eco,), c) == 1.0
+    assert augment_power((), c) == 1.0
+    # cumul : god + un augment combat régulier > god seul
+    reg = next(api for api in sorted(AUGMENT_REGISTRY)
+               if api in c.augments and c.augments[api].tier != "god")
+    assert augment_power((god, reg), c) > augment_power((god,), c)
+
+
+def test_heuristic_resolver_favors_god_boon_side():
+    """Boards identiques, un côté a un God Boon -> il gagne > 50% des résolutions."""
+    from tft_goat.data.content import load_set
+    from tft_goat.env.combat import HeuristicResolver
+
+    c = load_set()
+    board = [BoardUnit("TFT17_Aatrox", 2, on_board=True),
+             BoardUnit("TFT17_Graves", 2, on_board=True)]
+    resolver = HeuristicResolver()
+    rng = np.random.default_rng(0)
+    god = ("TFT17_Augment_SorakaGodAugment",)
+    n = 4000
+    wins = sum(
+        resolver.resolve(board, board, c, rng, augments_a=god).winner == 0
+        for _ in range(n)
+    )
+    assert wins / n > 0.51  # le boon pèse dans la proba (0.5 sans lui)
