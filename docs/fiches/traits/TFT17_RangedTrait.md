@@ -18,8 +18,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `PerHexIncrease` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `PercentDamageIncrease` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `PerHexIncrease` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `PercentDamageIncrease` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

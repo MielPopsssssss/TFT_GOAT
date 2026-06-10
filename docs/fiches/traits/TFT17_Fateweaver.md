@@ -17,8 +17,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `CritChance` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `CritDamage` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `CritChance` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `CritDamage` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

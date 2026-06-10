@@ -16,12 +16,12 @@
 
 | Variable | Application moteur |
 |---|---|
-| `BonusDefensiveStat1` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `BonusDefensiveStat2` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `BonusDefensiveStat3` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `BonusOffensiveStat1` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `BonusOffensiveStat2` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `BonusOffensiveStat3` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `BonusDefensiveStat1` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BonusDefensiveStat2` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BonusDefensiveStat3` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BonusOffensiveStat1` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BonusOffensiveStat2` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BonusOffensiveStat3` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

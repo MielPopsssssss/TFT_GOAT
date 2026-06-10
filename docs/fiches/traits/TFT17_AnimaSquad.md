@@ -17,15 +17,15 @@
 
 | Variable | Application moteur |
 |---|---|
-| `TechBreakpoint` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerCombat` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerCombat_DU` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerDeath_PVE` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerKill` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerLoss` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerLoss_DU` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TechPerRound_PVE` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{18a09431}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `TechBreakpoint` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerCombat` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerCombat_DU` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerDeath_PVE` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerKill` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerLoss` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerLoss_DU` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TechPerRound_PVE` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{18a09431}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

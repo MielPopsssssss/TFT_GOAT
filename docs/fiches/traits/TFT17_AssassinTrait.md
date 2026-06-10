@@ -21,8 +21,8 @@
 |---|---|
 | `AD` | ✅ stat auto-appliquée (ad) |
 | `AP` | ✅ stat auto-appliquée (ap) |
-| `Duration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `HealthThreshold` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Duration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `HealthThreshold` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

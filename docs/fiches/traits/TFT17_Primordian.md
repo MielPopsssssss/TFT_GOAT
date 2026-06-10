@@ -17,10 +17,10 @@
 
 | Variable | Application moteur |
 |---|---|
-| `DamageMultiplier` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `DamageTakenPercentModifier` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `PercentMoreSwarmlings` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{3ed71f24}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `DamageMultiplier` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `DamageTakenPercentModifier` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `PercentMoreSwarmlings` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{3ed71f24}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

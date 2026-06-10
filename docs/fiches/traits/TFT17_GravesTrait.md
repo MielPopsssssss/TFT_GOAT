@@ -16,7 +16,7 @@
 
 | Variable | Application moteur |
 |---|---|
-| `NumberOfUpgradesBeforeRoundCostIncrease` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `NumberOfUpgradesBeforeRoundCostIncrease` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

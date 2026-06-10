@@ -21,57 +21,57 @@
 
 | Variable | Application moteur |
 |---|---|
-| `Family_BaseSharePercent` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Family_EmpoweredSharePercent` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Family_HexesToReveal_TOOLTIPONLY` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Family_Stats` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Family_BaseSharePercent` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Family_EmpoweredSharePercent` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Family_HexesToReveal_TOOLTIPONLY` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Family_Stats` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Huntress_AS` | ✅ stat auto-appliquée (as) |
 | `Huntress_AS_Teamwide` | ✅ stat auto-appliquée (as) |
-| `Huntress_Heal` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Huntress_Heal` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Medallion_DA` | ✅ stat auto-appliquée (amp) |
-| `Medallion_IncreasePer3Star` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Medallion_IncreasePer3Star` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Mountain_ADAP` | ✅ stat auto-appliquée (ad, ap) |
 | `Mountain_AS` | ✅ stat auto-appliquée (as) |
 | `Mountain_DR` | ✅ stat auto-appliquée (dr) |
-| `Mountain_Health` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Mountain_Health` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Mountain_Resists` | ✅ stat auto-appliquée (armor, mr) |
-| `Mountain_RoundsPerEmblem` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Mountain_StatIncrease` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `NumMarks` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Mountain_RoundsPerEmblem` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Mountain_StatIncrease` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `NumMarks` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Serpent_DR` | ✅ stat auto-appliquée (dr) |
 | `Serpent_DR_Teamwide` | ✅ stat auto-appliquée (dr) |
-| `Serpent_Duration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Serpent_Poison` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Serpent_Duration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Serpent_Poison` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Shield_AS_Teamwide` | ✅ stat auto-appliquée (as) |
-| `Shield_CashoutAS` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Shield_CashoutHP` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Shield_Duration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Shield_Health_Teamwide` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Shield_Interval` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Shield_NumDeaths` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Shield_CashoutAS` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Shield_CashoutHP` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Shield_Duration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Shield_Health_Teamwide` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Shield_Interval` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Shield_NumDeaths` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Wolf_ADAP` | ✅ stat auto-appliquée (ad, ap) |
-| `Wolf_Gold` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Wolf_Health` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Wolf_Health_Teamwide` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{13a2a786}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{326db998}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{37204635}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{3d49cc86}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{457fd35a}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{4f055cc9}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{56df89e0}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{57ccf261}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{74ccce14}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{a6419a0b}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{aa686d69}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{abed8603}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{b44d11c3}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{c32af02f}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{c4d51662}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{d7e6d620}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{e5275a69}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{e8338a44}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{f2840aed}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Wolf_Gold` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Wolf_Health` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Wolf_Health_Teamwide` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{13a2a786}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{326db998}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{37204635}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{3d49cc86}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{457fd35a}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{4f055cc9}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{56df89e0}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{57ccf261}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{74ccce14}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{a6419a0b}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{aa686d69}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{abed8603}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{b44d11c3}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{c32af02f}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{c4d51662}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{d7e6d620}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{e5275a69}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{e8338a44}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{f2840aed}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

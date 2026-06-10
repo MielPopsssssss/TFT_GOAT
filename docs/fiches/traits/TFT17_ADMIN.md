@@ -17,13 +17,13 @@
 
 | Variable | Application moteur |
 |---|---|
-| `DamageInstances` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `HealthThreshold` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ManaToSpend` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `NumAttacks` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `NumSeconds` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ShieldDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{fefec6fb}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `DamageInstances` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `HealthThreshold` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ManaToSpend` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `NumAttacks` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `NumSeconds` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ShieldDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{fefec6fb}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

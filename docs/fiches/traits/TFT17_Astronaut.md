@@ -19,8 +19,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `BonusHealth` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Meeps` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `BonusHealth` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Meeps` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

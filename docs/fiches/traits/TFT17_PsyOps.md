@@ -17,7 +17,7 @@
 
 | Variable | Application moteur |
 |---|---|
-| `{1b889d1c}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `{1b889d1c}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

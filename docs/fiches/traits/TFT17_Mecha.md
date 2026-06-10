@@ -20,8 +20,8 @@
 |---|---|
 | `AD` | ✅ stat auto-appliquée (ad) |
 | `AP` | ✅ stat auto-appliquée (ap) |
-| `TeamSize` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TransformedPercentHealth` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `TeamSize` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TransformedPercentHealth` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

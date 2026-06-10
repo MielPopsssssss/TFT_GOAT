@@ -16,11 +16,11 @@
 
 | Variable | Application moteur |
 |---|---|
-| `Allies` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Allies` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `DamageAmp` | ✅ stat auto-appliquée (amp) |
-| `FlatDamage` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Mana` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `NumAttacks` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `FlatDamage` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Mana` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `NumAttacks` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

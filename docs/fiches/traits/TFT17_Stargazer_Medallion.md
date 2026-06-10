@@ -6,6 +6,8 @@
 - **apiName** : `TFT17_Stargazer_Medallion`
 - **Paliers d'activation** : 3
 
+> ⚠️ **Collision de nom** : 8 traits partagent le nom « Stargazer ». Le moteur résout les traits par nom d'affichage et utilise [`TFT17_Stargazer`](../traits/TFT17_Stargazer.md) — les variables ci-dessous ne sont **jamais appliquées** via cette variante.
+
 ## Paliers
 
 | Min unités | Max | Style | Variables |
@@ -16,18 +18,9 @@
 
 | Variable | Application moteur |
 |---|---|
-| `Medallion_DA` | ✅ stat auto-appliquée (amp) |
-| `Medallion_IncreasePer3Star` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{37204635}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{3d49cc86}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{c32af02f}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-
-## Champions avec ce trait
-
-- [Jax](../champions/TFT17_Jax.md)
-- [Lulu](../champions/TFT17_Lulu.md)
-- [Nunu & Willump](../champions/TFT17_Nunu.md)
-- [Talon](../champions/TFT17_Talon.md)
-- [Twisted Fate](../champions/TFT17_TwistedFate.md)
-- [Xayah](../champions/TFT17_Xayah.md)
+| `Medallion_DA` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `Medallion_IncreasePer3Star` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{37204635}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{3d49cc86}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{c32af02f}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
 

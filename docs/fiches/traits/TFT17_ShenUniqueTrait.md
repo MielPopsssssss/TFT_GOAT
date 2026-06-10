@@ -17,9 +17,9 @@
 | Variable | Application moteur |
 |---|---|
 | `AttackSpeed` | ✅ stat auto-appliquée (as) |
-| `AttackSpeedDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `PercentHealthShield` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ShieldDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `AttackSpeedDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `PercentHealthShield` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ShieldDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

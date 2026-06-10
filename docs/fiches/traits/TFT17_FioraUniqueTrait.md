@@ -16,10 +16,10 @@
 
 | Variable | Application moteur |
 |---|---|
-| `DUHeal` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `DUHeal` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `PVEHP` | ✅ stat auto-appliquée (hp) |
-| `PVENumWins` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `PlayerOmnivamp` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `PVENumWins` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `PlayerOmnivamp` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

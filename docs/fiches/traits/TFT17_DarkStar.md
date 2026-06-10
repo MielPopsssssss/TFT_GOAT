@@ -20,9 +20,9 @@
 | Variable | Application moteur |
 |---|---|
 | `ADAP` | ✅ stat auto-appliquée (ad, ap) |
-| `ExecuteHPPercent` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `PercentHealth` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `SupermassivePercentBonus` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `ExecuteHPPercent` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `PercentHealth` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `SupermassivePercentBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

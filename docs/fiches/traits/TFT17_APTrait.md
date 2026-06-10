@@ -17,7 +17,7 @@
 
 | Variable | Application moteur |
 |---|---|
-| `Effectiveness` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Effectiveness` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

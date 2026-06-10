@@ -156,6 +156,14 @@ Un agent expert TFT indépendant a vérifié les **proba de chaque événement**
     Effets ambigus (clés hashées, quêtes/loot) → non devinés. (2) effets des Minor Blessings,
     (3) artefacts de dieu.
 
+### Gaps moteur découverts par l'audit des fiches (2026-06-10) — 🟡 tracés TODOS.md
+- **Variables `*_Health` de traits jamais appliquées** : `attrs_for` skippe toute clé contenant
+  `heal` (substring de `health`) → la branche `health → hp` est du code mort. Aucun bonus HP
+  de trait n'atteint le combat. P1 — tri par variable requis.
+- **8 traits homonymes « Stargazer »** : le moteur joint par nom d'affichage → seule
+  `TFT17_Stargazer` est résolue ; les 7 variantes (probablement liées au dieu aligné) sont
+  inertes. Les fiches (`docs/fiches/traits/`) marquent les variantes masquées ⛔.
+
 ### Vérification datatft ↔ contenu (✅ rosters cohérents)
 datatft = **couche META uniquement** (place moyenne, top4%, win%, count, best items par champ/trait/
 objet, perf par étoile). **Aucune donnée statique** (HP/AD/sorts/recettes/tiers) ; le champ augments

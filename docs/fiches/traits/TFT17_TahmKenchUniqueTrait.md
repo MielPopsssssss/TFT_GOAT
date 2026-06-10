@@ -16,7 +16,7 @@
 
 | Variable | Application moteur |
 |---|---|
-| `rounds` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `rounds` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

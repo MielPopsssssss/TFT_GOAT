@@ -21,10 +21,10 @@
 | Variable | Application moteur |
 |---|---|
 | `ADAPPerSecond` | ✅ stat auto-appliquée (ad, ap) |
-| `EffectBonus` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `StartOfCombatDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{32ed1fda}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{3e46e556}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `EffectBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `StartOfCombatDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{32ed1fda}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `{3e46e556}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

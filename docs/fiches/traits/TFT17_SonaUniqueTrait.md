@@ -17,8 +17,8 @@
 | Variable | Application moteur |
 |---|---|
 | `AS` | ✅ stat auto-appliquée (as) |
-| `HealthRatio` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `RoundsPerMod` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `HealthRatio` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `RoundsPerMod` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

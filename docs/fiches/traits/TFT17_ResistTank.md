@@ -20,9 +20,9 @@
 |---|---|
 | `BonusArmor` | ✅ stat auto-appliquée (armor) |
 | `BonusMR` | ✅ stat auto-appliquée (mr) |
-| `Duration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `Duration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `EnhancedTeamwideArmor` | ✅ stat auto-appliquée (armor) |
-| `StatMultiplier` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `StatMultiplier` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `TeamwideResists` | ✅ stat auto-appliquée (armor, mr) |
 
 ## Champions avec ce trait

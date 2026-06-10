@@ -19,10 +19,10 @@
 | Variable | Application moteur |
 |---|---|
 | `AD` | ✅ stat auto-appliquée (ad) |
-| `MaxPercentHealthShield` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Omnivamp` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `MaxPercentHealthShield` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Omnivamp` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `ShieldAD` | ✅ stat auto-appliquée (ad) |
-| `TeamwideBonus` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `TeamwideBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

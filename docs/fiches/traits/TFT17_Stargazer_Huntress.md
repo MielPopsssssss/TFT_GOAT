@@ -6,6 +6,8 @@
 - **apiName** : `TFT17_Stargazer_Huntress`
 - **Paliers d'activation** : 3 / 5 / 7
 
+> ⚠️ **Collision de nom** : 8 traits partagent le nom « Stargazer ». Le moteur résout les traits par nom d'affichage et utilise [`TFT17_Stargazer`](../traits/TFT17_Stargazer.md) — les variables ci-dessous ne sont **jamais appliquées** via cette variante.
+
 ## Paliers
 
 | Min unités | Max | Style | Variables |
@@ -18,17 +20,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `Huntress_AS` | ✅ stat auto-appliquée (as) |
-| `Huntress_AS_Teamwide` | ✅ stat auto-appliquée (as) |
-| `Huntress_Heal` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `NumMarks` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-
-## Champions avec ce trait
-
-- [Jax](../champions/TFT17_Jax.md)
-- [Lulu](../champions/TFT17_Lulu.md)
-- [Nunu & Willump](../champions/TFT17_Nunu.md)
-- [Talon](../champions/TFT17_Talon.md)
-- [Twisted Fate](../champions/TFT17_TwistedFate.md)
-- [Xayah](../champions/TFT17_Xayah.md)
+| `Huntress_AS` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `Huntress_AS_Teamwide` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `Huntress_Heal` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `NumMarks` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
 

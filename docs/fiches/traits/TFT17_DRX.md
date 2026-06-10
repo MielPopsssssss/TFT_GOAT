@@ -18,11 +18,11 @@
 | Variable | Application moteur |
 |---|---|
 | `AS` | ✅ stat auto-appliquée (as) |
-| `BonusTrueDamage` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Heal` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ShieldValue` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ShredAndSunder` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TeamAttackDelay` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `BonusTrueDamage` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Heal` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ShieldValue` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ShredAndSunder` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TeamAttackDelay` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

@@ -6,6 +6,8 @@
 - **apiName** : `TFT17_Stargazer_Wolf`
 - **Paliers d'activation** : 3 / 4 / 5 / 6
 
+> ⚠️ **Collision de nom** : 8 traits partagent le nom « Stargazer ». Le moteur résout les traits par nom d'affichage et utilise [`TFT17_Stargazer`](../traits/TFT17_Stargazer.md) — les variables ci-dessous ne sont **jamais appliquées** via cette variante.
+
 ## Paliers
 
 | Min unités | Max | Style | Variables |
@@ -19,18 +21,9 @@
 
 | Variable | Application moteur |
 |---|---|
-| `Wolf_ADAP` | ✅ stat auto-appliquée (ad, ap) |
-| `Wolf_Gold` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Wolf_Health` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `Wolf_Health_Teamwide` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{f5b00dd5}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-
-## Champions avec ce trait
-
-- [Jax](../champions/TFT17_Jax.md)
-- [Lulu](../champions/TFT17_Lulu.md)
-- [Nunu & Willump](../champions/TFT17_Nunu.md)
-- [Talon](../champions/TFT17_Talon.md)
-- [Twisted Fate](../champions/TFT17_TwistedFate.md)
-- [Xayah](../champions/TFT17_Xayah.md)
+| `Wolf_ADAP` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `Wolf_Gold` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `Wolf_Health` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `Wolf_Health_Teamwide` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{f5b00dd5}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
 

@@ -20,8 +20,8 @@
 | Variable | Application moteur |
 |---|---|
 | `AttackSpeedPercent` | ✅ stat auto-appliquée (as) |
-| `BurstDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `BurstPercent` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `BurstDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BurstPercent` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `TeamwideAS` | ✅ stat auto-appliquée (as) |
 
 ## Champions avec ce trait

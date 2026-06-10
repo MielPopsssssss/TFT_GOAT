@@ -16,8 +16,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `HealthThreshold` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `PercentHealthHeal` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `HealthThreshold` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `PercentHealthHeal` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

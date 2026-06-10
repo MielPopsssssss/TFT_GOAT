@@ -18,8 +18,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `HealthBonus` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TeamwideBonus` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `HealthBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TeamwideBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

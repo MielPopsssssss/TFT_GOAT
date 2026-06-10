@@ -20,7 +20,7 @@
 |---|---|
 | `AttackSpeed` | ✅ stat auto-appliquée (as) |
 | `TimebreakerAdditionalAS` | ✅ stat auto-appliquée (ad, as) |
-| `{aaae13a0}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `{aaae13a0}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

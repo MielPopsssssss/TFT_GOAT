@@ -6,6 +6,8 @@
 - **apiName** : `TFT17_Stargazer_Fountain`
 - **Paliers d'activation** : 3 / 5
 
+> ⚠️ **Collision de nom** : 8 traits partagent le nom « Stargazer ». Le moteur résout les traits par nom d'affichage et utilise [`TFT17_Stargazer`](../traits/TFT17_Stargazer.md) — les variables ci-dessous ne sont **jamais appliquées** via cette variante.
+
 ## Paliers
 
 | Min unités | Max | Style | Variables |
@@ -17,17 +19,8 @@
 
 | Variable | Application moteur |
 |---|---|
-| `{13a2a786}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{8d19f5db}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{d7e6d620}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `{f2840aed}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-
-## Champions avec ce trait
-
-- [Jax](../champions/TFT17_Jax.md)
-- [Lulu](../champions/TFT17_Lulu.md)
-- [Nunu & Willump](../champions/TFT17_Nunu.md)
-- [Talon](../champions/TFT17_Talon.md)
-- [Twisted Fate](../champions/TFT17_TwistedFate.md)
-- [Xayah](../champions/TFT17_Xayah.md)
+| `{13a2a786}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{8d19f5db}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{d7e6d620}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
+| `{f2840aed}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `TFT17_Stargazer`) |
 

@@ -21,9 +21,9 @@
 | Variable | Application moteur |
 |---|---|
 | `BonusDA` | ✅ stat auto-appliquée (amp) |
-| `ShieldDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `ShieldDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `ShieldHP` | ✅ stat auto-appliquée (hp) |
-| `{2ad3e251}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `{2ad3e251}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

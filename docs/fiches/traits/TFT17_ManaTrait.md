@@ -19,9 +19,9 @@
 
 | Variable | Application moteur |
 |---|---|
-| `ChannelerManaRegen` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `InnateManaGain` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `TeamManaRegen` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `ChannelerManaRegen` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `InnateManaGain` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `TeamManaRegen` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

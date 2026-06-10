@@ -17,7 +17,7 @@
 | Variable | Application moteur |
 |---|---|
 | `Durability` | ✅ stat auto-appliquée (dr) |
-| `{816175b9}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `{816175b9}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 

@@ -20,9 +20,9 @@
 |---|---|
 | `DamageReductionPct` | ✅ stat auto-appliquée (dr) |
 | `EnhancedDurability` | ✅ stat auto-appliquée (dr) |
-| `HealthThreshold` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ShieldDuration` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
-| `ShieldPercentAmount` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |
+| `HealthThreshold` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ShieldDuration` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `ShieldPercentAmount` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait
 
