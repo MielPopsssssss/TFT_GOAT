@@ -17,4 +17,4 @@ Yasuo's hexes also affect adjacent units at @Effectiveness*100@% effectiveness.
 
 ## Statut combat moteur
 
-🟡 no-op en combat — soit augment éco/loot (no-op correct), soit effet combat non encore implémenté (cf. docs/COMBAT_COVERAGE.md, TODOS.md)
+✅ effet combat codé (`engine/augments_set17`)

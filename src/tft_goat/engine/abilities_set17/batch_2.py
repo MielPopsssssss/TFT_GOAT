@@ -44,7 +44,7 @@ def _gragas(caster, allies, enemies, ctx) -> None:
         return
     dmg = caster.ability_value("Damage") * (caster.ap / 100.0)
     ctx.deal_magic(caster, target, dmg)
-    for e in ctx.enemies_in_radius(target, 1):
+    for e in ctx.enemies_around(caster, target, 1):
         if e is not target:
             ctx.deal_magic(caster, e, dmg)
     ctx.stun(target, caster.ability_value("CCDuration", 0.0))  # approx: Chill (AS slow)
@@ -117,7 +117,7 @@ def _viktor(caster, allies, enemies, ctx) -> None:
     if target is None:
         return
     dmg = caster.ability_value("Damage") * (caster.ap / 100.0)
-    for e in ctx.enemies_in_radius(target, 1):  # approx: growing storm with per-hex falloff
+    for e in ctx.enemies_around(caster, target, 1):  # approx: growing storm with per-hex falloff
         ctx.deal_magic(caster, e, dmg)
 
 

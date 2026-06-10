@@ -3,7 +3,7 @@
 > An AI that learns to play **Teamfight Tactics** at a high level through **reinforcement learning / self-play**.
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-164%20passing-brightgreen.svg)](#run-it)
+[![Tests](https://img.shields.io/badge/tests-215%20passing-brightgreen.svg)](#run-it)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](CONTRIBUTING.md)
 [![Set 17](https://img.shields.io/badge/TFT-Set%2017%20Space%20Gods-purple.svg)](#)
@@ -85,7 +85,7 @@ Full design doc: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-# 2. Tests (164 passing)
+# 2. Tests (215 passing)
 python -m pytest -q
 
 # 3. Play a full random 8-player game (Set 17)

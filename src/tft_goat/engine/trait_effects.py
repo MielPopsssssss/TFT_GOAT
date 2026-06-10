@@ -100,11 +100,17 @@ def _apply_stat(u: CombatUnit, attr: str, v: float) -> None:
         u.damage_amp += _pct(v)  # additif
 
 
-def apply_team_traits(units: list[CombatUnit], content: SetContent) -> None:
-    """Calcule les traits actifs de l'equipe et applique leurs bonus de stats (cumul)."""
+def apply_team_traits(
+    units: list[CombatUnit], content: SetContent, *, bonus_units: int = 0
+) -> None:
+    """Calcule les traits actifs de l'equipe et applique leurs bonus de stats (cumul).
+
+    `bonus_units` : champions virtuels ajoutes aux traits non-uniques presents
+    (God Boon LargeQuest) — voir `env/traits.py::active_traits`.
+    """
     if not units:
         return
-    active = active_traits([u.champion_api for u in units], content)
+    active = active_traits([u.champion_api for u in units], content, bonus_units=bonus_units)
     if not active:
         return
     by_name = {t.name: t for t in content.traits.values()}

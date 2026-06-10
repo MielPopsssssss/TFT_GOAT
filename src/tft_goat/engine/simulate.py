@@ -56,9 +56,14 @@ def _item_on_cast(u: CombatUnit, ctx) -> None:
 class CombatContext:
     """API fournie aux sorts + gestion des degats/mana/morts."""
 
-    def __init__(self, units: list[CombatUnit], rng: np.random.Generator):
+    def __init__(self, units: list[CombatUnit], rng: np.random.Generator,
+                 content: SetContent | None = None):
         self.units = units
         self.rng = rng
+        # contenu du set (lecture seule) : permet aux effets d'augments de lire d'autres
+        # entrees de la data (ex. Yasuo MoreHexes lit les valeurs du Golden Hex) sans
+        # changer la signature commune fn(team, enemies, ctx, variables).
+        self.content = content
         self.time = 0.0  # secondes ecoulees de combat (pour les durees)
         self._casting: CombatUnit | None = None  # unite en train de lancer son sort
         self._in_on_damaged = False  # garde anti-recursion (reflets mutuels type Bramble)
@@ -88,7 +93,18 @@ class CombatContext:
         return u.target
 
     def enemies_in_radius(self, u: CombatUnit, r: int) -> list[CombatUnit]:
+        """Ennemis DE `u` dans un rayon r autour de `u` (AoE centrée sur soi).
+
+        ATTENTION : ne JAMAIS appeler avec la cible ennemie comme `u` — cela renvoie les
+        ennemis de la cible = les ALLIÉS du caster (friendly fire). Pour une AoE centrée
+        sur la cible, utiliser `enemies_around(caster, target, r)` (bug corrigé 2026-06-10,
+        10 sites touchés ; pin : tests/test_ability_fidelity.py::test_no_ability_friendly_fire).
+        """
         return [e for e in self._targetable_enemies(u) if distance(u.pos, e.pos) <= r]
+
+    def enemies_around(self, src: CombatUnit, center: CombatUnit, r: int) -> list[CombatUnit]:
+        """Ennemis de `src` dans un rayon r autour de `center` (AoE centrée sur la cible)."""
+        return [e for e in self._targetable_enemies(src) if distance(center.pos, e.pos) <= r]
 
     def allies_of(self, u: CombatUnit) -> list[CombatUnit]:
         return [a for a in self.units if a.alive and a.team == u.team and a is not u]
@@ -286,7 +302,14 @@ def _assassin_dash(team: list[CombatUnit], ctx: "CombatContext") -> None:
         u.target = target  # verrouille le carry
 
 
-def _build_team(board: list[BoardUnit], team: int, content: SetContent) -> list[CombatUnit]:
+# God Boon LargeQuest (Aurelion Sol) : « +1 a tous les traits non-uniques » — applique au
+# BUILD de l'equipe (les traits sont calcules avant le combat start), pas via le registre.
+# Approximation : actif des l'octroi (le vrai jeu l'active apres 8 combats joueurs).
+_LARGE_QUEST_API = "TFT17_Augment_AurelionSolGodAugment_LargeQuest"
+
+
+def _build_team(board: list[BoardUnit], team: int, content: SetContent,
+                trait_bonus: int = 0) -> list[CombatUnit]:
     units: list[CombatUnit] = []
     for bu in board:
         champ = content.champions.get(bu.champion_api)
@@ -297,7 +320,7 @@ def _build_team(board: list[BoardUnit], team: int, content: SetContent) -> list[
             item_apis=tuple(getattr(bu, "item_apis", ()) or ()),
             generic_items=getattr(bu, "items", 0),
         ))
-    apply_team_traits(units, content)
+    apply_team_traits(units, content, bonus_units=trait_bonus)
     # placement rôle-aware : moitie avant (tanks/bruisers) en rangees front, moitie arriere
     # (carrys/supports) en rangees back -> les ennemis (ciblage du + proche) focus les tanks.
     ordered = sorted(units, key=lambda u: -_frontline_score(u))
@@ -332,8 +355,8 @@ def run_combat(
     augments_a: tuple[str, ...] = (), augments_b: tuple[str, ...] = (),
 ) -> CombatResult:
     rng = rng or np.random.default_rng()
-    team0 = _build_team(board_a, 0, content)
-    team1 = _build_team(board_b, 1, content)
+    team0 = _build_team(board_a, 0, content, trait_bonus=int(_LARGE_QUEST_API in augments_a))
+    team1 = _build_team(board_b, 1, content, trait_bonus=int(_LARGE_QUEST_API in augments_b))
     if not team0 and not team1:
         return CombatResult(winner=0, survivors=0)
     if not team0:
@@ -342,7 +365,7 @@ def run_combat(
         return CombatResult(winner=0, survivors=len(team0))
 
     units = team0 + team1
-    ctx = CombatContext(units, rng)
+    ctx = CombatContext(units, rng, content=content)
     _apply_combat_start(team0, team1, augments_a, content, ctx)
     _apply_combat_start(team1, team0, augments_b, content, ctx)
     _assassin_dash(team0, ctx)  # les assassins plongent sur la backline adverse au start
@@ -406,10 +429,14 @@ def run_combat(
                     if u.mana_lock_timer <= 0:
                         u.mana = min(u.max_mana, u.mana + MANA_PER_ATTACK)
             elif u.move_cd <= 0:
-                nxt = step_toward(u.pos, target.pos, occupied)
+                # rng = equite miroir (tie-breaks) ; prev = anti-oscillation (cf. grid.py).
+                # prev_pos persiste volontairement pendant les pauses (attaque/cast) :
+                # l'anti-retour reste actif a la reprise du deplacement (sticky).
+                nxt = step_toward(u.pos, target.pos, occupied, rng=rng, prev=u.prev_pos)
                 if nxt is not None:
                     occupied.discard(u.pos)
                     occupied.add(nxt)
+                    u.prev_pos = u.pos
                     u.pos = nxt
                     u.move_cd = MOVE_INTERVAL
 

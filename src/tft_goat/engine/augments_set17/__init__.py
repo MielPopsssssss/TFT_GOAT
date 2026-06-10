@@ -21,6 +21,10 @@ for _mod in pkgutil.iter_modules(__path__):
         continue
     try:
         _m = importlib.import_module(f"{__name__}.{_mod.name}")
-        AUGMENT_REGISTRY.update(getattr(_m, "REGISTRY", {}))
+        _reg = getattr(_m, "REGISTRY", {})
+        _dup = set(AUGMENT_REGISTRY) & set(_reg)
+        if _dup:  # collision de cle entre batches : le dernier ecraserait silencieusement
+            warnings.warn(f"collision de cle d'augment entre batches : {sorted(_dup)}")
+        AUGMENT_REGISTRY.update(_reg)
     except Exception as exc:  # noqa: BLE001
         warnings.warn(f"augment batch '{_mod.name}' non charge : {exc}")

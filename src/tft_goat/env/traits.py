@@ -33,11 +33,14 @@ def trait_counts(board_champions: Iterable[str], set_content: SetContent) -> dic
 
 
 def active_traits(
-    board_champions: Iterable[str], set_content: SetContent
+    board_champions: Iterable[str], set_content: SetContent, *, bonus_units: int = 0
 ) -> dict[str, int]:
     """Retourne {nom_trait: tier} pour les traits ayant atteint au moins leur 1er palier.
 
     `tier` = nombre de breakpoints atteints (1 = premier palier, 2 = deuxieme, ...).
+    `bonus_units` ajoute des champions virtuels a chaque trait non-unique PRESENT sur le
+    board (God Boon LargeQuest : « +1 to all non-unique traits ») ; les traits uniques
+    (breakpoints == (1,)) ne sont jamais boostes, et aucun trait n'est cree ex nihilo.
     """
     by_name = _traits_by_name(set_content)
     result: dict[str, int] = {}
@@ -45,7 +48,9 @@ def active_traits(
         trait = by_name.get(name)
         if trait is None:
             continue
-        tier = sum(1 for bp in trait.breakpoints if count >= bp)
+        bps = tuple(trait.breakpoints)
+        n = count + (bonus_units if bps != (1,) else 0)
+        tier = sum(1 for bp in bps if n >= bp)
         if tier > 0:
             result[name] = tier
     return result

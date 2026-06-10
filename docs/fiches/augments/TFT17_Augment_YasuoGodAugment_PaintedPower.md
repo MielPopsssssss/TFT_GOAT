@@ -18,4 +18,4 @@ Increase the power of Yasuo's hexes by @Effectiveness*100@%. If you only have 2 
 
 ## Statut combat moteur
 
-🟡 no-op en combat — soit augment éco/loot (no-op correct), soit effet combat non encore implémenté (cf. docs/COMBAT_COVERAGE.md, TODOS.md)
+✅ effet combat codé (`engine/augments_set17`)

@@ -45,7 +45,14 @@ def _actions(env, obs, infos, rng):
     return acts
 
 
-def run_one(seed):
+def _scripted_actions(env):
+    from tft_goat.agent.scripted import scripted_action
+
+    st = env._state
+    return {a: scripted_action(st, st.players[a]) for a in env.agents}
+
+
+def run_one(seed, scripted=False):
     env = TftEnv()
     obs, infos = env.reset(seed=seed)
     rng = np.random.default_rng(seed)
@@ -64,7 +71,8 @@ def run_one(seed):
                     violations.append(f"board {len(p.board)} > niveau {p.level}")
                 if p.hp < 0 or p.gold < 0 or not (1 <= p.level <= MAX_LEVEL):
                     violations.append(f"valeur absurde hp={p.hp} gold={p.gold} lvl={p.level}")
-        obs, r, term, trunc, infos = env.step(_actions(env, obs, infos, rng))
+        acts = _scripted_actions(env) if scripted else _actions(env, obs, infos, rng)
+        obs, r, term, trunc, infos = env.step(acts)
     st = env._state
     placements = [p.placement for p in st.players.values()]
     rows = [{"seat": a, "placement": p.placement, **last[a]} for a, p in st.players.items()]
@@ -72,7 +80,13 @@ def run_one(seed):
             "rows": rows, "violations": violations, "content": st.set_content}
 
 
-def check(results):
+def check(results, scripted_results):
+    """`results` = parties à actions ALÉATOIRES (invariants structurels, indépendants de
+    l'agent). `scripted_results` = parties à agent SCRIPTÉ, pour les métriques de CAPACITÉ
+    (fielder un board, activer des traits, équiper des items) : le sim doit les PERMETTRE
+    à un agent sensé — un agent uniforme-random ne les exerce presque jamais (root cause
+    des anciens FAIL : métriques comportementales mesurées sur du random, cf. learning
+    seat-equity : un invariant doit correspondre à l'agent testé)."""
     n = len(results)
     checks = []
 
@@ -112,9 +126,10 @@ def check(results):
     bottom = (np.mean(by_place[7]) + np.mean(by_place[8])) / 2
     add("gradient board (top2 > bottom2)", top > bottom, f"top {top:.2f} vs bottom {bottom:.2f}")
 
-    # 5. board rempli par l'agent (survivants top4 board moyen > 4)
-    top4_board = np.mean([b for pl in (1, 2, 3, 4) for b in by_place[pl]])
-    add("agent fielde (board top4 > 4.0)", top4_board > 4.0, f"{top4_board:.2f}")
+    # 5. CAPACITÉ : un agent sensé peut remplir son board (mesuré sur le batch SCRIPTÉ)
+    sc_boards = [r["board"] for g in scripted_results for r in g["rows"] if r["placement"] <= 4]
+    top4_board = np.mean(sc_boards) if sc_boards else 0.0
+    add("agent scripté fielde (board top4 > 4.0)", top4_board > 4.0, f"{top4_board:.2f}")
 
     # 6. aucune violation d'invariant live (board<=cap, valeurs saines)
     nviol = sum(len(g["violations"]) for g in results)
@@ -133,12 +148,12 @@ def check(results):
             if r["champs"]:
                 by_place_champs[r["placement"]].append(r["champs"])
 
-    # 7. synergies de traits : les boards gagnants ont des traits ACTIFS (≥2 en moyenne)
-    def avg_active_traits(places):
-        vals = [len(active_traits(list(c), content)) for pl in places for c in by_place_champs[pl]]
-        return np.mean(vals) if vals else 0.0
-    top_traits = avg_active_traits((1, 2))
-    add("synergies de traits (top2 boards ≥ 2 traits actifs)", top_traits >= 2.0, f"{top_traits:.2f}")
+    # 7. CAPACITÉ : un agent sensé active des synergies (mesuré sur le batch SCRIPTÉ)
+    sc_champs = [r["champs"] for g in scripted_results for r in g["rows"]
+                 if r["champs"] and r["placement"] <= 2]
+    top_traits = (np.mean([len(active_traits(list(c), content)) for c in sc_champs])
+                  if sc_champs else 0.0)
+    add("agent scripté synergise (top2 ≥ 2 traits actifs)", top_traits >= 2.0, f"{top_traits:.2f}")
 
     # 8. (INFORMATIF, pas PASS/FAIL) force méta moyenne des unités jouées par l'agent vs roster.
     # Mesure la QUALITÉ d'agent (a-t-il appris la méta), PAS la cohérence du simulateur :
@@ -160,9 +175,11 @@ def check(results):
 
     # --- cohérence objets + INFO qualité d'agent (itération 3) ---
     rows_all = [r for g in results for r in g["rows"] if r["champs"]]
-    # 10. items : l'agent équipe des objets => le mécanisme d'items fonctionne en jeu (PASS/FAIL).
-    top4_items = np.mean([r["items"] for r in rows_all if r["placement"] <= 4]) if rows_all else 0.0
-    add("équipement d'items (items top4 > 0.5)", top4_items > 0.5, f"{top4_items:.2f}")
+    # 10. CAPACITÉ : le mécanisme d'items fonctionne quand un agent sensé équipe (SCRIPTÉ).
+    sc_rows = [r for g in scripted_results for r in g["rows"] if r["champs"]]
+    top4_items = (np.mean([r["items"] for r in sc_rows if r["placement"] <= 4])
+                  if sc_rows else 0.0)
+    add("agent scripté équipe (items top4 > 0.5)", top4_items > 0.5, f"{top4_items:.2f}")
     # INFO (qualité d'agent, PAS cohérence sim) : économie + étoiles. Le sim PERMET une éco/étoiles
     # réalistes — prouvé par l'agent scripté (or ~52, star ~1.90, cf. tests/test_coherence.py).
     # Un PPO sous-entraîné thésaurise et sous-star ; c'est de l'entraînement, pas un bug sim.
@@ -183,9 +200,12 @@ def main():
         _POLICY = _load_policy(policy, TftEnv())
 
     results = [run_one(seed0 + i) for i in range(n)]
-    checks, avg_stage = check(results)
+    n_scripted = max(10, n // 5)  # capacité : moyennes stables dès ~10 parties x 8 joueurs
+    scripted_results = [run_one(seed0 + 10_000 + i, scripted=True) for i in range(n_scripted)]
+    checks, avg_stage = check(results, scripted_results)
 
-    print(f"=== COHÉRENCE sur {n} parties ({'policy '+policy if policy else 'aléatoire'}) ===\n")
+    print(f"=== COHÉRENCE sur {n} parties ({'policy '+policy if policy else 'aléatoire'}) "
+          f"+ {n_scripted} scriptées (capacité) ===\n")
     all_ok = True
     for name, ok, detail in checks:
         flag = "✅ PASS" if ok else "❌ FAIL"

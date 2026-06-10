@@ -35,6 +35,7 @@ class CombatUnit:
     variables: dict[str, tuple[float, ...]] = field(default_factory=dict)
     role: str = ""  # role data (APTank, ADCarry, APReaper...) -> placement + ciblage
     pos: tuple[int, int] = (0, 0)
+    prev_pos: tuple[int, int] | None = None  # case precedente (anti-oscillation pathing)
     alive: bool = True
     attack_cd: float = 0.0
     move_cd: float = 0.0

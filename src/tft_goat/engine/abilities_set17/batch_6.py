@@ -94,17 +94,21 @@ def _rammus(caster, allies, enemies, ctx) -> None:
 
 
 def _sona(caster, allies, enemies, ctx) -> None:
-    # Hurl magnetic debris at nearest target for magic damage; periodic slam stuns target.
+    # Hurl magnetic debris at nearest target for magic damage. Le slam (rip de TOUS les
+    # debris + stun) n'arrive que « every @NumCasts@ casts » -> AMORTI : slam/NumCasts de
+    # dégâts par cast, stun rng-gaté à 1/NumCasts (avant : slam entier + stun à CHAQUE
+    # cast = ~3-4x sur-tunée, win rate saturé à 1.00 dans realism_vs_datatft).
     target = ctx.target_of(caster) or ctx.lowest_hp_enemy(caster)
     if target is None:
         return
-    debris = caster.ability_value("DebrisDamage") * (caster.ap / 100.0)
-    ctx.deal_magic(caster, target, debris)
-    # approx: every NumCasts casts, rip+slam all debris with a brief stun
-    slam = caster.ability_value("SlamDamage") * (caster.ap / 100.0)
+    ap = caster.ap / 100.0
+    ctx.deal_magic(caster, target, caster.ability_value("DebrisDamage") * ap)
+    n = max(1.0, caster.ability_value("NumCasts", 5.0))
+    slam = caster.ability_value("SlamDamage") * ap / n
     if slam > 0:
         ctx.deal_magic(caster, target, slam)
-        ctx.stun(target, caster.ability_value("StunDuration", 1.0))
+        if ctx.rng.random() < 1.0 / n:  # le vrai slam ne tombe qu'un cast sur NumCasts
+            ctx.stun(target, caster.ability_value("StunDuration", 1.0))
 
 
 def _veigar(caster, allies, enemies, ctx) -> None:
@@ -115,7 +119,7 @@ def _veigar(caster, allies, enemies, ctx) -> None:
     main = caster.ability_value("Damage") * (caster.ap / 100.0)
     ctx.deal_magic(caster, target, main)
     mini = caster.ability_value("MiniDamage") * (caster.ap / 100.0)  # approx: mini meepteors on nearby
-    for e in ctx.enemies_in_radius(target, 1):
+    for e in ctx.enemies_around(caster, target, 1):
         if e is not target:
             ctx.deal_magic(caster, e, mini)
 

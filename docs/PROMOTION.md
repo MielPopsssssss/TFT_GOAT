@@ -51,7 +51,7 @@ you're looking for contributors.
 > *training at scale* — bigger rollouts, tuning, maybe a curriculum. There's also a long tail of
 > game logic to fill in, env vectorization for throughput, and a MuZero stretch goal.
 >
-> Everything is data-driven (CommunityDragon), MIT-licensed, 164 tests, with a documented roadmap
+> Everything is data-driven (CommunityDragon), MIT-licensed, 215 tests, with a documented roadmap
 > and `good first issue`s. Combat fidelity is tracked openly — I document exactly what's faithfully
 > simulated vs. approximated.
 >
@@ -96,7 +96,7 @@ you're looking for contributors.
 > **TFT_GOAT** — open-source RL agent that learns Teamfight Tactics via self-play. From-scratch
 > PettingZoo 8-player env, a neural combat surrogate `P(win | A, B)` trained on real games *and* on a
 > tick-by-tick engine, custom PPO. Pipeline's complete but the agent still loses to a scripted
-> bot — training it at scale is the open challenge. Python 3.11, PyTorch, MIT, 164 tests, roadmap +
+> bot — training it at scale is the open challenge. Python 3.11, PyTorch, MIT, 215 tests, roadmap +
 > `good first issue`s. Contributors welcome: **https://github.com/MielPopsssssss/TFT_GOAT**
 
 ---

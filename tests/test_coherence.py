@@ -60,23 +60,32 @@ def test_sim_supports_realistic_economy_and_starring_via_scripted_agent():
     """
     from tft_goat.agent.scripted import scripted_action
 
-    golds, stars = [], []
+    golds, stars, boards, items = [], [], [], []
     for seed in range(25):
         env = TftEnv()
         obs, infos = env.reset(seed=seed)
-        last = {a: {"g": 0, "s": 1} for a in env.possible_agents}
+        last = {a: {"g": 0, "s": 1, "b": 0, "i": 0} for a in env.possible_agents}
         while env.agents:
             for a in env.possible_agents:
                 p = env._state.players[a]
                 if p.alive:
-                    last[a] = {"g": p.gold, "s": max((u.star for u in p.board), default=1)}
+                    last[a] = {"g": p.gold, "s": max((u.star for u in p.board), default=1),
+                               "b": len(p.board), "i": sum(u.items for u in p.board)}
             acts = {a: scripted_action(env._state, env._state.players[a]) for a in env.agents}
             obs, r, term, trunc, infos = env.step(acts)
         for a in env.possible_agents:
             golds.append(last[a]["g"])
             stars.append(last[a]["s"])
+            boards.append(last[a]["b"])
+            items.append(last[a]["i"])
 
     avg_gold = sum(golds) / len(golds)
     avg_star = sum(stars) / len(stars)
+    avg_board = sum(boards) / len(boards)
+    avg_items = sum(items) / len(items)
     assert avg_gold < 90, f"agent scripté thésaurise ({avg_gold:.0f}) -> dépense cassée ?"
     assert avg_star > 1.5, f"agent scripté ne 2-star pas ({avg_star:.2f}) -> combinaison cassée ?"
+    # Capacités sim prouvées par un agent sensé (les FAILs random étaient un faux signal,
+    # cf. scripts/check_coherence.py batch scripté, investigation 2026-06-10) :
+    assert avg_board > 4.0, f"agent scripté ne remplit pas son board ({avg_board:.2f})"
+    assert avg_items > 0.5, f"agent scripté n'équipe pas d'items ({avg_items:.2f})"

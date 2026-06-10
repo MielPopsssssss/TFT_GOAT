@@ -3,6 +3,41 @@
 Toutes les évolutions notables du projet. Format inspiré de
 [Keep a Changelog](https://keepachangelog.com/) ; versions `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.5.0.0] - 2026-06-10
+
+### Added
+- **Les 17 God Boons agissent enfin en combat** : les 11 boons manquants sont câblés au
+  moteur (Soraka, Thresh au dé réel, Ekko et son Anomaly par rôle, Kayle Scrapper, les
+  variantes Yasuo, les quêtes d'Aurelion Sol — dont LargeQuest qui donne réellement +1
+  aux traits non-uniques au build des équipes). Trois boons purement éco restent des
+  no-ops fidèles, comme dans le vrai jeu.
+- **Le benchmark de vérité terrain** : `realism_vs_matches` rejoue les 8 boards finaux de
+  vraies parties challenger en round-robin moteur et corrèle au placement réel.
+  Baseline : Spearman +0.44 ± 0.06, gagnant moteur en top2 réel 60 %.
+- **Les augments pèsent dans le resolver heuristique** : `augment_power` valorise les
+  augments à effet combat (les éco payent déjà via l'économie — pas de double-comptage).
+- **4 augments prismatic de plus** (Belt/Wand Overflow, Comeback Story, Sweet Treats),
+  priorisés par ampleur d'effet (Riot a retiré les augments de match-v1).
+
+### Fixed
+- **Le pathing est enfin équitable entre les deux camps** : les égalités de chemin sont
+  départagées aléatoirement (l'ordre fixe des voisins hexagonaux avantageait
+  structurellement team1 — miroirs parfaits perdus 0.29–0.39 par team0, désormais ~0.50)
+  et une unité bloquée contourne au lieu d'osciller sur place 20 secondes.
+- **Les zones d'effet ne frappent plus leurs propres alliés** : 10 capacités AoE (dont
+  Vex) touchaient l'équipe du lanceur au lieu des ennemis autour de la cible. Garde
+  systémique : aucune des 65 abilities ne peut blesser sa propre équipe.
+- **Trois abilities recollées à la vraie data** : Sona ne slam plus à chaque cast
+  (1 sur 5, comme en jeu), Blitzcrank gagne sa passive (bolt/2 s) et son knockup de
+  clump, Graves gagne sa passive 5 projectiles.
+- **check_coherence mesure la capacité avec un agent sensé** : les métriques
+  comportementales (board, traits, items) tournent sur l'agent scripté — un agent
+  aléatoire ne les exerce pas. Verdict : TOUT COHÉRENT.
+
+### Changed
+- La métrique `realism_vs_datatft` alterne les camps (annule tout biais résiduel) ;
+  son Spearman reste un détecteur d'outliers, pas une métrique de vérité.
+
 ## [0.4.1.0] - 2026-06-10
 
 ### Fixed

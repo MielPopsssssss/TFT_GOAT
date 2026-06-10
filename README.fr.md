@@ -23,7 +23,7 @@ support moteur par entité (chaque champion / trait / item / augment, ✅ implé
 ⛔ masqué) audité dans **[docs/fiches/INDEX.md](docs/fiches/INDEX.md)**.
 
 ```
-.venv/bin/python -m pytest -q                          # 164 tests
+.venv/bin/python -m pytest -q                          # 215 tests
 .venv/bin/python -m tft_goat.scripts.scrape_datatft    # fige les vraies stats meta (datatft)
 .venv/bin/python -m tft_goat.scripts.random_rollout    # partie 8 joueurs complete (Set 17)
 .venv/bin/python -m tft_goat.scripts.train --content real --resolver neural \
