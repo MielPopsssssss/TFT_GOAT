@@ -1,0 +1,23 @@
+# Timebreaker Emblem — fiche item
+
+> Fiche GÉNÉRÉE depuis CommunityDragon patch 17.4 — **NE PAS ÉDITER À LA MAIN**.
+> Régénérer : `.venv/bin/python -m scripts.generate_fiches`
+
+- **apiName** : `TFT17_Item_PulsefireEmblemItem`
+- **Recette** : [Spatula](../items/TFT_Item_Spatula.md) + [Recurve Bow](../items/TFT_Item_RecurveBow.md)
+- **Unique** : oui
+- **Tags** : {ebcd1bac}, {d8d00bcc}
+- **Traits incompatibles** : TFT17_Timebreaker
+
+## Effets (stats data)
+
+| Effet | Valeur |
+|---|---|
+| `AS` | 15 |
+| `Health` | 200 |
+
+> Les effets numériques sont auto-appliqués par le moteur quand l'identité de l'item est connue.
+
+## Proc spécial moteur
+
+🟡 stats uniquement — aucun proc spécial codé (cf. docs/COMBAT_COVERAGE.md)

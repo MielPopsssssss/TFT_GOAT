@@ -1,0 +1,1149 @@
+# Fiches d'audit — TFT Set 17 (patch 17.4)
+
+> Index GÉNÉRÉ — **NE PAS ÉDITER À LA MAIN**. Régénérer : `.venv/bin/python -m scripts.generate_fiches`
+>
+> Légende : ✅ = implémenté dans le moteur réel · 🟡 = défaut générique / no-op / stats-only.
+> Chaque fiche est la vue auditable d'UNE entité : data CDragon + statut moteur.
+
+## Vue d'ensemble
+
+- **Champions** : 83 fiches (65 jouables — sorts moteur : 65 ✅ / 0 🟡)
+- **Traits** : 44 fiches
+- **Items** : 687 fiches
+- **Augments** : 276 fiches (effet combat moteur : 74 ✅) — dont 17 God Boons
+
+## Champions jouables (par coût)
+
+### 1 coût
+
+- [Aatrox](champions/TFT17_Aatrox.md) ✅
+- [Briar](champions/TFT17_Briar.md) ✅
+- [Caitlyn](champions/TFT17_Caitlyn.md) ✅
+- [Cho'Gath](champions/TFT17_Chogath.md) ✅
+- [Mini Black Hole](champions/TFT17_DarkStar_FakeUnit.md) ✅
+- [Ezreal](champions/TFT17_Ezreal.md) ✅
+- [Leona](champions/TFT17_Leona.md) ✅
+- [Lissandra](champions/TFT17_Lissandra.md) ✅
+- [Nasus](champions/TFT17_Nasus.md) ✅
+- [Poppy](champions/TFT17_Poppy.md) ✅
+- [Rek'Sai](champions/TFT17_RekSai.md) ✅
+- [Talon](champions/TFT17_Talon.md) ✅
+- [Teemo](champions/TFT17_Teemo.md) ✅
+- [Twisted Fate](champions/TFT17_TwistedFate.md) ✅
+- [Veigar](champions/TFT17_Veigar.md) ✅
+
+### 2 coût
+
+- [Akali](champions/TFT17_Akali.md) ✅
+- [Bel'Veth](champions/TFT17_Belveth.md) ✅
+- [Gnar](champions/TFT17_Gnar.md) ✅
+- [Gragas](champions/TFT17_Gragas.md) ✅
+- [Gwen](champions/TFT17_Gwen.md) ✅
+- [Meepsie](champions/TFT17_IvernMinion.md) ✅
+- [Jax](champions/TFT17_Jax.md) ✅
+- [Jinx](champions/TFT17_Jinx.md) ✅
+- [Milio](champions/TFT17_Milio.md) ✅
+- [Mordekaiser](champions/TFT17_Mordekaiser.md) ✅
+- [Pantheon](champions/TFT17_Pantheon.md) ✅
+- [Pyke](champions/TFT17_Pyke.md) ✅
+- [Zoe](champions/TFT17_Zoe.md) ✅
+
+### 3 coût
+
+- [Aurora](champions/TFT17_Aurora.md) ✅
+- [Diana](champions/TFT17_Diana.md) ✅
+- [Fizz](champions/TFT17_Fizz.md) ✅
+- [Illaoi](champions/TFT17_Illaoi.md) ✅
+- [Kai'Sa](champions/TFT17_Kaisa.md) ✅
+- [Lulu](champions/TFT17_Lulu.md) ✅
+- [Maokai](champions/TFT17_Maokai.md) ✅
+- [Miss Fortune](champions/TFT17_MissFortune.md) ✅
+- [Ornn](champions/TFT17_Ornn.md) ✅
+- [Rhaast](champions/TFT17_Rhaast.md) ✅
+- [Samira](champions/TFT17_Samira.md) ✅
+- [Urgot](champions/TFT17_Urgot.md) ✅
+- [Viktor](champions/TFT17_Viktor.md) ✅
+
+### 4 coût
+
+- [Aurelion Sol](champions/TFT17_AurelionSol.md) ✅
+- [Corki](champions/TFT17_Corki.md) ✅
+- [The Mighty Mech](champions/TFT17_Galio.md) ✅
+- [Karma](champions/TFT17_Karma.md) ✅
+- [Kindred](champions/TFT17_Kindred.md) ✅
+- [LeBlanc](champions/TFT17_Leblanc.md) ✅
+- [Master Yi](champions/TFT17_MasterYi.md) ✅
+- [Morgana](champions/TFT17_Morgana.md) ✅
+- [Nami](champions/TFT17_Nami.md) ✅
+- [Nunu & Willump](champions/TFT17_Nunu.md) ✅
+- [Rammus](champions/TFT17_Rammus.md) ✅
+- [Riven](champions/TFT17_Riven.md) ✅
+- [Tahm Kench](champions/TFT17_TahmKench.md) ✅
+- [Xayah](champions/TFT17_Xayah.md) ✅
+
+### 5 coût
+
+- [Bard](champions/TFT17_Bard.md) ✅
+- [Blitzcrank](champions/TFT17_Blitzcrank.md) ✅
+- [Apex Primordian](champions/TFT17_Enemy_Aatrox.md) ✅
+- [Fiora](champions/TFT17_Fiora.md) ✅
+- [Graves](champions/TFT17_Graves.md) ✅
+- [Jhin](champions/TFT17_Jhin.md) ✅
+- [Shen](champions/TFT17_Shen.md) ✅
+- [Sona](champions/TFT17_Sona.md) ✅
+- [Vex](champions/TFT17_Vex.md) ✅
+- [Zed](champions/TFT17_Zed.md) ✅
+
+## Autres unités (PvE / evergreen / spéciales)
+
+- [Tome of Traits](champions/TFT14_EmblemArmoryKey.md) 🟡
+- [Cosmic Elder Dragon](champions/TFT17_PVE_ElderDragon.md) 🟡
+- [Cosmic Gromp](champions/TFT17_PVE_Gromp.md) 🟡
+- [Cosmic Bruiser](champions/TFT17_PVE_Krug.md) 🟡
+- [Cosmic Squid](champions/TFT17_PVE_Minion.md) 🟡
+- [Cosmic Flutterbye](champions/TFT17_PVE_Pix.md) 🟡
+- [Cosmic Scrapper](champions/TFT17_PVE_Raptor.md) 🟡
+- [Bia & Bayin](champions/TFT17_Summon.md) 🟡
+- [TimebreakerCore](champions/TFT17_TimebreakerCore.md) 🟡
+- [Tome of Traits](champions/TFT5_EmblemArmoryKey.md) 🟡
+- [Mercenary Chest](champions/TFT6_MercenaryChest.md) 🟡
+- [Rift Scuttler](champions/TFT9_SLIME_Crab.md) ✅
+- [Completed Item Anvil](champions/TFT_ArmoryKeyCompleted.md) 🟡
+- [Component Anvil](champions/TFT_ArmoryKeyComponent.md) 🟡
+- [Artifact Item Anvil](champions/TFT_ArmoryKeyOrnn.md) 🟡
+- [Support item anvil](champions/TFT_ArmoryKeySupport.md) 🟡
+- [Golem](champions/TFT_BlueGolem.md) ✅
+- [Training Dummy](champions/TFT_TrainingDummy.md) ✅
+
+## Traits
+
+- [God-Blessed](traits/Set17_CarouselMarket_EmpoweredHexTrait.md) (0)
+- [Arbiter](traits/TFT17_ADMIN.md) (2/3)
+- [Replicator](traits/TFT17_APTrait.md) (2/4)
+- [Challenger](traits/TFT17_ASTrait.md) (2/3/4/5)
+- [Anima](traits/TFT17_AnimaSquad.md) (3/6)
+- [Rogue](traits/TFT17_AssassinTrait.md) (2/3/4/5)
+- [Meeple](traits/TFT17_Astronaut.md) (3/5/7/10)
+- [Party Animal](traits/TFT17_BlitzcrankUniqueTrait.md) (1)
+- [N.O.V.A.](traits/TFT17_DRX.md) (2/5)
+- [Dark Star](traits/TFT17_DarkStar.md) (2/4/6/9)
+- [Fateweaver](traits/TFT17_Fateweaver.md) (2/4)
+- [Divine Duelist](traits/TFT17_FioraUniqueTrait.md) (1)
+- [Voyager](traits/TFT17_FlexTrait.md) (2/3/4/5/6)
+- [Factory New](traits/TFT17_GravesTrait.md) (1)
+- [Brawler](traits/TFT17_HPTank.md) (2/4/6)
+- [Eradicator](traits/TFT17_JhinUniqueTrait.md) (1)
+- [Conduit](traits/TFT17_ManaTrait.md) (2/3/4/5)
+- [Mecha](traits/TFT17_Mecha.md) (3/4/6)
+- [Marauder](traits/TFT17_MeleeTrait.md) (2/4/6)
+- [Choose Trait](traits/TFT17_MissFortuneUndeterminedTrait.md) (—)
+- [Gun Goddess](traits/TFT17_MissFortuneUniqueTrait.md) (1)
+- [Dark Lady](traits/TFT17_MorganaUniqueTrait.md) (1)
+- [Primordian](traits/TFT17_Primordian.md) (2/3)
+- [Psionic](traits/TFT17_PsyOps.md) (2/4)
+- [Sniper](traits/TFT17_RangedTrait.md) (2/3/4)
+- [Bastion](traits/TFT17_ResistTank.md) (2/4/6)
+- [Redeemer](traits/TFT17_RhaastUniqueTrait.md) (1)
+- [Bulwark](traits/TFT17_ShenUniqueTrait.md) (1)
+- [Vanguard](traits/TFT17_ShieldTank.md) (2/4/6)
+- [Commander](traits/TFT17_SonaUniqueTrait.md) (1)
+- [Space Groove](traits/TFT17_SpaceGroove.md) (1/3/5/7/10)
+- [Stargazer](traits/TFT17_Stargazer.md) (3/5/7/8/9/10)
+- [Stargazer](traits/TFT17_Stargazer_Fountain.md) (3/5)
+- [Stargazer](traits/TFT17_Stargazer_Huntress.md) (3/5/7)
+- [Stargazer](traits/TFT17_Stargazer_Medallion.md) (3)
+- [Stargazer](traits/TFT17_Stargazer_Mountain.md) (3/4/5/6/7/8/9/10/11)
+- [Stargazer](traits/TFT17_Stargazer_Serpent.md) (3/5/7)
+- [Stargazer](traits/TFT17_Stargazer_Shield.md) (3)
+- [Stargazer](traits/TFT17_Stargazer_Wolf.md) (3/4/5/6)
+- [Shepherd](traits/TFT17_SummonTrait.md) (3/5/7)
+- [Oracle](traits/TFT17_TahmKenchUniqueTrait.md) (1)
+- [Timebreaker](traits/TFT17_Timebreaker.md) (2/3/4)
+- [Doomer](traits/TFT17_VexUniqueTrait.md) (1)
+- [Galaxy Hunter](traits/TFT17_ZedUniqueTrait.md) (1)
+
+## Items
+
+### Composants / sans recette
+
+- [Accomplice's Gloves](items/TFT11_Item_ThiefsGlovesSupport.md)
+- [Salvager](items/TFT14_Consumable_Salvager.md)
+- [Blessing: Size](items/TFT14_Consumable_SizeUp.md)
+- [Blessing: Speed](items/TFT14_Consumable_SpeedUp.md)
+- [2 star Zac, Aurora, Urgot, and Samira](items/TFT14_CypherArmoryItem_Specific5Costs.md)
+- [12 radiant items](items/TFT14_CypherArmoryItem_SpecificRadiantItems.md)
+- [Gwen's Scissors](items/TFT16_Consumable_GwensScissors.md)
+- [Gwen's Scissors <rules>(2 uses left!)</rules>](items/TFT16_Consumable_GwensScissors_2.md)
+- [Gwen's Scissors <rules>(3 uses left!)</rules>](items/TFT16_Consumable_GwensScissors_3.md)
+- [Gwen's Scissors <rules>(4 uses left!)</rules>](items/TFT16_Consumable_GwensScissors_4.md)
+- [Gwen's Scissors <rules>(5 uses left!)</rules>](items/TFT16_Consumable_GwensScissors_5.md)
+- [Broken Prototype](items/TFT17_AnimaSquadItem_Tier0_ClunkyPrototype.md)
+- [Leaky Prototype](items/TFT17_AnimaSquadItem_Tier0_LeakyPrototype.md)
+- [Sparking Prototype](items/TFT17_AnimaSquadItem_Tier0_SparkingPrototype.md)
+- [Guiding Hex](items/TFT17_AnimaSquadItem_Tier1_GuidingHex.md)
+- [Rocket Swarm](items/TFT17_AnimaSquadItem_Tier1_RocketSwarm.md)
+- [Savage Slicer](items/TFT17_AnimaSquadItem_Tier1_SavageSlicer.md)
+- [Tentacle Slam](items/TFT17_AnimaSquadItem_Tier1_TentacleSlam.md)
+- [The Annihilator](items/TFT17_AnimaSquadItem_Tier2_Annihilator.md)
+- [Battle Bunny Crossbow](items/TFT17_AnimaSquadItem_Tier2_BattleBunnyCrossbow.md)
+- [Cyclonic Slicers](items/TFT17_AnimaSquadItem_Tier2_CyclonicSlicers.md)
+- [Echoing Batblades](items/TFT17_AnimaSquadItem_Tier2_EchoingBatblades.md)
+- [Iceblast Armor](items/TFT17_AnimaSquadItem_Tier2_IceblastArmor.md)
+- [Lioness's Lament](items/TFT17_AnimaSquadItem_Tier2_LionessLament.md)
+- [Radiant Field](items/TFT17_AnimaSquadItem_Tier2_RadiantField.md)
+- [Searing Shortbow](items/TFT17_AnimaSquadItem_Tier2_SearingShortbow.md)
+- [UwU Blaster](items/TFT17_AnimaSquadItem_Tier2_UwuBlaster.md)
+- [Animapocalypse](items/TFT17_AnimaSquadItem_Tier3_Annihilator.md)
+- [Bunny Prime Ballista](items/TFT17_AnimaSquadItem_Tier3_BattleBunnyCrossbow.md)
+- [Unceasing Cyclone](items/TFT17_AnimaSquadItem_Tier3_CyclonicSlicers.md)
+- [Vayne's Chromablades](items/TFT17_AnimaSquadItem_Tier3_EchoingBatblades.md)
+- [Deep Freeze](items/TFT17_AnimaSquadItem_Tier3_IceblastArmor.md)
+- [Leonine Lamentation](items/TFT17_AnimaSquadItem_Tier3_LionessLament.md)
+- [Solar Eclipse](items/TFT17_AnimaSquadItem_Tier3_RadiantField.md)
+- [Evolved Embershot](items/TFT17_AnimaSquadItem_Tier3_SearingShortbow.md)
+- [OwO Blaster](items/TFT17_AnimaSquadItem_Tier3_UwuBlaster.md)
+- [Omniweapon](items/TFT17_AnimaSquadItem_Tier4_Omniweapon.md)
+- [Gold](items/TFT17_AnimaSquad_Gold.md)
+- [1-star Aurora](items/TFT17_ChampionItem_Aurora.md)
+- [2-star Aurora](items/TFT17_ChampionItem_Aurora_2Star.md)
+- [3-star Aurora](items/TFT17_ChampionItem_Aurora_3Star.md)
+- [1-star Briar](items/TFT17_ChampionItem_Briar.md)
+- [2-star Briar](items/TFT17_ChampionItem_Briar_2Star.md)
+- [3-star Briar](items/TFT17_ChampionItem_Briar_3Star.md)
+- [1-cost: Aatrox](items/TFT17_ChampionItem_Chosen_Aatrox.md)
+- [2-star 1-cost: Aatrox](items/TFT17_ChampionItem_Chosen_Aatrox_2star.md)
+- [2-cost: Akali](items/TFT17_ChampionItem_Chosen_Akali.md)
+- [4-cost: Aurelion Sol](items/TFT17_ChampionItem_Chosen_AurelionSol.md)
+- [3-cost: Aurora](items/TFT17_ChampionItem_Chosen_Aurora.md)
+- [5-cost: Bard](items/TFT17_ChampionItem_Chosen_Bard.md)
+- [2-cost: Bel'Veth](items/TFT17_ChampionItem_Chosen_Belveth.md)
+- [5-cost: Blitzcrank](items/TFT17_ChampionItem_Chosen_Blitzcrank.md)
+- [1-cost: Briar](items/TFT17_ChampionItem_Chosen_Briar.md)
+- [2-star 1-cost: Briar](items/TFT17_ChampionItem_Chosen_Briar_2star.md)
+- [1-cost: Caitlyn](items/TFT17_ChampionItem_Chosen_Caitlyn.md)
+- [2-star 1-cost: Caitlyn](items/TFT17_ChampionItem_Chosen_Caitlyn_2star.md)
+- [1-cost: Cho'Gath](items/TFT17_ChampionItem_Chosen_Chogath.md)
+- [2-star 1-cost: Cho'Gath](items/TFT17_ChampionItem_Chosen_Chogath_2star.md)
+- [4-cost: Corki](items/TFT17_ChampionItem_Chosen_Corki.md)
+- [3-cost: Diana](items/TFT17_ChampionItem_Chosen_Diana.md)
+- [1-cost: Ezreal](items/TFT17_ChampionItem_Chosen_Ezreal.md)
+- [2-star 1-cost: Ezreal](items/TFT17_ChampionItem_Chosen_Ezreal_2star.md)
+- [5-cost: Fiora](items/TFT17_ChampionItem_Chosen_Fiora.md)
+- [3-cost: Fizz](items/TFT17_ChampionItem_Chosen_Fizz.md)
+- [4-cost: The Mighty Mech](items/TFT17_ChampionItem_Chosen_Galio.md)
+- [2-cost: Gnar](items/TFT17_ChampionItem_Chosen_Gnar.md)
+- [2-cost: Gragas](items/TFT17_ChampionItem_Chosen_Gragas.md)
+- [5-cost: Graves](items/TFT17_ChampionItem_Chosen_Graves.md)
+- [2-cost: Gwen](items/TFT17_ChampionItem_Chosen_Gwen.md)
+- [3-cost: Illaoi](items/TFT17_ChampionItem_Chosen_Illaoi.md)
+- [2-cost: Meepsie](items/TFT17_ChampionItem_Chosen_IvernMinion.md)
+- [2-cost: Jax](items/TFT17_ChampionItem_Chosen_Jax.md)
+- [5-cost: Jhin](items/TFT17_ChampionItem_Chosen_Jhin.md)
+- [2-cost: Jinx](items/TFT17_ChampionItem_Chosen_Jinx.md)
+- [3-cost: Kai'Sa](items/TFT17_ChampionItem_Chosen_Kaisa.md)
+- [4-cost: Karma](items/TFT17_ChampionItem_Chosen_Karma.md)
+- [4-cost: Kindred](items/TFT17_ChampionItem_Chosen_Kindred.md)
+- [4-cost: LeBlanc](items/TFT17_ChampionItem_Chosen_Leblanc.md)
+- [1-cost: Leona](items/TFT17_ChampionItem_Chosen_Leona.md)
+- [2-star 1-cost: Leona](items/TFT17_ChampionItem_Chosen_Leona_2star.md)
+- [1-cost: Lissandra](items/TFT17_ChampionItem_Chosen_Lissandra.md)
+- [2-star 1-cost: Lissandra](items/TFT17_ChampionItem_Chosen_Lissandra_2star.md)
+- [3-cost: Lulu](items/TFT17_ChampionItem_Chosen_Lulu.md)
+- [3-cost: Maokai](items/TFT17_ChampionItem_Chosen_Maokai.md)
+- [4-cost: Master Yi](items/TFT17_ChampionItem_Chosen_MasterYi.md)
+- [2-cost: Milio](items/TFT17_ChampionItem_Chosen_Milio.md)
+- [3-cost: Miss Fortune](items/TFT17_ChampionItem_Chosen_MissFortune.md)
+- [2-cost: Mordekaiser](items/TFT17_ChampionItem_Chosen_Mordekaiser.md)
+- [4-cost: Morgana](items/TFT17_ChampionItem_Chosen_Morgana.md)
+- [4-cost: Nami](items/TFT17_ChampionItem_Chosen_Nami.md)
+- [1-cost: Nasus](items/TFT17_ChampionItem_Chosen_Nasus.md)
+- [2-star 1-cost: Nasus](items/TFT17_ChampionItem_Chosen_Nasus_2star.md)
+- [4-cost: Nunu](items/TFT17_ChampionItem_Chosen_Nunu.md)
+- [3-cost: Ornn](items/TFT17_ChampionItem_Chosen_Ornn.md)
+- [2-cost: Pantheon](items/TFT17_ChampionItem_Chosen_Pantheon.md)
+- [1-cost: Poppy](items/TFT17_ChampionItem_Chosen_Poppy.md)
+- [2-star 1-cost: Poppy](items/TFT17_ChampionItem_Chosen_Poppy_2star.md)
+- [2-cost: Pyke](items/TFT17_ChampionItem_Chosen_Pyke.md)
+- [4-cost: Rammus](items/TFT17_ChampionItem_Chosen_Rammus.md)
+- [1-cost: Rek'Sai](items/TFT17_ChampionItem_Chosen_Reksai.md)
+- [2-star 1-cost: Rek'Sai](items/TFT17_ChampionItem_Chosen_Reksai_2star.md)
+- [3-cost: Rhaast](items/TFT17_ChampionItem_Chosen_Rhaast.md)
+- [4-cost: Riven](items/TFT17_ChampionItem_Chosen_Riven.md)
+- [3-cost: Samira](items/TFT17_ChampionItem_Chosen_Samira.md)
+- [5-cost: Shen](items/TFT17_ChampionItem_Chosen_Shen.md)
+- [5-cost: Sona](items/TFT17_ChampionItem_Chosen_Sona.md)
+- [4-cost: Tahm Kench](items/TFT17_ChampionItem_Chosen_TahmKench.md)
+- [1-cost: Talon](items/TFT17_ChampionItem_Chosen_Talon.md)
+- [2-star 1-cost Talon](items/TFT17_ChampionItem_Chosen_Talon_2star.md)
+- [1-cost: Teemo](items/TFT17_ChampionItem_Chosen_Teemo.md)
+- [2-star 1-cost: Teemo](items/TFT17_ChampionItem_Chosen_Teemo_2star.md)
+- [1-cost: Twisted Fate](items/TFT17_ChampionItem_Chosen_TwistedFate.md)
+- [2-star 1-cost: Twisted Fate](items/TFT17_ChampionItem_Chosen_TwistedFate_2star.md)
+- [3-cost: Urgot](items/TFT17_ChampionItem_Chosen_Urgot.md)
+- [1-cost: Veigar](items/TFT17_ChampionItem_Chosen_Veigar.md)
+- [2-star 1-cost: Veigar](items/TFT17_ChampionItem_Chosen_Veigar_2star.md)
+- [5-cost: Vex](items/TFT17_ChampionItem_Chosen_Vex.md)
+- [3-cost: Viktor](items/TFT17_ChampionItem_Chosen_Viktor.md)
+- [4-cost: Xayah](items/TFT17_ChampionItem_Chosen_Xayah.md)
+- [5-cost: Zed](items/TFT17_ChampionItem_Chosen_Zed.md)
+- [2-cost: Zoe](items/TFT17_ChampionItem_Chosen_Zoe.md)
+- [1-star Fiora](items/TFT17_ChampionItem_Fiora.md)
+- [2-star Fiora](items/TFT17_ChampionItem_Fiora_2Star.md)
+- [3-star Fiora](items/TFT17_ChampionItem_Fiora_3Star.md)
+- [1-star Illaoi](items/TFT17_ChampionItem_Illaoi.md)
+- [2-star Illaoi](items/TFT17_ChampionItem_Illaoi_2Star.md)
+- [3-star Illaoi](items/TFT17_ChampionItem_Illaoi_3Star.md)
+- [1-star Jinx](items/TFT17_ChampionItem_Jinx.md)
+- [2-star Jinx](items/TFT17_ChampionItem_Jinx_2Star.md)
+- [3-star Jinx](items/TFT17_ChampionItem_Jinx_3Star.md)
+- [Hunger For Power Anomaly](items/TFT17_Consumable_Anomaly_HungerForPower.md)
+- [Blessing: Prosperity](items/TFT17_Consumable_BlessingProsperity.md)
+- [Blessing: Prosperity +](items/TFT17_Consumable_BlessingProsperityPlus.md)
+- [Blessing: Wealth](items/TFT17_Consumable_BlessingWealth.md)
+- [Mecha-Former](items/TFT17_Consumable_MechaTransformer.md)
+- [Striker Selector](items/TFT17_DRXSelector.md)
+- [Anomaly](items/TFT17_EkkoOffering_AnomalyItem.md)
+- [](items/TFT17_FavoredCause_CombatStartRerolled.md)
+- [](items/TFT17_FavoredCause_DealDamage.md)
+- [](items/TFT17_FavoredCause_EveryInterest.md)
+- [](items/TFT17_FavoredCause_EveryXAttacks.md)
+- [](items/TFT17_FavoredCause_EveryXSeconds.md)
+- [](items/TFT17_FavoredCause_FallBelowXHealth.md)
+- [](items/TFT17_FavoredCause_SpendMana.md)
+- [](items/TFT17_FavoredCause_StarLevels.md)
+- [](items/TFT17_FavoredCause_Takedown.md)
+- [](items/TFT17_FavoredEffect_GainLeona.md)
+- [](items/TFT17_FavoredEffect_GainMana.md)
+- [](items/TFT17_FavoredEffect_GainShield.md)
+- [](items/TFT17_FavoredEffect_GainsAbilityPower.md)
+- [](items/TFT17_FavoredEffect_GainsArmor.md)
+- [](items/TFT17_FavoredEffect_GainsAttackSpeed.md)
+- [](items/TFT17_FavoredEffect_GainsPermanentMaxHealth.md)
+- [](items/TFT17_FavoredEffect_GenerateGold.md)
+- [](items/TFT17_FavoredEffect_GenerateReroll.md)
+- [Reinforced Frame](items/TFT17_GravesTrait_FrameDefense.md)
+- [Assault Frame](items/TFT17_GravesTrait_FrameOffense.md)
+- [Support Frame](items/TFT17_GravesTrait_FrameSupport.md)
+- [AP Rounds](items/TFT17_GravesTrait_Offense_APRounds.md)
+- [AP Rounds+](items/TFT17_GravesTrait_Offense_APRounds2.md)
+- [Aim-Assistant](items/TFT17_GravesTrait_Offense_AimAssistant.md)
+- [Tune-Up](items/TFT17_GravesTrait_Offense_Backup.md)
+- [Blast Radius](items/TFT17_GravesTrait_Offense_BlastRadius.md)
+- [Blast Radius+](items/TFT17_GravesTrait_Offense_BlastRadius2.md)
+- [Blast Radius++](items/TFT17_GravesTrait_Offense_BlastRadius3.md)
+- [Buckshot](items/TFT17_GravesTrait_Offense_Buckshot.md)
+- [Buckshot+](items/TFT17_GravesTrait_Offense_Buckshot2.md)
+- [Buckshot++](items/TFT17_GravesTrait_Offense_Buckshot3.md)
+- [Choke](items/TFT17_GravesTrait_Offense_Choke.md)
+- [Assault Frame](items/TFT17_GravesTrait_Offense_CloseQuarters.md)
+- [Coolant](items/TFT17_GravesTrait_Offense_Coolant.md)
+- [Coolant+](items/TFT17_GravesTrait_Offense_Coolant2.md)
+- [Marksman Frame](items/TFT17_GravesTrait_Offense_DoubleTap.md)
+- [Double Tap](items/TFT17_GravesTrait_Offense_DoubleTap2.md)
+- [Emergency Shielding](items/TFT17_GravesTrait_Offense_EmergencyShielding.md)
+- [Emergency Shielding+](items/TFT17_GravesTrait_Offense_EmergencyShielding2.md)
+- [Fission](items/TFT17_GravesTrait_Offense_Fission.md)
+- [Fission+](items/TFT17_GravesTrait_Offense_Fission2.md)
+- [Fission++](items/TFT17_GravesTrait_Offense_Fission3.md)
+- [Fragmentation Rounds](items/TFT17_GravesTrait_Offense_FragmentationRounds.md)
+- [Fragmentation Rounds+](items/TFT17_GravesTrait_Offense_FragmentationRounds2.md)
+- [Grav Booster](items/TFT17_GravesTrait_Offense_GravBooster.md)
+- [Grav Booster+](items/TFT17_GravesTrait_Offense_GravBooster2.md)
+- [Heartseeker](items/TFT17_GravesTrait_Offense_Heartseeker.md)
+- [Heartseeker+](items/TFT17_GravesTrait_Offense_Heartseeker2.md)
+- [Heartseeker++](items/TFT17_GravesTrait_Offense_Heartseeker3.md)
+- [Heavy Plating](items/TFT17_GravesTrait_Offense_HeavyPlating.md)
+- [Laser Ballistics](items/TFT17_GravesTrait_Offense_LaserBallistics.md)
+- [Laser Ballistics+](items/TFT17_GravesTrait_Offense_LaserBallistics2.md)
+- [LaserBallistics++](items/TFT17_GravesTrait_Offense_LaserBallistics3.md)
+- [Latent Explosion](items/TFT17_GravesTrait_Offense_LatentExplosion.md)
+- [Leeching Implants](items/TFT17_GravesTrait_Offense_LeechingImplants.md)
+- [Leeching Implants+](items/TFT17_GravesTrait_Offense_LeechingImplants2.md)
+- [Meltthrough](items/TFT17_GravesTrait_Offense_Meltthrough.md)
+- [Nanomachines](items/TFT17_GravesTrait_Offense_Nanomachines.md)
+- [Precision Scope](items/TFT17_GravesTrait_Offense_PrecisionScope.md)
+- [Precision Scope+](items/TFT17_GravesTrait_Offense_PrecisionScope2.md)
+- [Precision Scope++](items/TFT17_GravesTrait_Offense_PrecisionScope3.md)
+- [Reactive Armor](items/TFT17_GravesTrait_Offense_ReactiveArmor.md)
+- [Rev-Up](items/TFT17_GravesTrait_Offense_RevUp.md)
+- [Rev-Up+](items/TFT17_GravesTrait_Offense_RevUp2.md)
+- [Ripper Bullets](items/TFT17_GravesTrait_Offense_RipperBullets.md)
+- [Ripper Bullets+](items/TFT17_GravesTrait_Offense_RipperBullets2.md)
+- [Power Frame](items/TFT17_GravesTrait_Offense_SharpshooterModule.md)
+- [Sheer Mass](items/TFT17_GravesTrait_Offense_SheerMass.md)
+- [Shockwave](items/TFT17_GravesTrait_Offense_Shockwave.md)
+- [Sympathetic Detonation](items/TFT17_GravesTrait_Offense_SympatheticDetonation.md)
+- [Tankbuster](items/TFT17_GravesTrait_Offense_Tankbuster.md)
+- [Triple Tap](items/TFT17_GravesTrait_Offense_TripleTap.md)
+- [Void Coefficient](items/TFT17_GravesTrait_Offense_VoidCoefficient.md)
+- [Anima Emblem](items/TFT17_Item_AnimaSquadEmblemItem.md)
+- [Ahri's Aura](items/TFT17_Item_Artifact_AhriArtifact.md)
+- [Evelynn's Instinct](items/TFT17_Item_Artifact_EvelynnArtifact.md)
+- [Kayle's Radiant Exaltation](items/TFT17_Item_Artifact_KayleArtifact_Radiant.md)
+- [Soraka's Miracle](items/TFT17_Item_Artifact_SorakaArtifact.md)
+- [Thresh's Lantern](items/TFT17_Item_Artifact_ThreshLantern.md)
+- [Varus's Obsession](items/TFT17_Item_Artifact_VarusArtifact.md)
+- [Yasuo's Bladework](items/TFT17_Item_Artifact_YasuoArtifact.md)
+- [Zeke's Bleak Herald](items/TFT17_Item_Artifact_ZekesHeraldShadow.md)
+- [Challenger Mode](items/TFT17_Item_MissFortuneUniqueASTraitStance.md)
+- [Replicator Mode](items/TFT17_Item_MissFortuneUniqueFlexTraitStance.md)
+- [Conduit Mode](items/TFT17_Item_MissFortuneUniqueManaTraitStance.md)
+- [Psionic Emblem](items/TFT17_Item_PsyOpsEmblemItem.md)
+- [Malware Matrix](items/TFT17_Item_PsyOps_ChemicalCapacitorMod.md)
+- [Malware Matrix](items/TFT17_Item_PsyOps_ChemicalCapacitorMod_Radiant.md)
+- [Drone Uplink](items/TFT17_Item_PsyOps_DroneMod.md)
+- [Drone Uplink](items/TFT17_Item_PsyOps_DroneMod_Radiant.md)
+- [Biomatter Preserver](items/TFT17_Item_PsyOps_GrenadeMod.md)
+- [Biomatter Preserver](items/TFT17_Item_PsyOps_GrenadeMod_Radiant.md)
+- [Semiconductor](items/TFT17_Item_PsyOps_SemiconductorMod.md)
+- [Semiconductor](items/TFT17_Item_PsyOps_SemiconductorMod_Radiant.md)
+- [Sympathetic Implant](items/TFT17_Item_PsyOps_SympatheticImplantMod.md)
+- [Sympathetic Implant](items/TFT17_Item_PsyOps_SympatheticImplantMod_Radiant.md)
+- [Target-Lock Optics](items/TFT17_Item_PsyOps_TargetlockMod.md)
+- [Target-Lock Optics](items/TFT17_Item_PsyOps_TargetlockMod_Radiant.md)
+- [Sniper Emblem](items/TFT17_Item_RangedTraitEmblemItem.md)
+- [4-cost](items/TFT17_MarketOffering_1star4cost_Eve.md)
+- [2  5-costs](items/TFT17_MarketOffering_1star5cost_Eve.md)
+- [2 Salvagers](items/TFT17_MarketOffering_2Salvagers.md)
+- [2 Tiny Duplicators](items/TFT17_MarketOffering_2TinyDupes.md)
+- [2-star 3-cost](items/TFT17_MarketOffering_2star3cost_Eve.md)
+- [2-star 4-cost](items/TFT17_MarketOffering_2star4cost_Eve.md)
+- [3-star 1-cost](items/TFT17_MarketOffering_3star1cost_Eve.md)
+- [Duplicator Bundle](items/TFT17_MarketOffering_5TinyDupes.md)
+- [@Tier@-Cost Shop](items/TFT17_MarketOffering_AllTierFourShop.md)
+- [@Tier@-Cost Shop](items/TFT17_MarketOffering_AllTierThreeShop.md)
+- [Anomaly](items/TFT17_MarketOffering_Anomaly.md)
+- [Anvil Transformation](items/TFT17_MarketOffering_AnvilTransformation.md)
+- [God Artifact Anvil](items/TFT17_MarketOffering_ArtifactAnvil.md)
+- [Augment Wheel](items/TFT17_MarketOffering_AugmentWheel.md)
+- [Precise Smithing](items/TFT17_MarketOffering_Augment_PreciseSmithing.md)
+- [Starter Kit](items/TFT17_MarketOffering_Augment_StarterKit.md)
+- [Wealth Quest](items/TFT17_MarketOffering_AurelionSol_GoldQuest_Stage2.md)
+- [Level Quest](items/TFT17_MarketOffering_AurelionSol_LevelQuest_Stage4.md)
+- [Low Health Quest](items/TFT17_MarketOffering_AurelionSol_LowHPQuest_Stage4.md)
+- [Reroll Quest](items/TFT17_MarketOffering_AurelionSol_RerollQuest_Stage4.md)
+- [Starry Quest](items/TFT17_MarketOffering_AurelionSol_StarQuest_Stage3.md)
+- [Trait Quest](items/TFT17_MarketOffering_AurelionSol_TraitQuest_Stage2.md)
+- [Blood Pact](items/TFT17_MarketOffering_BloodPact.md)
+- [Blood Pact +](items/TFT17_MarketOffering_BloodPactPlus.md)
+- [Blood Pact ++](items/TFT17_MarketOffering_BloodPactPlusPlus.md)
+- [Blue Loot Orb](items/TFT17_MarketOffering_BlueOrb.md)
+- [Blue Loot Orb and 2 Gold](items/TFT17_MarketOffering_BlueOrb_2Gold.md)
+- [Cashflow](items/TFT17_MarketOffering_Cashflow.md)
+- [Combat Hack](items/TFT17_MarketOffering_CategoryHack_Combat.md)
+- [2 Salvagers](items/TFT17_MarketOffering_Chosen_1Cost.md)
+- [2 Salvagers](items/TFT17_MarketOffering_Chosen_2Cost.md)
+- [2 Salvagers](items/TFT17_MarketOffering_Chosen_3Cost.md)
+- [2 Salvagers](items/TFT17_MarketOffering_Chosen_4Cost.md)
+- [2 Salvagers](items/TFT17_MarketOffering_Chosen_5Cost.md)
+- [Completed Item Anvil](items/TFT17_MarketOffering_CompletedAnvil.md)
+- [Component Anvil](items/TFT17_MarketOffering_ComponentAnvil.md)
+- [Craftsmanship](items/TFT17_MarketOffering_Craftsmanship.md)
+- [@Cost_TOOLTIPONLY@-cost champion](items/TFT17_MarketOffering_Delayed4Cost.md)
+- [@NumUnits_TOOLTIPONLY@ @Cost_TOOLTIPONLY@-cost champions.](items/TFT17_MarketOffering_Delayed5Cost.md)
+- [5-cost shop](items/TFT17_MarketOffering_Delayed5CostShop.md)
+- [Completed Item Anvil](items/TFT17_MarketOffering_DelayedCompletedAnvil.md)
+- [Component Anvil](items/TFT17_MarketOffering_DelayedComponentAnvil.md)
+- [Artifact Item](items/TFT17_MarketOffering_DelayedRandomArtifact.md)
+- [Artifact Item](items/TFT17_MarketOffering_DelayedRandomArtifact_Stage4.md)
+- [Divine Empathy](items/TFT17_MarketOffering_DivineEmpathy.md)
+- [Divine Refund](items/TFT17_MarketOffering_DivineRefund.md)
+- [Frontline Dummy](items/TFT17_MarketOffering_Dummy_Evelynn.md)
+- [Armored Dummy](items/TFT17_MarketOffering_Dummy_Kayle.md)
+- [Storm Hex](items/TFT17_MarketOffering_EmpoweredHex_Electric.md)
+- [Solar Hex](items/TFT17_MarketOffering_EmpoweredHex_Fire.md)
+- [Golden Hex](items/TFT17_MarketOffering_EmpoweredHex_Golden.md)
+- [Cryogenic Hex](items/TFT17_MarketOffering_EmpoweredHex_Ice.md)
+- [Starlight Hex](items/TFT17_MarketOffering_EmpoweredHex_Socialite.md)
+- [TFT17_MarketOffering_EmpoweredHex_SunHex](items/TFT17_MarketOffering_EmpoweredHex_Sun.md)
+- [Acceleration Hex](items/TFT17_MarketOffering_EmpoweredHex_Wind.md)
+- [Cosmic Hex](items/TFT17_MarketOffering_EmpoweredHex_Wood.md)
+- [Ephemeral Rerolls](items/TFT17_MarketOffering_EphemeralRerolls.md)
+- [Augment Rerolls](items/TFT17_MarketOffering_ExtraAugmentRolls.md)
+- [Augment Rerolls](items/TFT17_MarketOffering_ExtraAugmentRollsPlus.md)
+- [Finalist Gambit](items/TFT17_MarketOffering_FinalistGambit.md)
+- [5-cost champion](items/TFT17_MarketOffering_FiveCostChampion.md)
+- [4-cost champion](items/TFT17_MarketOffering_FourCostChampion.md)
+- [Owned @Tier@ cost](items/TFT17_MarketOffering_FourCostChampion_Owned.md)
+- [4-cost](items/TFT17_MarketOffering_FourCostChampion_PlusGold.md)
+- [Gold Augment](items/TFT17_MarketOffering_GoldAugment.md)
+- [Gold Loot Orb](items/TFT17_MarketOffering_GoldOrb.md)
+- [Gold Every Turn](items/TFT17_MarketOffering_GoldPerTurn_Stage3.md)
+- [2 gold](items/TFT17_MarketOffering_Gold_2.md)
+- [25 gold](items/TFT17_MarketOffering_Gold_25.md)
+- [2 gold](items/TFT17_MarketOffering_Gold_2_Reforger.md)
+- [3 gold](items/TFT17_MarketOffering_Gold_3.md)
+- [3 gold](items/TFT17_MarketOffering_Gold_3_Reforger.md)
+- [4 gold](items/TFT17_MarketOffering_Gold_4.md)
+- [4 gold](items/TFT17_MarketOffering_Gold_4_Reforger.md)
+- [4 gold](items/TFT17_MarketOffering_Gold_4_Remover.md)
+- [5 gold](items/TFT17_MarketOffering_Gold_5_Reforger.md)
+- [@Gold@ gold](items/TFT17_MarketOffering_Gold_Stage2.md)
+- [@Gold@ gold](items/TFT17_MarketOffering_Gold_Stage3.md)
+- [@Gold@ gold](items/TFT17_MarketOffering_Gold_Stage3_Eve.md)
+- [@Gold@ gold](items/TFT17_MarketOffering_Gold_Stage4.md)
+- [@Gold@ gold](items/TFT17_MarketOffering_Gold_Stage4_Eve.md)
+- [Gray Loot Orb](items/TFT17_MarketOffering_GrayOrb.md)
+- [Better Together](items/TFT17_MarketOffering_GroupHug.md)
+- [Better Together +](items/TFT17_MarketOffering_GroupHugPlus.md)
+- [Hard Pivot](items/TFT17_MarketOffering_HardPivot.md)
+- [@Health@ Tactician Health](items/TFT17_MarketOffering_Health.md)
+- [Humility](items/TFT17_MarketOffering_Humility.md)
+- [@PercentIncrease@% Increased 5-Cost Odds](items/TFT17_MarketOffering_IncreasedFiveCostOdds.md)
+- [@PercentIncrease@% Increased 5-Cost Odds](items/TFT17_MarketOffering_IncreasedFiveCostOdds_Large.md)
+- [Increased Interest](items/TFT17_MarketOffering_IncreasedInterest.md)
+- [Lesser Champion Duplicator](items/TFT17_MarketOffering_LesserDupe_Varus.md)
+- [Lesser Champion Duplicator](items/TFT17_MarketOffering_LesserDupe_Varus_Stage4.md)
+- [The Lovers](items/TFT17_MarketOffering_Lovers.md)
+- [Lovers +](items/TFT17_MarketOffering_LoversPlus.md)
+- [Lovers ++](items/TFT17_MarketOffering_LoversPlusPlus.md)
+- [Divine Investment](items/TFT17_MarketOffering_MaxInterest_Stage2.md)
+- [Divine Investment](items/TFT17_MarketOffering_MaxInterest_Stage3.md)
+- [Scuttle Party](items/TFT17_MarketOffering_NextPVEScuttle.md)
+- [2 1-cost champions](items/TFT17_MarketOffering_OneCostChampion_2.md)
+- [Two 3-star 1-cost Champions](items/TFT17_MarketOffering_OneCostChampion_ThreeStar.md)
+- [Pandora's Seat](items/TFT17_MarketOffering_PandorasSeat.md)
+- [Super Parting Gift](items/TFT17_MarketOffering_PenguPairs.md)
+- [Prismatic Augment](items/TFT17_MarketOffering_PrismaticAugment.md)
+- [Rainbow Shops](items/TFT17_MarketOffering_RainbowShops.md)
+- [Random Boon](items/TFT17_MarketOffering_RandomBoon_Stage2.md)
+- [Random Boon](items/TFT17_MarketOffering_RandomBoon_Stage3.md)
+- [Random Boon](items/TFT17_MarketOffering_RandomBoon_Stage4.md)
+- [Completed Item](items/TFT17_MarketOffering_RandomCompleted_Eve.md)
+- [Random Component](items/TFT17_MarketOffering_RandomComponent.md)
+- [Random Emblem](items/TFT17_MarketOffering_RandomEmblem.md)
+- [Mystery Loot](items/TFT17_MarketOffering_RandomLoot_Stage2.md)
+- [Mystery Loot](items/TFT17_MarketOffering_RandomLoot_Stage3.md)
+- [Mystery Loot](items/TFT17_MarketOffering_RandomLoot_Stage4.md)
+- [Mini Recombobulate](items/TFT17_MarketOffering_Recombobulator_Stage2.md)
+- [16 free rerolls](items/TFT17_MarketOffering_Rerolls_16.md)
+- [@Rerolls@ free rerolls](items/TFT17_MarketOffering_Rerolls_Large.md)
+- [@Rerolls@ free rerolls](items/TFT17_MarketOffering_Rerolls_Large_Stage4.md)
+- [@Rerolls@ free rerolls](items/TFT17_MarketOffering_Rerolls_Small.md)
+- [@Rerolls@ free rerolls](items/TFT17_MarketOffering_Rerolls_Small_Stage2.md)
+- [Roll the Bones](items/TFT17_MarketOffering_RollTheBones.md)
+- [Sacrifice](items/TFT17_MarketOffering_Sacrifice.md)
+- [Mystery Loot](items/TFT17_MarketOffering_Sampler.md)
+- [Shared Wealth](items/TFT17_MarketOffering_SharedWealth_Stage2.md)
+- [Shared Wealth +](items/TFT17_MarketOffering_SharedWealth_Stage3.md)
+- [Shared Wealth +](items/TFT17_MarketOffering_SharedWealth_Stage4.md)
+- [Silver Augment](items/TFT17_MarketOffering_SilverAugment.md)
+- [Soraka's Embrace](items/TFT17_MarketOffering_SorakasEmbrace.md)
+- [Spatula](items/TFT17_MarketOffering_Spatula.md)
+- [Chest of Greed](items/TFT17_MarketOffering_SplitGold_Stage2.md)
+- [Chest of Greed](items/TFT17_MarketOffering_SplitGold_Stage3.md)
+- [Chest of Greed](items/TFT17_MarketOffering_SplitGold_Stage4.md)
+- [Starcrossed Upgrade](items/TFT17_MarketOffering_Starlight.md)
+- [Starcrossed Upgrade](items/TFT17_MarketOffering_StarlightPlus.md)
+- [Starcrossed Upgrade ++](items/TFT17_MarketOffering_StarlightPlusPlus.md)
+- [Steamroll](items/TFT17_MarketOffering_Steamroll.md)
+- [Steamroll+](items/TFT17_MarketOffering_SteamrollPlus.md)
+- [Divine Intervention](items/TFT17_MarketOffering_Stimmy.md)
+- [3-cost champion](items/TFT17_MarketOffering_ThreeCostChampion.md)
+- [Owned @Tier@ cost](items/TFT17_MarketOffering_ThreeCostChampion_Owned.md)
+- [Tome of Traits](items/TFT17_MarketOffering_TomeOfTraits.md)
+- [Treasure Armory](items/TFT17_MarketOffering_TreasureArmory.md)
+- [2-cost champion](items/TFT17_MarketOffering_TwoCostChampion.md)
+- [Two 3-star 2-cost Champions](items/TFT17_MarketOffering_TwoCostChampion_ThreeStar.md)
+- [2-star 2-cost](items/TFT17_MarketOffering_TwoCostChampion_TwoStar.md)
+- [14 XP](items/TFT17_MarketOffering_XP_14.md)
+- [16 XP](items/TFT17_MarketOffering_XP_16_Stage1.md)
+- [@XP@ XP.](items/TFT17_MarketOffering_XP_Large.md)
+- [@XP@ XP.](items/TFT17_MarketOffering_XP_Medium_Stage3.md)
+- [@XP@ XP.](items/TFT17_MarketOffering_XP_Small.md)
+- [Command Mod: Exhaust](items/TFT17_SonaUnique_Consumable_Debuff.md)
+- [Command Mod: Doublestrike](items/TFT17_SonaUnique_Consumable_Doublestrike.md)
+- [Command Mod: Analyze](items/TFT17_SonaUnique_Consumable_Experience.md)
+- [Command Mod: Brace](items/TFT17_SonaUnique_Consumable_Freeze.md)
+- [Command Mod: Transmute](items/TFT17_SonaUnique_Consumable_GoldOnKill.md)
+- [Command Mod: Disrupt](items/TFT17_SonaUnique_Consumable_IncreaseThreat.md)
+- [Command Mod: Optimize](items/TFT17_SonaUnique_Consumable_ReduceMana.md)
+- [Command Mod: Disguise](items/TFT17_SonaUnique_Consumable_ReduceThreat.md)
+- [Command Mod: Fabricate](items/TFT17_SonaUnique_Consumable_TempItem.md)
+- [Death's Defiance](items/TFT4_Item_OrnnDeathsDefiance.md)
+- [Eternal Winter](items/TFT4_Item_OrnnEternalWinter.md)
+- [Infinity Force](items/TFT4_Item_OrnnInfinityForce.md)
+- [Manazane](items/TFT4_Item_OrnnMuramana.md)
+- [Obsidian Cleaver](items/TFT4_Item_OrnnObsidianCleaver.md)
+- [Randuin's Omen](items/TFT4_Item_OrnnRanduinsSanctum.md)
+- [Gold Collector](items/TFT4_Item_OrnnTheCollector.md)
+- [Zhonya's Paradox](items/TFT4_Item_OrnnZhonyasParadox.md)
+- [Radiant Adaptive Helm](items/TFT5_Item_AdaptiveHelmRadiant.md)
+- [Radiant Archangel's Staff](items/TFT5_Item_ArchangelsStaffRadiant.md)
+- [Radiant Bloodthirster](items/TFT5_Item_BloodthirsterRadiant.md)
+- [Radiant Blue Buff](items/TFT5_Item_BlueBuffRadiant.md)
+- [Radiant Bramble Vest](items/TFT5_Item_BrambleVestRadiant.md)
+- [Radiant Crownguard](items/TFT5_Item_CrownguardRadiant.md)
+- [Radiant Deathblade](items/TFT5_Item_DeathbladeRadiant.md)
+- [Radiant Dragon's Claw](items/TFT5_Item_DragonsClawRadiant.md)
+- [Radiant Protector's Vow](items/TFT5_Item_FrozenHeartRadiant.md)
+- [Radiant Gargoyle Stoneplate](items/TFT5_Item_GargoyleStoneplateRadiant.md)
+- [Radiant Giant Slayer](items/TFT5_Item_GiantSlayerRadiant.md)
+- [Radiant Edge of Night](items/TFT5_Item_GuardianAngelRadiant.md)
+- [Radiant Guinsoo's Rageblade](items/TFT5_Item_GuinsoosRagebladeRadiant.md)
+- [Radiant Hand of Justice](items/TFT5_Item_HandOfJusticeRadiant.md)
+- [Radiant Hextech Gunblade](items/TFT5_Item_HextechGunbladeRadiant.md)
+- [Radiant Infinity Edge](items/TFT5_Item_InfinityEdgeRadiant.md)
+- [Radiant Ionic Spark](items/TFT5_Item_IonicSparkRadiant.md)
+- [Radiant Jeweled Gauntlet](items/TFT5_Item_JeweledGauntletRadiant.md)
+- [Radiant Last Whisper](items/TFT5_Item_LastWhisperRadiant.md)
+- [Radiant Nashor's Tooth](items/TFT5_Item_LeviathanRadiant.md)
+- [Radiant Morellonomicon](items/TFT5_Item_MorellonomiconRadiant.md)
+- [Radiant Steadfast Heart](items/TFT5_Item_NightHarvesterRadiant.md)
+- [Radiant Quicksilver](items/TFT5_Item_QuicksilverRadiant.md)
+- [Radiant Rabadon's Deathcap](items/TFT5_Item_RabadonsDeathcapRadiant.md)
+- [Radiant Red Buff](items/TFT5_Item_RapidFirecannonRadiant.md)
+- [Radiant Spirit Visage](items/TFT5_Item_RedemptionRadiant.md)
+- [Radiant Kraken's Fury](items/TFT5_Item_RunaansHurricaneRadiant.md)
+- [Radiant Spear of Shojin](items/TFT5_Item_SpearOfShojinRadiant.md)
+- [Radiant Evenshroud](items/TFT5_Item_SpectralGauntletRadiant.md)
+- [Radiant Void Staff](items/TFT5_Item_StatikkShivRadiant.md)
+- [Radiant Sterak's Gage](items/TFT5_Item_SteraksGageRadiant.md)
+- [Radiant Sunfire Cape](items/TFT5_Item_SunfireCapeRadiant.md)
+- [Radiant Thief's Gloves](items/TFT5_Item_ThiefsGlovesRadiant.md)
+- [Radiant Titan's Resolve](items/TFT5_Item_TitansResolveRadiant.md)
+- [Radiant Striker's Flail](items/TFT5_Item_TrapClawRadiant.md)
+- [Radiant Warmog's Armor](items/TFT5_Item_WarmogsArmorRadiant.md)
+- [Zz'Rot Portal](items/TFT5_Item_ZzRotPortalRadiant.md)
+- [](items/TFT6_Augment_FourScore.md)
+- [Determined Investor](items/TFT7_Item_ShimmerscaleDeterminedInvestor.md)
+- [Diamond Hands](items/TFT7_Item_ShimmerscaleDiamondHands.md)
+- [Gambler's Blade](items/TFT7_Item_ShimmerscaleGamblersBlade.md)
+- [Gambler's Blade](items/TFT7_Item_ShimmerscaleGamblersBlade_HR.md)
+- [Needlessly Big Gem](items/TFT7_Item_ShimmerscaleHeartOfGold.md)
+- [Needlessly Big Gem](items/TFT7_Item_ShimmerscaleHeartOfGold_HR.md)
+- [Mogul's Mail](items/TFT7_Item_ShimmerscaleMogulsMail.md)
+- [Mogul's Mail](items/TFT7_Item_ShimmerscaleMogulsMail_HR.md)
+- [](items/TFT7_Item_TreasureDragonBlankSlot.md)
+- [Golden Item Remover](items/TFT9_Consumable_GoldenItemRemover.md)
+- [Crown of Demacia](items/TFT9_Item_CrownOfDemacia.md)
+- [Deathfire Grasp](items/TFT9_Item_OrnnDeathfireGrasp.md)
+- [Sniper's Focus](items/TFT9_Item_OrnnHorizonFocus.md)
+- [Hullcrusher](items/TFT9_Item_OrnnHullbreaker.md)
+- [Blacksmith's Gloves](items/TFT9_Item_OrnnPrototypeForge.md)
+- [Trickster's Glass](items/TFT9_Item_OrnnTrickstersGlass.md)
+- [2-cost champion](items/TFT_Assist_1x2cost.md)
+- [2-star 2-cost champion](items/TFT_Assist_1x2star2cost.md)
+- [2-star 3-cost champion](items/TFT_Assist_1x2star3cost.md)
+- [2-star 4-cost champion](items/TFT_Assist_1x2star4cost.md)
+- [2-star 5-cost champion](items/TFT_Assist_1x2star5cost.md)
+- [3-cost champion](items/TFT_Assist_1x3cost.md)
+- [3-star 5-cost champion](items/TFT_Assist_1x3star5cost.md)
+- [1-star 4-cost champion](items/TFT_Assist_1x4cost.md)
+- [1-star 5-cost champion](items/TFT_Assist_1x5cost.md)
+- [2 2-star 2-cost champions](items/TFT_Assist_2x2star2cost.md)
+- [2 3-cost champions](items/TFT_Assist_2x3cost.md)
+- [2 4-cost champions](items/TFT_Assist_2x4cost.md)
+- [2 5-cost champions](items/TFT_Assist_2x5cost.md)
+- [3 2-cost champions](items/TFT_Assist_3x2cost.md)
+- [3 3-cost champions](items/TFT_Assist_3x3cost.md)
+- [3 4-cost champions](items/TFT_Assist_3x4cost.md)
+- [3 5-cost champions](items/TFT_Assist_3x5cost.md)
+- [4 2-cost champions](items/TFT_Assist_4x2cost.md)
+- [4 5-cost champions](items/TFT_Assist_4x5cost.md)
+- [5 1-cost champions](items/TFT_Assist_5x1cost.md)
+- [5 4-cost champions](items/TFT_Assist_5x4cost.md)
+- [6 5-cost champions](items/TFT_Assist_6x5cost.md)
+- [7 5-cost champions](items/TFT_Assist_7x5cost.md)
+- [All double component items](items/TFT_Assist_AllDoubleNonSpatItems.md)
+- [2 Champion Duplicators](items/TFT_Assist_ChampionDuplicator_2.md)
+- [2 Deathblades](items/TFT_Assist_Deathblade_2.md)
+- [Dummy with 2 Lockets](items/TFT_Assist_Dummy_2xLocked.md)
+- [Dummy with 2 Zeke's](items/TFT_Assist_Dummy_2xZekes.md)
+- [Dummy with Shroud](items/TFT_Assist_Dummy_Shroud.md)
+- [1 gold](items/TFT_Assist_Gold_1.md)
+- [10 gold](items/TFT_Assist_Gold_10.md)
+- [12 gold](items/TFT_Assist_Gold_12.md)
+- [15 gold](items/TFT_Assist_Gold_15.md)
+- [16 gold](items/TFT_Assist_Gold_16.md)
+- [2 gold](items/TFT_Assist_Gold_2.md)
+- [20 gold](items/TFT_Assist_Gold_20.md)
+- [25 gold](items/TFT_Assist_Gold_25.md)
+- [3 gold](items/TFT_Assist_Gold_3.md)
+- [30 gold](items/TFT_Assist_Gold_30.md)
+- [34 gold](items/TFT_Assist_Gold_34.md)
+- [4 gold](items/TFT_Assist_Gold_4.md)
+- [40 gold](items/TFT_Assist_Gold_40.md)
+- [5 gold](items/TFT_Assist_Gold_5.md)
+- [55 gold](items/TFT_Assist_Gold_55.md)
+- [6 gold](items/TFT_Assist_Gold_6.md)
+- [7 Gold](items/TFT_Assist_Gold_7.md)
+- [8 gold](items/TFT_Assist_Gold_8.md)
+- [9 gold](items/TFT_Assist_Gold_9.md)
+- [Golem with 2 Aegises.](items/TFT_Assist_Golem_2xAegis.md)
+- [Completed Item Anvil](items/TFT_Assist_ItemArmoryCompleted.md)
+- [Component Anvil](items/TFT_Assist_ItemArmoryComponent.md)
+- [Artifact Anvil](items/TFT_Assist_ItemArmoryOrnn.md)
+- [Support Anvil](items/TFT_Assist_ItemArmorySupport.md)
+- [3 Lesser Champion Duplicators](items/TFT_Assist_LesserDuplicator_3.md)
+- [6 Lesser Champion Duplicators](items/TFT_Assist_LesserDuplicator_6.md)
+- [3 Masterwork Upgrades](items/TFT_Assist_MasterworkUpgrade_3.md)
+- [Completed Item](items/TFT_Assist_RandomCompletedItem.md)
+- [Random Component](items/TFT_Assist_RandomComponent.md)
+- [2 Components](items/TFT_Assist_RandomComponent_2.md)
+- [4 components](items/TFT_Assist_RandomComponent_4.md)
+- [9 components](items/TFT_Assist_RandomComponent_9.md)
+- [Artifact Item](items/TFT_Assist_RandomOrnnItem.md)
+- [Radiant Item](items/TFT_Assist_RandomRadiantItem.md)
+- [2 Radiant Items](items/TFT_Assist_RandomRadiantItem_2.md)
+- [3 Radiant Items](items/TFT_Assist_RandomRadiantItem_3.md)
+- [2 Reforgers](items/TFT_Assist_Reforger_2.md)
+- [2 Item Removers](items/TFT_Assist_Remover_2.md)
+- [3 Spatulas](items/TFT_Assist_Spatula_3.md)
+- [2 Tacticians' Capes](items/TFT_Assist_TacticiansCape_2.md)
+- [Changing Glamour](items/TFT_Augment_Changeling_GlamourItemTier1.md)
+- [Changing Glamour](items/TFT_Augment_Changeling_GlamourItemTier2.md)
+- [Changing Glamour](items/TFT_Augment_Changeling_GlamourItemTier3.md)
+- [Changing Glamour](items/TFT_Augment_Changeling_GlamourItemTier4.md)
+- [Changing Glamour](items/TFT_Augment_Changeling_GlamourItemTier5.md)
+- [All Done<br><tftitemrules>Stop transforming, and allow me to star up</tftitemrules>](items/TFT_Augment_GrowingUp_SkipOption.md)
+- [Tiny Champion Duplicator](items/TFT_Consumable_ChampionDuplicator_I.md)
+- [Lesser Champion Duplicator](items/TFT_Consumable_ChampionDuplicator_III.md)
+- [Magnetic Remover](items/TFT_Consumable_ItemRemover.md)
+- [Magnetic Remover <rules>(10 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft10.md)
+- [Magnetic Remover <rules>(2 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft2.md)
+- [Magnetic Remover <rules>(3 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft3.md)
+- [Magnetic Remover <rules>(4 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft4.md)
+- [Magnetic Remover <rules>(5 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft5.md)
+- [Magnetic Remover <rules>(6 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft6.md)
+- [Magnetic Remover <rules>(7 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft7.md)
+- [Magnetic Remover <rules>(8 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft8.md)
+- [Magnetic Remover <rules>(9 uses left!)</rules>](items/TFT_Consumable_ItemRemover_UsesLeft9.md)
+- [Reforger](items/TFT_Consumable_ItemReroller.md)
+- [Reforger <rules>(10 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft10.md)
+- [Reforger <rules>(2 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft2.md)
+- [Reforger <rules>(3 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft3.md)
+- [Reforger <rules>(4 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft4.md)
+- [Reforger <rules>(5 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft5.md)
+- [Reforger <rules>(6 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft6.md)
+- [Reforger <rules>(7 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft7.md)
+- [Reforger <rules>(8 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft8.md)
+- [Reforger <rules>(9 uses left!)</rules>](items/TFT_Consumable_ItemReroller_UsesLeft9.md)
+- [Masterwork Upgrade](items/TFT_Consumable_MasterworkUpgrade.md)
+- [Champion Duplicator](items/TFT_Consumable_NeekosHelp.md)
+- [Pocket Recombobulator<br><br>](items/TFT_Consumable_PocketRecombobulator.md)
+- [Lucky Item Chest](items/TFT_Consumable_RecommendedArmory.md)
+- [Radiant Lucky Item Chest](items/TFT_Consumable_RecommendedArmoryRadiant.md)
+- [Loaded Dice](items/TFT_Consumable_ShopReroller.md)
+- [Training Dummy](items/TFT_Consumable_TrainingDummy.md)
+- [Reforger](items/TFT_Consumable_TrashToTreasure_Reforger.md)
+- [Aegis of the Legion](items/TFT_Item_AegisOfTheLegion.md)
+- [Aegis of Dawn](items/TFT_Item_Artifact_AegisOfDawn.md)
+- [Aegis of Dusk](items/TFT_Item_Artifact_AegisOfDusk.md)
+- [Blighting Jewel](items/TFT_Item_Artifact_BlightingJewel.md)
+- [Cappa Juice](items/TFT_Item_Artifact_CappaJuice.md)
+- [Corrupt Vampiric Scepter](items/TFT_Item_Artifact_CursedVampiricScepter.md)
+- [Dawncore](items/TFT_Item_Artifact_Dawncore.md)
+- [Eternal Pact](items/TFT_Item_Artifact_EternalPact.md)
+- [Fishbones](items/TFT_Item_Artifact_Fishbones.md)
+- [Forbidden Idol](items/TFT_Item_Artifact_ForbiddenIdol.md)
+- [Hellfire Hatchet](items/TFT_Item_Artifact_HellfireHatchet.md)
+- [Innervating Locket](items/TFT_Item_Artifact_InnervatingLocket.md)
+- [Lesser Mirrored Persona](items/TFT_Item_Artifact_LesserMirroredPersona.md)
+- [Lich Bane](items/TFT_Item_Artifact_LichBane.md)
+- [Lightshield Crest](items/TFT_Item_Artifact_LightshieldCrest.md)
+- [Luden's Tempest](items/TFT_Item_Artifact_LudensTempest.md)
+- [Mending Echoes](items/TFT_Item_Artifact_MendingEchoes.md)
+- [Mirrored Persona](items/TFT_Item_Artifact_MirroredPersona.md)
+- [Mittens](items/TFT_Item_Artifact_Mittens.md)
+- [Flickerblades](items/TFT_Item_Artifact_NavoriFlickerblades.md)
+- [Prowler's Claw](items/TFT_Item_Artifact_ProwlersClaw.md)
+- [Rapid Firecannon](items/TFT_Item_Artifact_RapidFirecannon.md)
+- [Seeker's Armguard](items/TFT_Item_Artifact_SeekersArmguard.md)
+- [Shadow Puppet](items/TFT_Item_Artifact_ShadowPuppet.md)
+- [Silvermere Dawn](items/TFT_Item_Artifact_SilvermereDawn.md)
+- [Spectral Cutlass](items/TFT_Item_Artifact_SpectralCutlass.md)
+- [Statikk Shiv](items/TFT_Item_Artifact_StatikkShiv.md)
+- [Suspicious Trench Coat](items/TFT_Item_Artifact_SuspiciousTrenchCoat.md)
+- [Talisman Of Ascension](items/TFT_Item_Artifact_TalismanOfAscension.md)
+- [The Indomitable](items/TFT_Item_Artifact_TheIndomitable.md)
+- [Titanic Hydra](items/TFT_Item_Artifact_TitanicHydra.md)
+- [Unending Despair](items/TFT_Item_Artifact_UnendingDespair.md)
+- [Void Gauntlet](items/TFT_Item_Artifact_VoidGauntlet.md)
+- [Wit's End](items/TFT_Item_Artifact_WitsEnd.md)
+- [B.F. Sword](items/TFT_Item_BFSword.md)
+- [Banshee's Veil](items/TFT_Item_BansheesVeil.md)
+- [](items/TFT_Item_Blank.md)
+- [Chain Vest](items/TFT_Item_ChainVest.md)
+- [Chalice of Power](items/TFT_Item_Chalice.md)
+- [MissingNo](items/TFT_Item_DebugBase.md)
+- [Critical Hit!](items/TFT_Item_DebugCrit.md)
+- [Portable Pain](items/TFT_Item_DebugDamage.md)
+- [Damage Amp](items/TFT_Item_DebugDamageAmp.md)
+- [Ace](items/TFT_Item_DebugFirstHit.md)
+- [The Tears of My Enemies](items/TFT_Item_DebugMana.md)
+- [Pengu's Protection](items/TFT_Item_DebugShield.md)
+- [Hammer to the Face](items/TFT_Item_DebugStun.md)
+- [Taunt](items/TFT_Item_DebugTaunt.md)
+- [Do You Know Who I Am?](items/TFT_Item_DebugUnitID.md)
+- [](items/TFT_Item_EmptyBag.md)
+- [The Eternal Flame](items/TFT_Item_EternalFlame.md)
+- [Frying Pan](items/TFT_Item_FryingPan.md)
+- [Giant's Belt](items/TFT_Item_GiantsBelt.md)
+- [Completed Item Anvil](items/TFT_Item_GrantCompletedAnvil.md)
+- [Locket of the Iron Solari](items/TFT_Item_LocketOfTheIronSolari.md)
+- [Moonstone Renewer](items/TFT_Item_Moonstone.md)
+- [Needlessly Large Rod](items/TFT_Item_NeedlesslyLargeRod.md)
+- [Negatron Cloak](items/TFT_Item_NegatronCloak.md)
+- [Virtue of the Martyr](items/TFT_Item_RadiantVirtue.md)
+- [Recurve Bow](items/TFT_Item_RecurveBow.md)
+- [Sentinel Swarm](items/TFT_Item_SentinelSwarm.md)
+- [Shroud of Stillness](items/TFT_Item_Shroud.md)
+- [Sparring Gloves](items/TFT_Item_SparringGloves.md)
+- [Spatula](items/TFT_Item_Spatula.md)
+- [Knight's Vow](items/TFT_Item_SupportKnightsVow.md)
+- [Tear of the Goddess](items/TFT_Item_TearOfTheGoddess.md)
+- [Zz'Rot Portal](items/TFT_Item_TitanicHydra.md)
+- [Unstable Treasure Chest](items/TFT_Item_UnstableTreasureChest.md)
+- [Unusable Slot](items/TFT_Item_UnusableSlot.md)
+- [Zeke's Herald](items/TFT_Item_ZekesHerald.md)
+- [Zephyr](items/TFT_Item_Zephyr.md)
+
+### Objets complets (recette 2 composants)
+
+- [Challenger Emblem](items/TFT17_Item_ASTraitEmblemItem.md)
+- [Rogue Emblem](items/TFT17_Item_AssassinTraitEmblemItem.md)
+- [Meeple Emblem](items/TFT17_Item_AstronautEmblemItem.md)
+- [N.O.V.A. Emblem](items/TFT17_Item_DRXEmblemItem.md)
+- [Dark Star Emblem](items/TFT17_Item_DarkStarEmblemItem.md)
+- [Arbiter Emblem](items/TFT17_Item_FavoredEmblemItem.md)
+- [Voyager Emblem](items/TFT17_Item_FlexTraitEmblemItem.md)
+- [Brawler Emblem](items/TFT17_Item_HPTankEmblemItem.md)
+- [Marauder Emblem](items/TFT17_Item_MeleeTraitEmblemItem.md)
+- [Primordian Emblem](items/TFT17_Item_PrimordianEmblemItem.md)
+- [Timebreaker Emblem](items/TFT17_Item_PulsefireEmblemItem.md)
+- [Bastion Emblem](items/TFT17_Item_ResistTankEmblemItem.md)
+- [Vanguard Emblem](items/TFT17_Item_ShieldTankEmblemItem.md)
+- [Space Groove Emblem](items/TFT17_Item_SpaceGrooveEmblemItem.md)
+- [Stargazer Emblem](items/TFT17_Item_StargazerEmblemItem.md)
+- [Shepherd Emblem](items/TFT17_Item_SummonTraitEmblemItem.md)
+- [Adaptive Helm](items/TFT_Item_AdaptiveHelm.md)
+- [Archangel's Staff](items/TFT_Item_ArchangelsStaff.md)
+- [Bloodthirster](items/TFT_Item_Bloodthirster.md)
+- [Blue Buff](items/TFT_Item_BlueBuff.md)
+- [Bramble Vest](items/TFT_Item_BrambleVest.md)
+- [Crownguard](items/TFT_Item_Crownguard.md)
+- [Deathblade](items/TFT_Item_Deathblade.md)
+- [Dragon's Claw](items/TFT_Item_DragonsClaw.md)
+- [Tactician's Crown](items/TFT_Item_ForceOfNature.md)
+- [Protector's Vow](items/TFT_Item_FrozenHeart.md)
+- [Gargoyle Stoneplate](items/TFT_Item_GargoyleStoneplate.md)
+- [Edge of Night](items/TFT_Item_GuardianAngel.md)
+- [Guinsoo's Rageblade](items/TFT_Item_GuinsoosRageblade.md)
+- [Hextech Gunblade](items/TFT_Item_HextechGunblade.md)
+- [Infinity Edge](items/TFT_Item_InfinityEdge.md)
+- [Ionic Spark](items/TFT_Item_IonicSpark.md)
+- [Jeweled Gauntlet](items/TFT_Item_JeweledGauntlet.md)
+- [Last Whisper](items/TFT_Item_LastWhisper.md)
+- [Nashor's Tooth](items/TFT_Item_Leviathan.md)
+- [Giant Slayer](items/TFT_Item_MadredsBloodrazor.md)
+- [Morellonomicon](items/TFT_Item_Morellonomicon.md)
+- [Steadfast Heart](items/TFT_Item_NightHarvester.md)
+- [Striker's Flail](items/TFT_Item_PowerGauntlet.md)
+- [Quicksilver](items/TFT_Item_Quicksilver.md)
+- [Rabadon's Deathcap](items/TFT_Item_RabadonsDeathcap.md)
+- [Red Buff](items/TFT_Item_RapidFireCannon.md)
+- [Sunfire Cape](items/TFT_Item_RedBuff.md)
+- [Spirit Visage](items/TFT_Item_Redemption.md)
+- [Kraken's Fury](items/TFT_Item_RunaansHurricane.md)
+- [Spear of Shojin](items/TFT_Item_SpearOfShojin.md)
+- [Evenshroud](items/TFT_Item_SpectralGauntlet.md)
+- [Void Staff](items/TFT_Item_StatikkShiv.md)
+- [Sterak's Gage](items/TFT_Item_SteraksGage.md)
+- [Tactician's Cape](items/TFT_Item_TacticiansRing.md)
+- [Tactician's Shield](items/TFT_Item_TacticiansScepter.md)
+- [Thief's Gloves](items/TFT_Item_ThiefsGloves.md)
+- [Titan's Resolve](items/TFT_Item_TitansResolve.md)
+- [Hand Of Justice](items/TFT_Item_UnstableConcoction.md)
+- [Warmog's Armor](items/TFT_Item_WarmogsArmor.md)
+
+## Augments
+
+### god (17)
+
+- [Ahri's Boon](augments/TFT17_Augment_AhriGodAugment.md) ✅
+- [Aurelion Sol's Boon](augments/TFT17_Augment_AurelionSolGodAugment.md) 🟡
+- [Boon of Resurrection](augments/TFT17_Augment_AurelionSolGodAugment_BoonOfResurrection.md) 🟡
+- [After @LargeQuestRounds@ player combats, gain +1 to all non-unique traits.](augments/TFT17_Augment_AurelionSolGodAugment_LargeQuest.md) 🟡
+- [After @MedQuestRounds@ player combats, gain a completed item anvil and @MedQuestGold@ gold.](augments/TFT17_Augment_AurelionSolGodAugment_MediumQuest.md) 🟡
+- [Your team gains @SmallQuestADAP@ Attack Damage and Ability Power.](augments/TFT17_Augment_AurelionSolGodAugment_SmallQuest.md) ✅
+- [Ekko's Boon](augments/TFT17_Augment_EkkoGodAugment.md) 🟡
+- [Evelynn's Boon](augments/TFT17_Augment_EvelynnGodAugment.md) ✅
+- [Blood Price](augments/TFT17_Augment_EvelynnGodAugment_BloodPrice.md) 🟡
+- [Kayle's Boon](augments/TFT17_Augment_KayleGodAugment.md) ✅
+- [Boon of the Scrapper](augments/TFT17_Augment_KayleGodAugment_Scrapper.md) 🟡
+- [Soraka's Boon](augments/TFT17_Augment_SorakaGodAugment.md) 🟡
+- [Thresh's Boon](augments/TFT17_Augment_ThreshGodAugment.md) 🟡
+- [Varus's Boon](augments/TFT17_Augment_VarusGodAugment_BoonOfStars.md) ✅
+- [Yasuo's Golden Hex](augments/TFT17_Augment_YasuoGodAugment_GoldenHex.md) ✅
+- [Yasuo's Share The Spotlight](augments/TFT17_Augment_YasuoGodAugment_MoreHexes.md) 🟡
+- [Yasuo's Boon](augments/TFT17_Augment_YasuoGodAugment_PaintedPower.md) 🟡
+
+### prismatic (68)
+
+- [Going Long](augments/TFT10_Augment_GoingLong.md) 🟡
+- [At What Cost](augments/TFT11_Augment_AtWhatCost.md) 🟡
+- [Build a Bud](augments/TFT11_Augment_Buildabud.md) 🟡
+- [Call to Chaos](augments/TFT11_Augment_Calltochaos.md) 🟡
+- [Tiny, but Deadly](augments/TFT11_Augment_TinyButDeadly.md) ✅
+- [Heart of the Swarm](augments/TFT17_Augment_PrimordianPrismaticAugment.md) 🟡
+- [Band of Thieves II](augments/TFT6_Augment_BandOfThieves2.md) 🟡
+- [Band of Thieves II+](augments/TFT6_Augment_BandOfThieves2Plus.md) 🟡
+- [Band of Thieves II++](augments/TFT6_Augment_BandOfThieves2PlusPlus.md) 🟡
+- [New Recruit](augments/TFT6_Augment_ForceOfNature.md) 🟡
+- [New Recruit+](augments/TFT6_Augment_ForceOfNaturePlus.md) 🟡
+- [Prismatic Ticket](augments/TFT6_Augment_GachaAddict.md) 🟡
+- [Level Up!](augments/TFT6_Augment_MaxLevel10.md) 🟡
+- [The Golden Egg](augments/TFT6_Augment_TheGoldenEgg.md) 🟡
+- [Wise Spending](augments/TFT6_Augment_ThriftShop.md) 🟡
+- [Commerce Core](augments/TFT6_Augment_TradeSector2.md) 🟡
+- [Birthday Present](augments/TFT7_Augment_BirthdayPresents.md) 🟡
+- [Cursed Crown](augments/TFT7_Augment_CursedCrown.md) ✅
+- [Living Forge](augments/TFT7_Augment_LivingForge.md) 🟡
+- [Lucky Gloves](augments/TFT7_Augment_LuckyGloves.md) 🟡
+- [Lucky Gloves+](augments/TFT7_Augment_LuckyGlovesPlus.md) 🟡
+- [Urf's Grab Bag](augments/TFT7_Augment_UrfsGrabBag2.md) 🟡
+- [Buried Treasures](augments/TFT9_Augment_BuildingACollectionPlusPlus.md) 🟡
+- [Jeweled Lotus II](augments/TFT9_Augment_GreaterJeweledLotus.md) ✅
+- [Hedge Fund](augments/TFT9_Augment_HedgeFund.md) 🟡
+- [Hedge Fund+](augments/TFT9_Augment_HedgeFundPlus.md) 🟡
+- [Shopping Spree](augments/TFT9_Augment_Legend_HighEndSector.md) 🟡
+- [Pandora's Items III](augments/TFT9_Augment_PandorasRadiantBox.md) 🟡
+- [Radiant Rascal](augments/TFT9_Augment_RollTheDice.md) 🟡
+- [Tiniest Titan](augments/TFT9_Augment_TiniestTitanPlus.md) 🟡
+- [An Exalted Adventure](augments/TFT_Augment_AnExaltedAdventure.md) 🟡
+- [Soul Awakening](augments/TFT_Augment_AwakenedSoul.md) ✅
+- [Belt Overflow](augments/TFT_Augment_BeltOverflow.md) 🟡
+- [Bronze For Life II](augments/TFT_Augment_BronzeForLife2.md) ✅
+- [Comeback Story](augments/TFT_Augment_ComebackStory.md) 🟡
+- [Construct a Companion](augments/TFT_Augment_ConstructACompanion.md) 🟡
+- [Expected Unexpectedness](augments/TFT_Augment_ExpectedUnexpectedness.md) 🟡
+- [Forge a Friend](augments/TFT_Augment_ForgeAFriend.md) 🟡
+- [Forged in Strength](augments/TFT_Augment_ForgedInStrength.md) 🟡
+- [Giant and Mighty](augments/TFT_Augment_GiantAndMighty.md) ✅
+- [Golden Gamble](augments/TFT_Augment_GoldenGamble.md) 🟡
+- [Golden Gamble+](augments/TFT_Augment_GoldenGamblePlus.md) 🟡
+- [Golden Gamble++](augments/TFT_Augment_GoldenGamblePlusPlus.md) 🟡
+- [Hard Commit](augments/TFT_Augment_HardCommit.md) 🟡
+- [Hold the Line](augments/TFT_Augment_HoldTheLine.md) ✅
+- [Invested+](augments/TFT_Augment_InvestedPlus.md) 🟡
+- [Invested++](augments/TFT_Augment_InvestedPlusPlus.md) 🟡
+- [Luxury Subscription](augments/TFT_Augment_LuxurySubscription.md) 🟡
+- [Min-Max](augments/TFT_Augment_MinMaxer.md) 🟡
+- [Money Monsoon](augments/TFT_Augment_MoneyMonsoon.md) 🟡
+- [Component Heist](augments/TFT_Augment_MuseumHeist.md) 🟡
+- [One Buff, Two Buff](augments/TFT_Augment_OneBuffTwoBuff.md) 🟡
+- [Retribution](augments/TFT_Augment_Retribution.md) ✅
+- [Shimmerscale Essence](augments/TFT_Augment_ShimmerscaleEssence.md) 🟡
+- [Subscription Service](augments/TFT_Augment_SubscriptionService.md) 🟡
+- [Sweet Treats](augments/TFT_Augment_SweetTreats.md) 🟡
+- [Sword Overflow](augments/TFT_Augment_SwordOverflow.md) ✅
+- [Tactician's Kitchen](augments/TFT_Augment_TacticiansKitchen.md) 🟡
+- [Baron's Lair](augments/TFT_Augment_TheBaronsLair.md) ✅
+- [Woven Magic](augments/TFT_Augment_TheVidalion.md) 🟡
+- [The Trait Tree](augments/TFT_Augment_TraitTree.md) 🟡
+- [The Trait Tree+](augments/TFT_Augment_TraitTreePlus.md) 🟡
+- [Trifecta II](augments/TFT_Augment_Trifecta2.md) ✅
+- [Upward Mobility](augments/TFT_Augment_UpwardMobility.md) 🟡
+- [Wand Overflow](augments/TFT_Augment_WandOverflow.md) 🟡
+- [We Stick Together](augments/TFT_Augment_WeStickTogether.md) ✅
+- [Win Out](augments/TFT_Augment_WinOut.md) 🟡
+- [Worth the Wait II](augments/TFT_Augment_WorthTheWaitPrismatic.md) 🟡
+
+### gold (124)
+
+- [Crash Test Dummies](augments/TFT10_Augment_CrashTestDummies.md) ✅
+- [Heroic Grab Bag](augments/TFT10_Augment_HeroicGrabBag.md) 🟡
+- [Little Buddies](augments/TFT10_Augment_LittleBuddies.md) ✅
+- [Epoch](augments/TFT11_Augment_Epoch.md) 🟡
+- [Epoch+](augments/TFT11_Augment_EpochPlus.md) 🟡
+- [Prizefighter](augments/TFT11_Augment_Prizefighter.md) 🟡
+- [ReinFOURcement](augments/TFT11_Augment_Reinfourcement.md) 🟡
+- [Slammin'](augments/TFT11_Augment_Slammin.md) 🟡
+- [Slammin'+](augments/TFT11_Augment_Slammin_Plus.md) 🟡
+- [U.R.F](augments/TFT16_Augment_UltraRapidFire.md) 🟡
+- [Anima Commander](augments/TFT17_Augment_AnimaSquad_Commander.md) 🟡
+- [Apotheotic Forge](augments/TFT17_Augment_ApotheoticForge.md) 🟡
+- [Divine Amendment](augments/TFT17_Augment_Arbiter_DivineAmendment.md) 🟡
+- [Concentration](augments/TFT17_Augment_Concentration.md) 🟡
+- [Loot Singularity](augments/TFT17_Augment_DarkStar_WhiteHole.md) 🟡
+- [Self Destruct](augments/TFT17_Augment_GragasCarry.md) 🟡
+- [Invader Zed](augments/TFT17_Augment_InvaderZed.md) 🟡
+- [The Big Bang](augments/TFT17_Augment_IvernMinionCarry.md) 🟡
+- [Reach for the Stars](augments/TFT17_Augment_JaxCarry.md) 🟡
+- [Heat Death](augments/TFT17_Augment_MordekaiserCarry.md) 🟡
+- [Contract Killer](augments/TFT17_Augment_PykeCarry.md) 🟡
+- [Timestream](augments/TFT17_Augment_Timebreaker_Timestream.md) 🟡
+- [Tour of the Galaxy](augments/TFT17_Augment_TourOfTheGalaxy.md) ✅
+- [Calculated Loss](augments/TFT6_Augment_CalculatedLoss.md) 🟡
+- [Clear Mind](augments/TFT6_Augment_ClearMind.md) 🟡
+- [Cybernetic Implants](augments/TFT6_Augment_CyberneticImplants2.md) ✅
+- [Cybernetic Uplink](augments/TFT6_Augment_CyberneticUplink2.md) ✅
+- [Exiles II](augments/TFT6_Augment_Distancing2.md) ✅
+- [Electrocharge II](augments/TFT6_Augment_Electrocharge2.md) ✅
+- [Hustler](augments/TFT6_Augment_HyperRoll.md) 🟡
+- [Makeshift Armor II](augments/TFT6_Augment_MakeshiftArmor2.md) ✅
+- [Portable Forge](augments/TFT6_Augment_PortableForge.md) 🟡
+- [Salvage Bin](augments/TFT6_Augment_SalvageBin.md) 🟡
+- [Second Wind II](augments/TFT6_Augment_SecondWind2.md) ✅
+- [Sunfire Board](augments/TFT6_Augment_SunfireBoard.md) ✅
+- [Trade Sector](augments/TFT6_Augment_TradeSector.md) 🟡
+- [Best Friends II](augments/TFT7_Augment_BestFriends2.md) ✅
+- [Cluttered Mind](augments/TFT7_Augment_ClutteredMind.md) 🟡
+- [Salvage Bin+](augments/TFT8_Augment_SalvageBinPlus.md) 🟡
+- [Big Grab Bag](augments/TFT9_Augment_BigGrabBag.md) 🟡
+- [Ascension](augments/TFT9_Augment_Commander_Ascension.md) ✅
+- [Healing Orbs II](augments/TFT9_Augment_HealingOrbsII.md) 🟡
+- [Jeweled Lotus I](augments/TFT9_Augment_JeweledLotus.md) ✅
+- [Patient Study](augments/TFT9_Augment_LearningFromExperience2.md) 🟡
+- [Pandora's Items II](augments/TFT9_Augment_PandorasItems2.md) 🟡
+- [Tons of Stats!](augments/TFT9_Augment_TonsOfStats.md) ✅
+- [You Have My Bow](augments/TFT9_Augment_YouHaveMyBow.md) ✅
+- [Advanced Loan](augments/TFT_Augment_AdvancedLoan.md) 🟡
+- [Advanced Loan+](augments/TFT_Augment_AdvancedLoanPlus.md) 🟡
+- [Arcane Viktor-y](augments/TFT_Augment_ArcaneViktory.md) ✅
+- [Aura Farming](augments/TFT_Augment_AuraFarming.md) 🟡
+- [Backline Blueprint](augments/TFT_Augment_BacklineBlueprint.md) 🟡
+- [Birthday Reunion](augments/TFT_Augment_BirthdayReunion.md) 🟡
+- [Bodyguard Training](augments/TFT_Augment_BodyguardTraining.md) ✅
+- [Booster Pack](augments/TFT_Augment_BoosterPack.md) 🟡
+- [Booster Pack+](augments/TFT_Augment_BoosterPackPlus.md) 🟡
+- [Booster Pack++](augments/TFT_Augment_BoosterPackPlusPlus.md) 🟡
+- [Bronze For Life I](augments/TFT_Augment_BronzeForLifeI.md) 🟡
+- [Charge Transfer II](augments/TFT_Augment_ChargeTransfer2.md) ✅
+- [Climb The Ladder II](augments/TFT_Augment_ClimbTheLadder2.md) ✅
+- [Clockwork Accelerator](augments/TFT_Augment_ClockworkAccelerator.md) ✅
+- [Cognitive Overload](augments/TFT_Augment_CognitiveOverload.md) 🟡
+- [Cosmic Restart](augments/TFT_Augment_CosmicRestart.md) 🟡
+- [Cry Me A River](augments/TFT_Augment_CryMeARiver.md) 🟡
+- [Deadlier Caps](augments/TFT_Augment_DeadlierCaps.md) 🟡
+- [Vampiric Vitality I](augments/TFT_Augment_Dhampyr1.md) 🟡
+- [Duo Queue](augments/TFT_Augment_DuoQueue.md) 🟡
+- [Early Learnings](augments/TFT_Augment_EarlyLearning.md) ✅
+- [Epic Rolldown](augments/TFT_Augment_EpicRolldown.md) 🟡
+- [Exclusive Customization](augments/TFT_Augment_ExclusiveCustomization.md) 🟡
+- [Exclusive Customization II](augments/TFT_Augment_ExclusiveCustomization2.md) 🟡
+- [Explosive Growth](augments/TFT_Augment_ExplosiveGrowth.md) 🟡
+- [Explosive Growth+](augments/TFT_Augment_ExplosiveGrowthPlus.md) 🟡
+- [Feed the Flames](augments/TFT_Augment_FeedTheFlames.md) 🟡
+- [Flexible](augments/TFT_Augment_Flexible.md) 🟡
+- [Staffsmith](augments/TFT_Augment_ForgeRod.md) 🟡
+- [Swordsmith](augments/TFT_Augment_ForgeSword.md) 🟡
+- [Forward Thinking](augments/TFT_Augment_ForwardThinking.md) 🟡
+- [Frontline Foundation](augments/TFT_Augment_FrontlineFoundation.md) 🟡
+- [Kahunahuna](augments/TFT_Augment_FuriousBlows.md) ✅
+- [Gain @Gold@ Gold](augments/TFT_Augment_GainGold.md) 🟡
+- [Gilded Steel](augments/TFT_Augment_GildedSteel.md) 🟡
+- [Glass Cannon II](augments/TFT_Augment_GlassCannonII.md) ✅
+- [Group Hug II](augments/TFT_Augment_GroupHug2.md) ✅
+- [Mace's Will](augments/TFT_Augment_GuardbreakerSpirit.md) ✅
+- [Heavy Is the Crown](augments/TFT_Augment_HeavyIsTheCrown.md) 🟡
+- [Heroic Grab Bag+](augments/TFT_Augment_HeroicGrabBagPlus.md) 🟡
+- [Heroic Grab Bag++](augments/TFT_Augment_HeroicGrabBagPlusPlus.md) 🟡
+- [High Voltage](augments/TFT_Augment_HighVoltage.md) 🟡
+- [Care Package](augments/TFT_Augment_HomeCooking.md) 🟡
+- [Infinity Protection](augments/TFT_Augment_InfinityProtection.md) 🟡
+- [Solo Plate](augments/TFT_Augment_ItemGargoyleStoneplate.md) ✅
+- [Spirit of Redemption](augments/TFT_Augment_ItemSpiritVisage.md) ✅
+- [Indiscriminate Killer](augments/TFT_Augment_JustSlayer.md) 🟡
+- [Late Game Scaling](augments/TFT_Augment_LateGameScaling.md) ✅
+- [Legion of Threes](augments/TFT_Augment_LegionOfThrees.md) ✅
+- [A Magic Roll](augments/TFT_Augment_MagicRoll.md) 🟡
+- [May the Fours Be With You](augments/TFT_Augment_MayTheFoursBeWithYou.md) ✅
+- [Malicious Monetization](augments/TFT_Augment_MirroredMonetization.md) 🟡
+- [Misfits](augments/TFT_Augment_Misfits.md) ✅
+- [Money Hungry](augments/TFT_Augment_MoneyHungry.md) 🟡
+- [NO SCOUT NO PIVOT](augments/TFT_Augment_NoScoutNoPivot.md) ✅
+- [Pilfer](augments/TFT_Augment_Pilfer.md) 🟡
+- [Plot Armor](augments/TFT_Augment_PlotArmor.md) ✅
+- [Replication](augments/TFT_Augment_Replication.md) 🟡
+- [Savings Account](augments/TFT_Augment_SavingsAccount.md) 🟡
+- [Seraphim's Staff](augments/TFT_Augment_SeraphimsStaff.md) 🟡
+- [Side Effects](augments/TFT_Augment_SideEffects.md) ✅
+- [Solo Leveling](augments/TFT_Augment_SoloLeveling.md) 🟡
+- [Speedy Double Kill](augments/TFT_Augment_SpeedyDoubleKill.md) 🟡
+- [Spreading Roots](augments/TFT_Augment_SpreadingRoots.md) 🟡
+- [Spreading Roots+](augments/TFT_Augment_SpreadingRootsPlus.md) 🟡
+- [Blood Offering](augments/TFT_Augment_TheDarkinBlade.md) ✅
+- [The Golden Dragon](augments/TFT_Augment_TheGoldenDragon.md) 🟡
+- [Deadlier Blades](augments/TFT_Augment_TragicalBlade.md) 🟡
+- [Treasure Hunt](augments/TFT_Augment_TreasureHunt.md) 🟡
+- [Trifecta I](augments/TFT_Augment_Trifecta1.md) ✅
+- [Two Much Value](augments/TFT_Augment_TwoMuchValue.md) 🟡
+- [Two Tanky](augments/TFT_Augment_TwoTanky.md) ✅
+- [Warlord's Honor](augments/TFT_Augment_Unforgotten.md) ✅
+- [Urf's Gambit](augments/TFT_Augment_UrfsGambit.md) 🟡
+- [Heart of Steel](augments/TFT_Augment_WarmogsBuckle.md) 🟡
+- [Warpath](augments/TFT_Augment_Warpath.md) 🟡
+- [Worth the Wait](augments/TFT_Augment_WorthTheWaitGold.md) 🟡
+
+### silver (67)
+
+- [Good For Something I](augments/TFT10_Augment_GoodForSomethingSilver.md) 🟡
+- [Lunch Money](augments/TFT11_Augment_BloodBank.md) 🟡
+- [Stellar Combo](augments/TFT17_Augment_AatroxCarry.md) 🟡
+- [Shieldmaiden](augments/TFT17_Augment_LeonaCarry.md) 🟡
+- [Bonk!](augments/TFT17_Augment_NasusCarry.md) 🟡
+- [Termeepnal Velocity](augments/TFT17_Augment_PoppyCarry.md) 🟡
+- [Exiles I](augments/TFT6_Augment_Distancing.md) ✅
+- [Stand United](augments/TFT6_Augment_Diversify1.md) ✅
+- [Electrocharge I](augments/TFT6_Augment_Electrocharge1.md) ✅
+- [Item Grab Bag](augments/TFT6_Augment_ItemGrabBag1.md) 🟡
+- [Makeshift Armor I](augments/TFT6_Augment_MakeshiftArmor1.md) ✅
+- [One, Two, Five!](augments/TFT6_Augment_OneTwoFive.md) 🟡
+- [Pandora's Items](augments/TFT6_Augment_PandorasItems.md) 🟡
+- [Recombobulator](augments/TFT6_Augment_Recombobulator.md) 🟡
+- [Second Wind](augments/TFT6_Augment_SecondWind1.md) ✅
+- [Tiny Titans](augments/TFT6_Augment_TinyTitans.md) 🟡
+- [AFK](augments/TFT7_Augment_AFK.md) 🟡
+- [Band of Thieves](augments/TFT7_Augment_BandOfThieves1.md) 🟡
+- [Best Friends I](augments/TFT7_Augment_BestFriends1.md) ✅
+- [Late Game Specialist](augments/TFT7_Augment_LategameSpecialist.md) 🟡
+- [Team Building](augments/TFT9_Augment_ArmyBuilding.md) 🟡
+- [Caretaker's Ally](augments/TFT9_Augment_BardPlaybook1.md) 🟡
+- [Partial Ascension](augments/TFT9_Augment_Commander_PartialAscension.md) ✅
+- [Rolling For Days I](augments/TFT9_Augment_Commander_RollingForDays.md) 🟡
+- [Teaming Up](augments/TFT9_Augment_Commander_TeamingUp1.md) 🟡
+- [Healing Orbs I](augments/TFT9_Augment_HealingOrbsI.md) ✅
+- [Iron Assets](augments/TFT9_Augment_IronAssets.md) 🟡
+- [Latent Forge](augments/TFT9_Augment_LongTimeCrafting.md) 🟡
+- [Missed Connections](augments/TFT9_Augment_MissedConnections.md) 🟡
+- [One Two Three](augments/TFT9_Augment_OneTwosThree.md) 🟡
+- [Risky Moves](augments/TFT9_Augment_RiskyMoves.md) 🟡
+- [Silver Spoon](augments/TFT9_Augment_SilverSpoon.md) 🟡
+- [Boxing Lessons](augments/TFT_Augment_BoxingLessons.md) ✅
+- [Branching Out](augments/TFT_Augment_BranchingOut.md) 🟡
+- [Branching Out+](augments/TFT_Augment_BranchingOutPlus.md) 🟡
+- [Charge Transfer I](augments/TFT_Augment_ChargeTransfer1.md) ✅
+- [Climb The Ladder I](augments/TFT_Augment_ClimbTheLadder1.md) ✅
+- [Cognitive Tax](augments/TFT_Augment_CognitiveTax.md) 🟡
+- [Cognitive Tax+](augments/TFT_Augment_CognitiveTaxPlus.md) 🟡
+- [Backup Bows](augments/TFT_Augment_ComponentQuestBow.md) 🟡
+- [Critical Success](augments/TFT_Augment_ComponentQuestGlove.md) 🟡
+- [Continuous Conjuration](augments/TFT_Augment_ComponentQuestRod.md) 🟡
+- [Carve a Path](augments/TFT_Augment_ComponentQuestSword.md) 🟡
+- [Flowing Tears](augments/TFT_Augment_ComponentQuestTear.md) 🟡
+- [Corrosion](augments/TFT_Augment_Corrosion.md) ✅
+- [Crafted Crafting](augments/TFT_Augment_CraftedCrafting.md) 🟡
+- [Dummify](augments/TFT_Augment_Dummify.md) 🟡
+- [Expedition](augments/TFT_Augment_Expedition.md) 🟡
+- [Feeling Lucky](augments/TFT_Augment_FeelingLucky.md) 🟡
+- [Find Your Center](augments/TFT_Augment_FindYourCenter.md) ✅
+- [Firesale](augments/TFT_Augment_FiresalePlus.md) 🟡
+- [Glass Cannon I](augments/TFT_Augment_GlassCannonI.md) ✅
+- [Group Hug I](augments/TFT_Augment_GroupHug1.md) ✅
+- [Kick Start](augments/TFT_Augment_KickStart.md) 🟡
+- [Lineup](augments/TFT_Augment_Lineup.md) ✅
+- [Slightly Magic Roll](augments/TFT_Augment_MagicRollMinus.md) 🟡
+- [Focused Fire](augments/TFT_Augment_MarksMan.md) ✅
+- [Patience is a Virtue](augments/TFT_Augment_PatienceIsAVirtue.md) 🟡
+- [Augmented Power](augments/TFT_Augment_PowerUp.md) 🟡
+- [Restart Mission](augments/TFT_Augment_RestartMission.md) 🟡
+- [Size Matters](augments/TFT_Augment_SizeMatters.md) 🟡
+- [Slice of Life](augments/TFT_Augment_SliceOfLife.md) 🟡
+- [Small Grab Bag](augments/TFT_Augment_SmallGrabBag.md) 🟡
+- [Survivor](augments/TFT_Augment_Survivor.md) 🟡
+- [The Tower](augments/TFT_Augment_TheTower.md) 🟡
+- [Twin Guardians](augments/TFT_Augment_TwinGuardians.md) ✅
+- [On a Roll](augments/TFT_Augment_Waverider.md) 🟡
+

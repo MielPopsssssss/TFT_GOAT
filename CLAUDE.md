@@ -32,6 +32,12 @@ La fidélité est documentée honnêtement dans `docs/COMBAT_COVERAGE.md`.
 Le chargement passe par `src/tft_goat/data/content.py::load_set()` (filtre l'entrée setData
 TFTSet17 ; les préfixes non-TFT17 restants sont du contenu evergreen/PvE légitime).
 
+**Fiches d'audit** : `docs/fiches/` — une vue markdown GÉNÉRÉE par champion/trait/item/augment
+(data CDragon + statut d'implémentation moteur ✅/🟡), liées par `docs/fiches/INDEX.md`.
+Jamais éditées à la main ; régénérer après tout refresh de data ou ajout moteur :
+`.venv/bin/python -m scripts.generate_fiches`. C'est la surface d'audit humaine : ouvrir une
+fiche, comparer au vrai jeu, transformer chaque écart en test pin.
+
 ## Architecture (résumé)
 
 - `src/tft_goat/data/` — couche data (modèles pydantic immuables, gods, odds)

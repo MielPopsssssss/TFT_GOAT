@@ -1,0 +1,27 @@
+# Radiant Hand of Justice — fiche item
+
+> Fiche GÉNÉRÉE depuis CommunityDragon patch 17.4 — **NE PAS ÉDITER À LA MAIN**.
+> Régénérer : `.venv/bin/python -m scripts.generate_fiches`
+
+- **apiName** : `TFT5_Item_HandOfJusticeRadiant`
+- **Type** : composant de base (ou item sans recette)
+- **Unique** : non
+- **Tags** : {6ef5c598}, {ec243f6b}, CritChance
+
+## Effets (stats data)
+
+| Effet | Valeur |
+|---|---|
+| `AD_NotStatBar` | 0.3 |
+| `AP_NotStatBar` | 30 |
+| `CritChance` | 40 |
+| `HealthThreshold` | 0.5 |
+| `ManaRegen` | 2 |
+| `StatOmnivamp_NotStatBar` | 0.24 |
+| `{f23e83fc}` | 2 |
+
+> Les effets numériques sont auto-appliqués par le moteur quand l'identité de l'item est connue.
+
+## Proc spécial moteur
+
+🟡 stats uniquement — aucun proc spécial codé (cf. docs/COMBAT_COVERAGE.md)
