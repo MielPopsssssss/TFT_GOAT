@@ -135,8 +135,13 @@ class TftEnv(ParallelEnv):
         return obs, rewards, terminations, truncations, infos
 
     def _truncate_by_hp(self, state: GameState) -> bool:
-        """Fin forcee : classe les vivants restants par PV decroissants."""
-        alive = sorted(state.alive_players(), key=lambda p: -p.hp)
+        """Fin forcee : classe les vivants restants par PV decroissants.
+
+        Egalite exacte de PV : departage aleatoire uniforme (state.rng) — jamais l'ordre
+        des sieges (meme classe de biais que assign_eliminations, sens inverse).
+        """
+        tiebreak = {p.agent_id: float(state.rng.random()) for p in state.alive_players()}
+        alive = sorted(state.alive_players(), key=lambda p: (-p.hp, tiebreak[p.agent_id]))
         place = 1
         for p in alive:
             p.placement = place

@@ -241,8 +241,12 @@ def _free_units(state: GameState, player: PlayerState) -> None:
 def assign_eliminations(state: GameState) -> None:
     """Marque les joueurs a PV<=0 comme elimines ; place = nb de vivants restants + 1."""
     dead_now = [p for p in state.players.values() if p.alive and p.hp <= 0]
-    # les PV les plus bas meurent en premier (placement le plus eleve)
-    for p in sorted(dead_now, key=lambda x: x.hp):
+    # Les PV les plus bas meurent en premier (placement le plus eleve). Egalite EXACTE de PV
+    # (artefact du modele discret — le vrai TFT resout en temps reel, jamais d'ex aequo
+    # parfait) : departage aleatoire uniforme via state.rng. JAMAIS l'ordre des sieges : le
+    # tri stable sur dict player_0..7 donnait deterministiquement la pire place au siege bas.
+    tiebreak = {p.agent_id: float(state.rng.random()) for p in dead_now}
+    for p in sorted(dead_now, key=lambda x: (x.hp, tiebreak[x.agent_id])):
         remaining = len([q for q in state.players.values() if q.alive])
         p.alive = False
         p.placement = remaining  # remaining inclut p lui-meme -> il prend cette place

@@ -36,17 +36,6 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   sous le HeuristicResolver v0 (qui ignore les augments) et n'alimente pas `augment_power`.
   Décider : impact heuristique dédié, ou documenter+tester « engine-only ».
 
-## Env / Équité
-
-- **Enquêter l'équité des sièges en self-play (et rendre la bande de check_coherence N-aware)**
-  **Priority:** P2
-  Sur policy entraînée (v0.4.0, it250) : 2 runs de `check_coherence` (15 et 40 parties) sortent
-  de la bande fixe [3.8, 5.2] avec des sièges différents — sauf le siège 5, bas (3.00 puis 3.62)
-  les deux fois (avantage répété ?). Le sim 10k pré-fixes donnait 4.49-4.52 partout. Hypothèse
-  à tester : avantage du premier acteur (`for a in acting` itère player_0..7, pool partagé —
-  les achats du siège 0 dépètent le pool avant le siège 7 au même step). Plan : run 500+
-  parties offline, et adapter la bande du check à N (±k·2.29/√N) au lieu d'une bande fixe.
-
 ## Tests
 
 - **Extraire un helper partagé de boucle de jeu aléatoire**
@@ -56,6 +45,14 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   Un helper `tests/_helpers.py::play_random_game(...)` évite 5 mises à jour synchrones.
 
 ## Completed
+
+- **Enquête équité des sièges**
+  Root cause double : (1) tie-break déterministe des morts simultanées à HP égaux
+  (`assign_eliminations`, tri stable -> siège bas pénalisé ; corrigé en départage rng) ;
+  (2) bande fixe de `check_coherence` statistiquement naïve à petit N (corrigée N-aware).
+  L'hypothèse premier-acteur est écartée (signe inversé) ; l'appariement est sain
+  (permutation rng). Magnitude : aucun biais réel à N=400 (max |z|=1.9) — les FAIL à
+  N=15/40 étaient du bruit. **Completed:** v0.4.1.0 (2026-06-10)
 
 - **Encoder les features Realm of the Gods dans l'observation**
   Vecteur `gods` 31 dims (lobby, slots d'offre, votes, aligné, boon) + réseau adapté.
