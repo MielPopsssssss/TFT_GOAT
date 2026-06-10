@@ -10,7 +10,7 @@ git clone https://github.com/MielPopsssssss/TFT_GOAT.git
 cd TFT_GOAT
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-python -m pytest -q          # 113 tests should pass
+python -m pytest -q          # 147 tests should pass
 ```
 
 Then pick a task from the [ROADMAP](ROADMAP.md) or an issue tagged `good first issue`, open a draft

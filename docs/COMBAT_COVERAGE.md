@@ -25,6 +25,13 @@ Mis à jour à la main au fil du remplissage (PARTIE B du plan étape 6).
 
 ## Données réelles appliquées AUTOMATIQUEMENT — ✅
 - **Stats de base** des 83 champions (HP/AD/AS/armure/RM/portée/mana/crit) — data.
+  - **✅ Intégrité mana vérifiée (2026-06-08)** : 63/65 jouables ont un mana de cast réel (1..300) ;
+    les 2 à mana=0 (**Caitlyn**, Mini Black Hole) sont des casters **passifs légitimes** (Caitlyn =
+    headshot 15% sur auto-attaque, vérifié patch — pas un bug, le moteur ne la mana-caste jamais).
+    🟡 *Limite* : le passif de Caitlyn (headshot) n'est pas modélisé (elle ne fait qu'auto-attaquer).
+    Pins : `tests/test_champion_data.py`.
+  - **✅ Ranges d'attaque vérifiés (2026-06-08)** : buckets réels 1=mêlée(33)/2(3)/4(19)/6=longue
+    portée(9, ex Jhin/Ezreal) ; range 0 = Mini Black Hole (fake). Pin : `test_attack_ranges_are_real_and_sane`.
 - **Star scaling** HP/AD ×1.8 par étoile.
 - **Effets de stats des items** (`item.effects` numériques) — data, quand l'identité de l'objet
   est connue. ⚠️ L'env ne traque pour l'instant qu'un *compteur* d'objets → bonus générique
@@ -46,6 +53,12 @@ Mis à jour à la main au fil du remplissage (PARTIE B du plan étape 6).
   approximation du choix joueur ; à raffiner via un vrai système composants→objet.)
 - **Augments de combat** : l'env stocke `PlayerState.chosen_augments` (vrais apiNames) et les passe
   au resolver (`augments_a/b`) → effets appliqués en combat moteur. Vérifié en partie réelle.
+  - **🐛 BUG CORRIGÉ — mitigation des dégâts joueur (2026-06-08)** : `_apply_damage` réduisait les
+    dégâts JOUEUR via `augment_power` (~25% moy, jusqu'à 45%). **Faux** : un augment renforce le board
+    (proba de victoire, via le resolver), il ne réduit pas les dégâts subis à la défaite. Ça gonflait
+    les parties : **stage final moyen 7.8 → 6.9, médiane 8-2 → 7-2** (réaliste). `augment_power` reste
+    dans l'observation de l'agent (non mécanique pour l'instant). NB : le HeuristicResolver v0 ignore
+    les augments ; leur vrai effet combat passe par le moteur. Pin : `tests/test_game_length.py`.
 
 ### Fact-check effectué ✅ (data CommunityDragon = vérité primaire + wiki en secondaire)
 Passe de vérification par 8 agents (un par lot, accès web). Résultats :
@@ -75,7 +88,10 @@ Passe de vérification par 8 agents (un par lot, accès web). Résultats :
   ressuscite** (GA est devenu Edge of Night = intargetable+soin ; le revive n'existe que sur des items
   hors-Set-17 / artefacts). Registre vide pour Set 17, prêt si un tel item apparaît.
 - **Vrai système composants→objet** (`env/items.py`) : 10 composants, 55 recettes réelles ; l'EQUIP
-  combine 2 composants → l'objet complet exact.
+  combine 2 composants → l'objet complet exact. **✅ VÉRIFIÉ (2026-06-08)** : 10 composants,
+  C(10,2)+10 = **55 recettes**, chaque sortie = vrai objet distinct existant, combos canoniques
+  exacts (BF+BF=Deathblade, Rod+Rod=Rabadon's, Tear+Tear=Blue Buff, Belt+Belt=Warmog's). Pins :
+  `tests/test_item_recipes.py`.
 
 ### Probabilités d'événements — audit expert TFT (✅ tiers d'augments corrigés)
 Un agent expert TFT indépendant a vérifié les **proba de chaque événement** sur une partie rejouée.
@@ -118,8 +134,27 @@ Un agent expert TFT indépendant a vérifié les **proba de chaque événement**
   - **✅ Timing corrigé (2026-06-08, vs patch 17.4)** : `is_god_round` ne se déclenche plus qu'aux
     **2-4, 3-4, 4-4** (3 votes), au lieu de **chaque** x-4 (bug : 5-4/6-4/7-4 déclenchaient à tort).
     Confirmé eloboost24 + mobalytics + bunnymuffins. Pin : `tests/test_rounds_schedule.py`.
-  - **Restant (sous-étapes)** : 2 dieux/lobby tirés au départ, votes cumulés→dieu aligné, God Boon
-    au 4-7, artefacts de dieu. Abstraction « pick 1/3 » conservée en attendant ces sous-étapes.
+  - **✅ Modèle vote→alignement→boon (2026-06-08)** : `data/gods.py` expose les **9 dieux réels** +
+    leurs **17 God Boons** (augments tier="god" CDragon, double-confirmé skill+data). Au départ,
+    **2 dieux tirés pour le lobby** (`choose_lobby_gods`, `GameState.lobby_gods`). Chaque offrande
+    (2-4/3-4/4-4) est associée à un dieu → la prendre **vote** (`god_offer_gods`, `god_votes`). Au
+    4-4, la **majorité fixe le dieu aligné** et tire son **God Boon réel** (`aligned_god`, `god_boon`).
+    Pins : `tests/test_gods.py`.
+  - **✅ Octroi du God Boon au 4-7 (2026-06-08)** : `is_god_boon_round` (4-7 uniquement, vérifié
+    eloboost24/mobalytics) ; au 4-7 le boon réel du dieu aligné est **délivré dans le pipeline
+    d'augments** (`chosen_augments` → resolver), idempotent. Pins : `tests/test_gods.py`.
+  - **✅ Robustesse du flux de vote (2026-06-10, review adversariale)** : (1) une action illégale
+    pendant une offre forcée est coercée vers la **première action légale** (plus jamais vers un
+    PASS aveugle qui sautait le vote) ; (2) une offre de dieu non consommée est **purgée à chaque
+    round** (plus de votes fantômes par fuite) ; (3) l'alignement se déclenche au **3e vote** (compte,
+    pas numéro de round) avec **filet au 4-7** si un vote a été manqué ; (4) l'offre des dieux est
+    tirée du **roster jouable du pool** (plus d'unité PvE offerte puis refusée silencieusement).
+    Pins : `tests/test_gods.py` (4 tests de régression).
+  - **Restant (sous-étapes)** : (1) **effets de combat des god augments** — même long-tail que les
+    augments réguliers : **6/17 God Boons seulement** sont dans le registre `augments_set17` (les
+    11 autres = no-op silencieux, comme les ~202 augments non implémentés — tracé `TODOS.md` P2).
+    Effets ambigus (clés hashées, quêtes/loot) → non devinés. (2) effets des Minor Blessings,
+    (3) artefacts de dieu.
 
 ### Vérification datatft ↔ contenu (✅ rosters cohérents)
 datatft = **couche META uniquement** (place moyenne, top4%, win%, count, best items par champ/trait/
@@ -127,6 +162,12 @@ objet, perf par étoile). **Aucune donnée statique** (HP/AD/sorts/recettes/tier
 (`hex`/`hexs`) est **vide côté API**. La donnée statique reste CommunityDragon. Scraper étendu
 (`data/datatft.py` : hero+trait+**equip**), vérif `scripts/verify_datatft.py`. Résultat patch 17.4 :
 - **Champions** : 64/64 suivis existent chez nous ✅ (on en a 19 de plus, non-meta : PvE/loot).
+  - **✅ BUG CORRIGÉ — pool de boutique pollué (2026-06-08)** : 3 unités PvE/evergreen
+    (`TFT_BlueGolem`, `TFT9_SLIME_Crab`, `TFT_TrainingDummy`) ont cost=1 dans setData et étaient
+    **dans le pool achetable** → 1-cost à **18 au lieu de 15** + un « Training Dummy » pouvait
+    apparaître en boutique. Fix : `Pool` ne garde que le préfixe `TFT<set>_`. Roster du pool
+    désormais **exactement** le roster vérifié (15/13/13/14/10 = 65). Pin :
+    `tests/test_shop_pool.py::test_real_pool_roster_matches_verified_set17`.
 - **Traits** : 41/41 ✅.
   - **✅ Breakpoints vérifiés (2026-06-08)** : pour les 23 traits standard, la data CDragon
     concorde **exactement** avec la table du skill tft-knowledge (double source indépendante).
@@ -134,6 +175,10 @@ objet, perf par étoile). **Aucune donnée statique** (HP/AD/sorts/recettes/tier
   - **🟡 Stargazer = cas spécial** : breakpoints **variables par constellation** (ex: Boar 3/4/5/6) ;
     le moteur utilise les breakpoints du trait de base (3,5,7,8,9,10) — approximation documentée
     (la constellation active n'est pas modélisée). Pin : `test_stargazer_is_constellation_variable`.
+  - **✅ Cohérence champion↔trait (2026-06-08)** : tout trait s'active depuis le roster (1er palier
+    ≤ nb de membres) ; les hauts paliers (Dark Star 9, Space Groove 10…) via emblèmes = design
+    correct ; 12 traits uniques/god (1 champ, palier 1). Pin :
+    `tests/test_traits.py::test_every_trait_first_breakpoint_reachable_from_roster`.
 - **Objets** : 150/151 ✅. Seul absent : `TFT17_Item_Artifact_EkkoArtifact` (+ KayleArtifact) —
   **artefacts de dieu** présents dans CDragon mais **hors `setData.items`** (octroyés par Realm of
   the Gods, pas dans le pool normal). Notre filtre `setData` est correct ; edge case documenté.
@@ -192,6 +237,71 @@ sont approximées (commentaire `# approx:` dans le code) :
 - % PV max / exécutions → `deal_true(target.max_hp × frac)`
 - multi-hits / multicasts → un nuke unique plus gros
 Test anti-régression : `tests/test_engine.py::test_all_set17_abilities_execute` (les 68 tournent).
+
+### Réalisme du déroulé de partie — ✅ audité (2026-06-08)
+- **Longueur** : après fix de la mitigation augment, stage final moyen **6.9**, médiane **7-2** (réaliste).
+  Pin : `tests/test_game_length.py::test_average_game_length_is_realistic`.
+- **Progression de niveau** : courbe niveau-par-stage **fidèle** au vrai TFT (S2≈3.8, S3≈5.7, S4≈6.7,
+  S6≈7.9, S7≈8.3 — bandes réelles respectées) même en jeu aléatoire → éco/XP correcte. Pin :
+  `test_level_progression_matches_real_tft`.
+- **Streaks** : séries victoire/défaite se forment (max moy ±4, jusqu'à ±12) et le **bonus d'or de
+  streak est actif ~48%** des observations joueur → mécanisme exercé et réaliste. (Tiers déjà pinés :
+  `test_streak_bonus_tiers`.)
+- **Distribution des survivants** (→ dégâts joueur) : moy ~1.7, médiane 1, étalée 1→7 (combats
+  serrés majoritaires, blowouts occasionnels). `survivors = round(board × marge)` — déterministe
+  par matchup, varie selon l'adversaire. Réaliste. Pin :
+  `test_combat.py::test_survivors_bounded_by_winning_board_with_variance`.
+- **Cohérence macro placement↔progression** : meilleur placement ⇒ niveau plus haut (place 1 ≈ 8.4,
+  place 8 ≈ 7.7, gradient monotone) — la boucle combat→survie→progression est cohérente. Pin :
+  `test_better_placement_correlates_with_higher_level`. (NB : corrélation force-board(S5)↔placement
+  = +0.15, faible mais positive ; atténuée par le churn d'achat/vente du jeu aléatoire, pas un bug.)
+- **🟡 Or thésaurisé + 1ère mort tardive (stage 5.2 vs ~3-4)** : artefacts du **jeu aléatoire** qui
+  ne dépense pas (or moy 115 / max 250 à S7 vs ~10-50 réel). L'éco est **correcte** : interest plafonné
+  à 5, revenu/round borné à 13 (base 5 + interest 5 + streak 3) — pas de runaway. Pins :
+  `test_interest_boundaries_verified_patch_17_4`, `test_round_income_is_bounded_no_runaway`.
+- **🟡 Boards sous-remplis (2-4 unités vs cap = niveau)** : artefact du **jeu aléatoire**, PAS un bug.
+  Preuve (audit) : l'action FIELD est **légale et fonctionnelle** (prise 21% quand dispo ; mécaniques
+  `test_field_unit_to_board` + `test_buy_from_shop` vertes), board_cap = niveau (place pour ~8). Le vrai
+  limiteur : les survivants n'ont que ~3.7 unités TOTALES (board 2 + bench 1.7) à niveau 8 → le random
+  **sous-achète** (achats/ventes aléatoires). Un agent entraîné field plein. Documenté, non corrigé.
+
+### Cohérence en jeu JOUÉ (agent PPO entraîné) — ✅ 2 itérations × 500 parties (2026-06-09)
+Boucle « 500 parties → vérif cohérence → correction » avec l'agent PPO long (`runs/ppo_long`).
+- **Itération 1 (6 invariants structurels)** : TOUT COHÉRENT à 500 parties. Longueur (stage 7.0),
+  placements = permutation 1..8, **équité sièges 4.30–4.68** (le FAIL à 30 parties était du bruit),
+  gradient board top>bottom, agent fielde (board top4 7.1), board≤cap. Lock : `tests/test_coherence.py`.
+- **Itération 2 (3 invariants de comp)** : TOUT COHÉRENT. Boards gagnants = **3.19 traits actifs**
+  (vraies synergies), **coût moyen 1.74** (pas que du 1-cost). Le check « méta-alignement » a été
+  **re-diagnostiqué** : comparer top/bottom en self-play est mal posé (comps homogènes) et viser la
+  haute méta n'est pas requis (board_strength récompense coût×étoile×traits) → c'est de la **qualité
+  d'agent** (agent 0.965 vs roster 0.998), PAS une incohérence sim. Remplacé par un vrai test de
+  cohérence : l'ancrage datatft influence bien la force de board (`test_combat.py::
+  test_datatft_meta_coherently_affects_board_strength`).
+- **Itération 3 (éco/étoiles/items en jeu joué)** : ✅ items équipés (top4 1.2 → mécanisme d'items
+  fonctionne en jeu). **Éco + étoiles re-diagnostiquées qualité d'agent** : le PPO (300 it) thésaurise
+  (or ~270) et sous-star (max-star 1.42). **Preuve rigoureuse que ce N'est PAS un bug sim** : l'agent
+  **scripté** (heuristique) atteint or ~**52** et max-star ~**1.90** sur le même sim → la dépense
+  (buy/reroll) et la combinaison (2-star) fonctionnent ; le PPO est juste sous-entraîné. Lock de la
+  *capacité* du sim : `tests/test_coherence.py::test_sim_supports_realistic_economy_and_starring_via_scripted_agent`.
+- **Conclusion** : 3 itérations × 500 parties, **0 bug simulateur**. Tous les écarts (méta-alignement,
+  thésaurisation, sous-starring) sont de la **qualité d'agent PPO** (sous-entraîné), prouvés non-sim
+  via l'agent scripté. Le simulateur est **cohérent de bout en bout**. Harnais : `scripts/check_coherence.py`
+  (PASS/FAIL = cohérence sim ; INFO = qualité d'agent). Prochain levier réel = **plus d'entraînement**.
+
+### Réalisme vs datatft — ✅ diagnostic (2026-06-08)
+Validation que l'**EngineResolver** est directionnellement réaliste, mesurée contre la meta datatft.
+- **Méthode** (`scripts/realism_vs_datatft.py`) : core de 6 unités partagé + 1 carry varié (impact
+  marginal → win rates étalés), contre un board baseline fixe ; corrélation de rang (Spearman)
+  entre win rate moteur et `-avg_place` datatft, par coût. ⚠️ Diagnostic, pas preuve : l'avg_place
+  datatft est confondu par playrate/coût/utilité.
+- **Résultat (5-cost)** : **Spearman ≈ +0.57** — le moteur s'aligne globalement (Jhin/Sona, top
+  datatft, dominent ; pires datatft perdent).
+- **Écarts = limites déjà documentées** : les unités d'**utilité/CC/summon** (Bard datatft 4.01 mais
+  win 0.36 ; Blitzcrank hook) sont **sous-évaluées** par le moteur car leur valeur réelle vient de
+  l'utilité (summons/buffs/hook) approximée en dégâts bruts. Cohérent avec « Summons non modélisés »
+  et « sorts approximés » — **pas un bug caché**.
+- **Garde-fou** : `tests/test_realism.py` (corrélation > 0.2 + carry datatft-top domine) — détecte une
+  régression qui inverserait/casserait la fidélité.
 
 ## Conséquence
 Stats + sorts = désormais **réels** (avec approximations documentées). Restent à remplir :

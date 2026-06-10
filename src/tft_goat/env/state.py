@@ -44,10 +44,14 @@ class PlayerState:
     passed: bool = False  # a termine sa phase de planification ce round
     placement: int = 0  # rempli a l'elimination (1 = vainqueur)
     components: list[str] = field(default_factory=list)  # composants tenus (apiNames)
-    augment_power: float = 0.0  # bonus cumule des augments (mitigation, resolvers non-moteur)
+    augment_power: float = 0.0  # bonus cumule des augments (signal d'observation ; ne mitige plus les degats joueur)
     augment_offer: list[str] = field(default_factory=list)  # augments proposes ce round
     chosen_augments: list[str] = field(default_factory=list)  # apiNames des augments choisis
     god_offer: list[str] = field(default_factory=list)  # Realm of the Gods : 3 champions au choix
+    god_offer_gods: list[str] = field(default_factory=list)  # dieu associé à chaque choix (vote)
+    god_votes: dict[str, int] = field(default_factory=dict)  # votes cumulés par dieu (2-4/3-4/4-4)
+    aligned_god: str | None = None  # dieu majoritaire après 4-4
+    god_boon: str | None = None  # apiName du God Boon réel octroyé par le dieu aligné (4-7)
 
     @property
     def board_cap(self) -> int:
@@ -71,6 +75,7 @@ class GameState:
     set_content: SetContent
     rng: np.random.Generator
     round_index: int = 0
+    lobby_gods: tuple[str, ...] = ()  # 2 dieux du Realm of the Gods (mêmes pour tout le lobby)
 
     def alive_players(self) -> list[PlayerState]:
         return [p for p in self.players.values() if p.alive]

@@ -6,6 +6,7 @@ Faithful-lite : 3 rounds PvE au depart (stage 1), puis PvP avec un round PvE per
 
 from __future__ import annotations
 
+from ..data.gods import aligned_god, god_boons
 from .combat import CombatResolver
 from .economy import ROUND_XP, apply_xp, round_income
 from .items import components_and_recipes
@@ -24,7 +25,6 @@ AUGMENT_ROUNDS = {3, 11, 18}
 N_AUGMENT_CHOICES = 3
 # Reroll d'augment : chaque joueur recoit une offre aleatoire (differente par joueur) qu'il peut
 # reroll. Le reroll COUTE 2 gold (= REROLL_COST), re-tire toute la ligne selon les odds du round.
-MAX_AUGMENT_MITIGATION = 0.8  # plafond de reduction de degats cumulee
 
 # Vraies probabilites de tier (Silver/Gold/Prismatic) par round d'augment (Set 17, patch 17.4).
 # Chacun des 3 augments proposes est tire independamment selon ces odds (les tiers d'une meme
@@ -77,6 +77,13 @@ def is_god_round(round_index: int) -> bool:
     return stage_of(round_index) in GOD_VOTE_STAGES and round_in_stage(round_index) == 4
 
 
+# Le God Boon du dieu aligné est octroyé au 4-7 (armory). VERIFIE vs patch 17.4
+# (eloboost24 + mobalytics : "At Round 4-7, your Aligned God rewards you with a God Boon").
+def is_god_boon_round(round_index: int) -> bool:
+    """Round d'octroi du God Boon : 4-7 uniquement."""
+    return stage_of(round_index) == 4 and round_in_stage(round_index) == 7
+
+
 def _augments_by_tier(state: GameState) -> dict[str, list[str]]:
     """Augments du pool regulier groupes par tier (exclut les God Augments)."""
     groups: dict[str, list[str]] = {t: [] for t in _AUGMENT_TIERS}
@@ -109,10 +116,39 @@ def sample_augments(state: GameState, player: PlayerState, round_index: int) -> 
 
 
 def _sample_gods(state: GameState) -> list[str]:
-    champs = [a for a, c in state.set_content.champions.items() if 1 <= c.cost <= 5]
+    # Offre tirée du MÊME roster jouable que le pool de boutique (filtre PvE/evergreen compris) :
+    # sinon l'offre pouvait présenter une unité hors-pool (TFT_BlueGolem, Training Dummy...) que
+    # pool.take() refusait ensuite silencieusement -> pick forcé brûlé pour rien.
+    champs = [c for cost in range(1, 6) for c in state.pool.champions_of_cost(cost)]
     if len(champs) >= GOD_CHOICES:
         return [str(k) for k in state.rng.choice(champs, size=GOD_CHOICES, replace=False)]
     return champs
+
+
+def _offer_gods(state: GameState) -> list[str]:
+    """Dieu associé à chaque choix d'offrande (= le vote déclenché en le prenant).
+
+    Chaque offrande provient d'un des 2 dieux du lobby ; on alterne pour que les deux soient
+    représentés, comme le vrai choix « blessing du dieu A vs du dieu B ».
+    """
+    gods = state.lobby_gods
+    if len(gods) < 2:
+        return []
+    return [gods[i % 2] for i in range(GOD_CHOICES)]
+
+
+def finalize_god_alignment(state: GameState, player: PlayerState) -> None:
+    """Fixe le dieu aligné (majorité des votes exprimés) et tire son God Boon réel.
+
+    Appelé au 3e vote (cas nominal, depuis actions._record_god_vote) ou en filet au 4-7
+    si l'alignement n'a pas encore été résolu. Idempotent.
+    """
+    if player.aligned_god is None:
+        player.aligned_god = aligned_god(player.god_votes)
+    if player.aligned_god is not None and player.god_boon is None:
+        boons = god_boons(state.set_content).get(player.aligned_god, [])
+        if boons:
+            player.god_boon = str(state.rng.choice(boons))
 
 
 def start_round(state: GameState) -> None:
@@ -129,15 +165,34 @@ def start_round(state: GameState) -> None:
             p.components.append(str(state.rng.choice(components)))
         if augment_round:
             p.augment_offer = sample_augments(state, p, state.round_index)
-        if is_god_round(state.round_index):  # Realm of the Gods : 1 champion parmi 3
+        # Une offre de dieu non consommée (timeout/skip) ne survit JAMAIS au round : sans cette
+        # purge, l'offre fuyait vers les rounds suivants et produisait des votes fantômes.
+        p.god_offer = []
+        p.god_offer_gods = []
+        if is_god_round(state.round_index):  # Realm of the Gods : offrande (champion + vote dieu)
             p.god_offer = _sample_gods(state)
+            p.god_offer_gods = _offer_gods(state)
+        if is_god_boon_round(state.round_index):  # 4-7 : octroi du God Boon réel
+            if p.aligned_god is None and p.god_votes:
+                # Filet : si le 3e vote a été manqué (chemin limite), la majorité des votes
+                # déjà exprimés fixe quand même l'alignement au moment du boon — comme le vrai
+                # TFT où l'alignement est toujours résolu avant le 4-7.
+                finalize_god_alignment(state, p)
+            if p.god_boon and p.god_boon not in p.chosen_augments:
+                p.chosen_augments.append(p.god_boon)  # délivré au pipeline d'augments (resolver)
 
 
 # --- combat ----------------------------------------------------------------
 def _apply_damage(player: PlayerState, raw_damage: int) -> None:
-    """Degats reduits par les augments (mitigation plafonnee)."""
-    mitig = min(player.augment_power, MAX_AUGMENT_MITIGATION)
-    player.hp -= max(0, round(raw_damage * (1.0 - mitig)))
+    """Degats joueur reels (formule TFT : base_stage + survivants), SANS mitigation.
+
+    Correction 2026-06-08 : `augment_power` ne mitige PLUS les degats joueur. C'etait un
+    defaut de modelisation (un augment renforce le board / la proba de victoire, deja gere par
+    le resolver moteur via chosen_augments ; il ne reduit pas les degats subis a la defaite).
+    Cette mitigation gonflait la duree des parties (~stage 7.8 -> 6.9 une fois retiree).
+    Le HeuristicResolver ignore les augments (v0) ; leur effet combat reel passe par le moteur.
+    """
+    player.hp -= max(0, round(raw_damage))
 
 
 def _fight(state: GameState, resolver: CombatResolver, p: PlayerState, q: PlayerState) -> None:

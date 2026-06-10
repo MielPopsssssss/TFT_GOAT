@@ -21,3 +21,4 @@ __pycache__/
 # Claude Code runtime (keep skills, drop local/runtime state)
 .claude/scheduled_tasks.lock
 .claude/settings.local.json
+.DS_Store

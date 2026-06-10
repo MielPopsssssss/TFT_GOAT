@@ -143,9 +143,14 @@ def test_augment_reroll_illegal_without_gold(sample_content):
     assert not legal_mask(state, p)[REROLL_AUGMENT]
 
 
-def test_augment_mitigates_damage(sample_content):
+def test_player_damage_is_not_mitigated_by_augments(sample_content):
+    """Correction 2026-06-08 : les dégâts JOUEUR ne sont plus réduits par augment_power.
+
+    Un augment renforce le board (proba de victoire via le resolver), il ne réduit pas les
+    dégâts subis à la défaite. L'ancienne mitigation gonflait la durée des parties (stage 7.8→6.9).
+    """
     _, p = _state(sample_content)
     p.hp = 100
-    p.augment_power = 0.5
+    p.augment_power = 0.5  # ne doit plus avoir d'effet sur les dégâts joueur
     _apply_damage(p, 20)
-    assert p.hp == 90  # 20 * (1-0.5) = 10
+    assert p.hp == 80  # dégâts pleins (20), sans mitigation

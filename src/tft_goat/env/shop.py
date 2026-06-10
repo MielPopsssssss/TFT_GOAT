@@ -22,9 +22,20 @@ class Pool:
     def __init__(self, set_content: SetContent):
         self._remaining: dict[str, int] = {}
         self._by_cost: dict[int, list[str]] = {c: [] for c in COSTS}
-        for champ in set_content.champions.values():
+        # Seules les unités jouables du set (préfixe TFT<set>_) entrent dans le pool achetable.
+        # Les unités PvE/evergreen (TFT_BlueGolem, TFT9_SLIME_Crab, TFT_TrainingDummy...) ont
+        # cost=1 dans setData mais NE sont PAS vendues en boutique → exclues (sinon pool 1-cost
+        # pollué à 18 au lieu de 15 + un Training Dummy pouvait apparaître dans le shop).
+        playable_prefix = f"TFT{set_content.set_number}_"
+        champs = list(set_content.champions.values())
+        # Filtre appliqué seulement si le préfixe du set existe (contenu réel) ; sinon (contenu
+        # synthétique de test, set_number=0) on garde tout — pas de pollution PvE à filtrer.
+        apply_filter = any(c.api_name.startswith(playable_prefix) for c in champs)
+        for champ in champs:
             if champ.cost not in self._by_cost:
                 continue  # ignore les unites hors 1..5 (invocations, etc.)
+            if apply_filter and not champ.api_name.startswith(playable_prefix):
+                continue  # unité PvE/evergreen, pas dans le pool de boutique
             self._remaining[champ.api_name] = pool_size(champ.cost)
             self._by_cost[champ.cost].append(champ.api_name)
 

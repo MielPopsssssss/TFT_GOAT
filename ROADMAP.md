@@ -26,7 +26,7 @@ Status legend: ✅ done · 🔧 in progress · ⏳ planned · ⏸️ optional/ou
 
 ### 1. Train the agent to actually be good 🙋 help wanted · `RL`
 **This is the headline problem.** The pipeline is complete and the agent crushes random, but it
-**still loses to the scripted opponent** (top-4 ~10%). We need training at scale: large rollouts,
+**still loses to the scripted opponent** (top-4 ~40%). We need training at scale: large rollouts,
 hyperparameter tuning, and possibly a curriculum against the scripted bot.
 - Profile and scale the self-play loop.
 - Reward shaping experiments (economy priors, placement).
@@ -54,8 +54,10 @@ component→item choice driven by the agent, so item *identity* (not just a coun
 - **Exact game flow** — finalize disputed XP/streak tables against official patch notes (some values
   are intentionally not flipped without an official source — see COMBAT_COVERAGE).
 - **Player positioning granularity** — richer positioning in the observation/action space.
-- **Realm of the Gods (full)** — model the real Minor Blessing + alignment-vote → God Boon mechanic
-  instead of the current "pick 1 of 3" abstraction.
+- **Realm of the Gods (full)** — the core vote → alignment → God Boon mechanic is now modeled
+  (2 gods per lobby, Minor Blessing votes at 2-4/3-4/4-4, majority alignment, real God Boon at 4-7).
+  What's left: couple each blessing to the god it belongs to, implement the actual Minor Blessing
+  effects, and add the god-specific artifacts / loot.
 - **Set-refresh tooling** — make "new set = one data refresh" a single, documented command.
 - **MuZero / Gumbel-MuZero** 🙋 help wanted · `research` — stretch goal on top of the existing env.
 
