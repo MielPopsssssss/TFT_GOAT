@@ -36,6 +36,17 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   sous le HeuristicResolver v0 (qui ignore les augments) et n'alimente pas `augment_power`.
   Décider : impact heuristique dédié, ou documenter+tester « engine-only ».
 
+## Env / Équité
+
+- **Enquêter l'équité des sièges en self-play (et rendre la bande de check_coherence N-aware)**
+  **Priority:** P2
+  Sur policy entraînée (v0.4.0, it250) : 2 runs de `check_coherence` (15 et 40 parties) sortent
+  de la bande fixe [3.8, 5.2] avec des sièges différents — sauf le siège 5, bas (3.00 puis 3.62)
+  les deux fois (avantage répété ?). Le sim 10k pré-fixes donnait 4.49-4.52 partout. Hypothèse
+  à tester : avantage du premier acteur (`for a in acting` itère player_0..7, pool partagé —
+  les achats du siège 0 dépètent le pool avant le siège 7 au même step). Plan : run 500+
+  parties offline, et adapter la bande du check à N (±k·2.29/√N) au lieu d'une bande fixe.
+
 ## Tests
 
 - **Extraire un helper partagé de boucle de jeu aléatoire**
