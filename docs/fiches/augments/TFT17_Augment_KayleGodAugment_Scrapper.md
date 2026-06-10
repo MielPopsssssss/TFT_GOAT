@@ -18,4 +18,4 @@ Combat start: Up to @NumComponents@ components temporarily turn into completed i
 
 ## Statut combat moteur
 
-🟡 no-op en combat — soit augment éco/loot (no-op correct), soit effet combat non encore implémenté (cf. docs/COMBAT_COVERAGE.md, TODOS.md)
+✅ effet combat codé (`engine/augments_set17`)

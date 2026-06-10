@@ -14,7 +14,7 @@ def _aurelionsol(caster, allies, enemies, ctx) -> None:
     ctx.deal_magic(caster, target, total)  # approx: full-channel damage on primary target
     falloff = 1.0 - caster.ability_value("DamageReductionPerTarget")
     amount = total * falloff
-    for e in ctx.enemies_in_radius(target, 1):  # approx: beam pierces enemies behind target
+    for e in ctx.enemies_around(caster, target, 1):  # approx: beam pierces enemies behind target
         if e is not target:
             ctx.deal_magic(caster, e, amount)
 
@@ -45,6 +45,17 @@ def _ezreal(caster, allies, enemies, ctx) -> None:
 
 def _graves(caster, allies, enemies, ctx) -> None:
     # Collateral Damage: explosive shell — physical to target + AoE to adjacent enemies.
+    # Passive : « attacks fire @NumProjectiles@ projectiles at @PassivePercentBAD@ AD »
+    # = 5 x 33% = 165% AD par auto -> modélisé en buff d'AD UNIQUE au 1er cast
+    # (one-shot via caster.triggered ; manquait : Graves n'avait que son active).
+    # APPROX ASSUMÉE : le buff d'AD gonfle AUSSI le sort (qui scale AD), alors que la
+    # vraie passive ne touche que les autos — même classe d'approximation que Jhin
+    # (ADConversionRate). Fix propre = multiplicateur d'autos dédié, cf. TODOS.md.
+    if "graves_passive" not in caster.triggered:
+        caster.triggered.add("graves_passive")
+        n = caster.ability_value("NumProjectiles", 5.0)
+        pct = caster.ability_value("PassivePercentBAD", 0.33)
+        ctx.buff_ad(caster, n * pct - 1.0)  # autos passent de 100% à n*pct de l'AD
     target = ctx.target_of(caster)
     if target is None:
         return
@@ -52,7 +63,7 @@ def _graves(caster, allies, enemies, ctx) -> None:
     ctx.deal_physical(caster, target, primary)
     secondary = caster.ability_value("SecondaryDamageAD") * (caster.ad / 100.0) \
         + caster.ability_value("SecondaryDamageAP") * (caster.ap / 100.0)
-    for e in ctx.enemies_in_radius(target, 1):
+    for e in ctx.enemies_around(caster, target, 1):
         if e is not target:
             ctx.deal_physical(caster, e, secondary)
 
@@ -66,7 +77,7 @@ def _jinx(caster, allies, enemies, ctx) -> None:
         + caster.ability_value("APDamage") * (caster.ap / 100.0)
     rockets = max(1, int(caster.ability_value("RocketsPerLaunchAttack", 1)))
     ctx.deal_physical(caster, target, per_rocket * rockets)  # approx: cone of rockets onto target
-    for e in ctx.enemies_in_radius(target, 1):  # approx: spillover onto nearby cone targets
+    for e in ctx.enemies_around(caster, target, 1):  # approx: spillover onto nearby cone targets
         if e is not target:
             ctx.deal_physical(caster, e, per_rocket)
 
@@ -79,7 +90,7 @@ def _lissandra(caster, allies, enemies, ctx) -> None:
     primary = caster.ability_value("Damage") * (caster.ap / 100.0)
     ctx.deal_magic(caster, target, primary)
     secondary = caster.ability_value("SecondaryDamage") * (caster.ap / 100.0)
-    for e in ctx.enemies_in_radius(target, 1):
+    for e in ctx.enemies_around(caster, target, 1):
         if e is not target:
             ctx.deal_magic(caster, e, secondary)
 

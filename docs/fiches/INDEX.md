@@ -10,7 +10,7 @@
 - **Champions** : 83 fiches (65 jouables — sorts moteur : 65 ✅ / 0 🟡)
 - **Traits** : 44 fiches
 - **Items** : 687 fiches
-- **Augments** : 276 fiches (effet combat moteur : 74 ✅) — dont 17 God Boons
+- **Augments** : 276 fiches (effet combat moteur : 85 ✅) — dont 17 God Boons
 
 ## Champions jouables (par coût)
 
@@ -862,22 +862,22 @@
 ### god (17)
 
 - [Ahri's Boon](augments/TFT17_Augment_AhriGodAugment.md) ✅
-- [Aurelion Sol's Boon](augments/TFT17_Augment_AurelionSolGodAugment.md) 🟡
-- [Boon of Resurrection](augments/TFT17_Augment_AurelionSolGodAugment_BoonOfResurrection.md) 🟡
-- [After @LargeQuestRounds@ player combats, gain +1 to all non-unique traits.](augments/TFT17_Augment_AurelionSolGodAugment_LargeQuest.md) 🟡
-- [After @MedQuestRounds@ player combats, gain a completed item anvil and @MedQuestGold@ gold.](augments/TFT17_Augment_AurelionSolGodAugment_MediumQuest.md) 🟡
+- [Aurelion Sol's Boon](augments/TFT17_Augment_AurelionSolGodAugment.md) ✅
+- [Boon of Resurrection](augments/TFT17_Augment_AurelionSolGodAugment_BoonOfResurrection.md) ✅
+- [After @LargeQuestRounds@ player combats, gain +1 to all non-unique traits.](augments/TFT17_Augment_AurelionSolGodAugment_LargeQuest.md) ✅
+- [After @MedQuestRounds@ player combats, gain a completed item anvil and @MedQuestGold@ gold.](augments/TFT17_Augment_AurelionSolGodAugment_MediumQuest.md) ✅
 - [Your team gains @SmallQuestADAP@ Attack Damage and Ability Power.](augments/TFT17_Augment_AurelionSolGodAugment_SmallQuest.md) ✅
-- [Ekko's Boon](augments/TFT17_Augment_EkkoGodAugment.md) 🟡
+- [Ekko's Boon](augments/TFT17_Augment_EkkoGodAugment.md) ✅
 - [Evelynn's Boon](augments/TFT17_Augment_EvelynnGodAugment.md) ✅
-- [Blood Price](augments/TFT17_Augment_EvelynnGodAugment_BloodPrice.md) 🟡
+- [Blood Price](augments/TFT17_Augment_EvelynnGodAugment_BloodPrice.md) ✅
 - [Kayle's Boon](augments/TFT17_Augment_KayleGodAugment.md) ✅
-- [Boon of the Scrapper](augments/TFT17_Augment_KayleGodAugment_Scrapper.md) 🟡
-- [Soraka's Boon](augments/TFT17_Augment_SorakaGodAugment.md) 🟡
-- [Thresh's Boon](augments/TFT17_Augment_ThreshGodAugment.md) 🟡
+- [Boon of the Scrapper](augments/TFT17_Augment_KayleGodAugment_Scrapper.md) ✅
+- [Soraka's Boon](augments/TFT17_Augment_SorakaGodAugment.md) ✅
+- [Thresh's Boon](augments/TFT17_Augment_ThreshGodAugment.md) ✅
 - [Varus's Boon](augments/TFT17_Augment_VarusGodAugment_BoonOfStars.md) ✅
 - [Yasuo's Golden Hex](augments/TFT17_Augment_YasuoGodAugment_GoldenHex.md) ✅
-- [Yasuo's Share The Spotlight](augments/TFT17_Augment_YasuoGodAugment_MoreHexes.md) 🟡
-- [Yasuo's Boon](augments/TFT17_Augment_YasuoGodAugment_PaintedPower.md) 🟡
+- [Yasuo's Share The Spotlight](augments/TFT17_Augment_YasuoGodAugment_MoreHexes.md) ✅
+- [Yasuo's Boon](augments/TFT17_Augment_YasuoGodAugment_PaintedPower.md) ✅
 
 ### prismatic (68)
 

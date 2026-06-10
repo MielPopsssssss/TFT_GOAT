@@ -18,4 +18,4 @@ Your team gains @HealthPerTacHealth@ Health for each missing player health. At t
 
 ## Statut combat moteur
 
-🟡 no-op en combat — soit augment éco/loot (no-op correct), soit effet combat non encore implémenté (cf. docs/COMBAT_COVERAGE.md, TODOS.md)
+✅ effet combat codé (`engine/augments_set17`)
