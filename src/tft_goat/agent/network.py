@@ -26,8 +26,10 @@ class ActorCritic(nn.Module):
 
         n_scalars = 10
         unit_extra = 2  # star + items concatenes a l'embedding
+        from ..env.encoding import GOD_FEATS
+
         in_dim = (
-            n_scalars + embed_dim + (embed_dim + unit_extra) * 2 + n_trait + 7 * 3
+            n_scalars + embed_dim + (embed_dim + unit_extra) * 2 + n_trait + 7 * 3 + GOD_FEATS
         )
         self.trunk = nn.Sequential(
             nn.Linear(in_dim, hidden_dim), nn.ReLU(),
@@ -51,7 +53,8 @@ class ActorCritic(nn.Module):
         bench = units("bench")
         board = units("board")
         opp = (obs["opponents"] / self.opp_scale).flatten(start_dim=1)  # (B, 21)
-        return torch.cat([scalars, shop, bench, board, obs["traits"], opp], dim=-1)
+        # gods : déjà normalisé à l'encodage (one-hots, votes /3, slots 0..2)
+        return torch.cat([scalars, shop, bench, board, obs["traits"], opp, obs["gods"]], dim=-1)
 
     def forward(self, obs, mask) -> tuple[torch.Tensor, torch.Tensor]:
         h = self.trunk(self._features(obs))
