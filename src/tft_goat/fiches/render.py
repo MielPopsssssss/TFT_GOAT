@@ -15,6 +15,8 @@ from .status import (
     augment_in_engine,
     god_of_augment,
     item_proc_hooks,
+    shadowed_by,
+    trait_name_winner,
     trait_var_attrs,
 )
 
@@ -50,8 +52,12 @@ def _header(title: str, kind: str, content: SetContent) -> str:
 
 
 def _trait_links(champ: Champion, content: SetContent) -> str:
-    """Champion.traits contient des NOMS d'affichage -> liens vers les fiches (apiName)."""
-    by_name = {t.name: api for api, t in content.traits.items()}
+    """Champion.traits contient des NOMS d'affichage -> liens vers les fiches (apiName).
+
+    En cas d'homonymes, on lie vers le trait que le moteur résout réellement
+    (`trait_name_winner`) — le lien reflète le comportement effectif, pas un choix arbitraire.
+    """
+    by_name = trait_name_winner(content)
     parts = []
     for name in champ.traits:
         api = by_name.get(name)
@@ -59,7 +65,13 @@ def _trait_links(champ: Champion, content: SetContent) -> str:
     return ", ".join(parts) if parts else "—"
 
 
-def _is_playable(champ: Champion, content: SetContent) -> bool:
+def is_playable(champ: Champion, content: SetContent) -> bool:
+    """Champion du pool jouable : préfixe du set + coût 1..5.
+
+    NB : env/shop.py applique le filtre de préfixe CONDITIONNELLEMENT (désactivé pour le
+    contenu synthétique de test sans préfixe) ; ici le préfixe est toujours exigé — identique
+    sur la data réelle du set, plus strict sur du contenu synthétique.
+    """
     return champ.api_name.startswith(f"TFT{content.set_number}_") and 1 <= champ.cost <= 5
 
 
@@ -69,7 +81,7 @@ def render_champion(champ: Champion, content: SetContent) -> str:
     md += f"- **Coût** : {champ.cost}\n"
     md += f"- **Traits** : {_trait_links(champ, content)}\n"
     md += f"- **Rôle** : {champ.role or '—'}\n"
-    md += f"- **Jouable (pool boutique)** : {'oui' if _is_playable(champ, content) else 'non (PvE/evergreen/spécial)'}\n\n"
+    md += f"- **Jouable (pool boutique)** : {'oui' if is_playable(champ, content) else 'non (PvE/evergreen/spécial)'}\n\n"
 
     s = champ.stats
     if s is not None:
@@ -111,6 +123,19 @@ def render_trait(trait: Trait, content: SetContent) -> str:
     bps = " / ".join(str(b) for b in trait.breakpoints) or "—"
     md += f"- **Paliers d'activation** : {bps}\n\n"
 
+    # Collision d'homonymes : le moteur joint les traits par NOM d'affichage. Si un autre
+    # apiName porte le même nom et gagne, CETTE variante n'est jamais utilisée en combat —
+    # la fiche doit le dire, sinon elle revendique des applications qui n'existent pas.
+    winner = shadowed_by(trait, content)
+    if winner is not None:
+        homonyms = sum(1 for t in content.traits.values() if t.name == trait.name)
+        md += (
+            f"> ⚠️ **Collision de nom** : {homonyms} traits partagent le nom « {trait.name} ». "
+            f"Le moteur résout les traits par nom d'affichage et utilise "
+            f"[`{winner}`](../traits/{winner}.md) — les variables ci-dessous ne sont **jamais "
+            f"appliquées** via cette variante.\n\n"
+        )
+
     if trait.effects:
         md += "## Paliers\n\n| Min unités | Max | Style | Variables |\n|---|---|---|---|\n"
         for e in sorted(trait.effects, key=lambda e: e.min_units):
@@ -123,6 +148,11 @@ def render_trait(trait: Trait, content: SetContent) -> str:
     md += "## Statut moteur\n\n"
     if not keys:
         md += "Aucune variable de palier (trait sans effet numérique en data).\n\n"
+    elif winner is not None:
+        md += "| Variable | Application moteur |\n|---|---|\n"
+        for k in keys:
+            md += f"| `{k}` | ⛔ jamais atteinte (collision de nom — le moteur résout vers `{winner}`) |\n"
+        md += "\n"
     else:
         md += "| Variable | Application moteur |\n|---|---|\n"
         for k in keys:
@@ -130,18 +160,21 @@ def render_trait(trait: Trait, content: SetContent) -> str:
             if attrs:
                 md += f"| `{k}` | ✅ stat auto-appliquée ({', '.join(attrs)}) |\n"
             else:
-                md += f"| `{k}` | 🟡 non-stat — effet appliqué uniquement si codé (long-tail) |\n"
+                md += f"| `{k}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |\n"
         md += "\n"
 
-    holders = [
-        (c.name, api) for api, c in sorted(content.champions.items())
-        if trait.name in c.traits
-    ]
-    if holders:
-        md += "## Champions avec ce trait\n\n"
-        for name, api in holders:
-            md += f"- [{name}](../champions/{api}.md)\n"
-        md += "\n"
+    # Les porteurs ne sont identifiables que par NOM (Champion.traits = noms d'affichage) :
+    # on ne les liste que sur le trait que le moteur résout, jamais sur une variante masquée.
+    if winner is None:
+        holders = [
+            (c.name, api) for api, c in sorted(content.champions.items())
+            if trait.name in c.traits
+        ]
+        if holders:
+            md += "## Champions avec ce trait\n\n"
+            for name, api in holders:
+                md += f"- [{name}](../champions/{api}.md)\n"
+            md += "\n"
     return md
 
 

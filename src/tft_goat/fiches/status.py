@@ -7,7 +7,7 @@ fiche par fiche, ce qui est réellement codé vs ce qui retombe sur un défaut/n
 from __future__ import annotations
 
 from ..data.gods import SET17_GODS
-from ..data.models import Augment
+from ..data.models import Augment, SetContent, Trait
 from ..engine.abilities import IMPLEMENTED
 from ..engine.augments_set17 import AUGMENT_REGISTRY
 from ..engine.items_set17 import (
@@ -19,7 +19,7 @@ from ..engine.items_set17 import (
     ITEM_ON_TICK,
     ITEM_REVIVE,
 )
-from ..engine.trait_effects import _attrs_for
+from ..engine.trait_effects import attrs_for
 
 # Hooks de proc spéciaux du moteur, par nom lisible (l'ordre est celui de l'affichage).
 _ITEM_HOOKS: dict[str, dict] = {
@@ -50,14 +50,35 @@ def augment_in_engine(augment_api: str) -> bool:
 
 def trait_var_attrs(key: str) -> list[str]:
     """Stats auto-appliquées par le moteur pour une variable de trait ([] = non-stat)."""
-    return _attrs_for(key)
+    return attrs_for(key)
 
 
 def god_of_augment(aug: Augment) -> str | None:
-    """Dieu du Realm of the Gods dont cet augment est le God Boon (None si pas un boon)."""
+    """Dieu du Realm of the Gods dont cet augment est le God Boon (None si pas un boon).
+
+    Même politique que `data/gods.py::god_boons` : un apiName matchant PLUSIEURS dieux est
+    une donnée ambiguë -> erreur explicite, jamais devinée.
+    """
     if aug.tier != "god":
         return None
-    for god, token in SET17_GODS.items():
-        if token in aug.api_name:
-            return god
-    return None
+    matched = [god for god, token in SET17_GODS.items() if token in aug.api_name]
+    if len(matched) > 1:
+        raise ValueError(f"God augment ambigu : {aug.api_name} matche plusieurs dieux {matched}")
+    return matched[0] if matched else None
+
+
+def trait_name_winner(content: SetContent) -> dict[str, str]:
+    """Nom d'affichage -> apiName du trait que le moteur résout RÉELLEMENT.
+
+    Le moteur joint les traits par nom d'affichage (`{t.name: t}` dans
+    `engine/trait_effects.apply_team_traits` et `env/traits._traits_by_name`) : en cas
+    d'homonymes (ex. 8 apiNames « Stargazer »), le dernier inséré gagne. Cette fonction
+    réplique exactement cette construction pour que les fiches disent la vérité moteur.
+    """
+    return {t.name: api for api, t in content.traits.items()}
+
+
+def shadowed_by(trait: Trait, content: SetContent) -> str | None:
+    """apiName du trait homonyme que le moteur résout À LA PLACE (None si ce trait gagne)."""
+    winner = trait_name_winner(content).get(trait.name)
+    return winner if winner is not None and winner != trait.api_name else None

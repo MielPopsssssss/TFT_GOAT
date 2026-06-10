@@ -2,13 +2,22 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from ..data.models import SetContent
-from .render import render_augment, render_champion, render_item, render_trait
+from .render import is_playable, render_augment, render_champion, render_item, render_trait
 from .status import ability_implemented, augment_in_engine
 
 _GROUPS = ("champions", "traits", "items", "augments")
+_AUG_TIER_ORDER = ("god", "prismatic", "gold", "silver")
+# Garde défensive : un apiName sert de nom de fichier — il ne doit jamais pouvoir sortir
+# de out_dir (data locale de confiance aujourd'hui, mais la provenance peut évoluer).
+_SAFE_API = re.compile(r"[A-Za-z0-9_.\-]+")
+
+
+def _glyph(implemented: bool) -> str:
+    return "✅" if implemented else "🟡"
 
 
 def generate_all(content: SetContent, out_dir: Path | str) -> dict[str, dict[str, Path]]:
@@ -28,6 +37,8 @@ def generate_all(content: SetContent, out_dir: Path | str) -> dict[str, dict[str
         entities, renderer = renderers[group]
         (out / group).mkdir(parents=True, exist_ok=True)
         for api, entity in sorted(entities.items()):
+            if not _SAFE_API.fullmatch(api):
+                raise ValueError(f"apiName suspect (refusé comme nom de fichier) : {api!r}")
             p = out / group / f"{api}.md"
             p.write_text(renderer(entity, content), encoding="utf-8")
             paths[group][api] = p
@@ -37,16 +48,12 @@ def generate_all(content: SetContent, out_dir: Path | str) -> dict[str, dict[str
 
 def _champ_line(api: str, content: SetContent) -> str:
     c = content.champions[api]
-    status = "✅" if ability_implemented(api) else "🟡"
-    return f"- [{c.name}](champions/{api}.md) {status}\n"
+    return f"- [{c.name}](champions/{api}.md) {_glyph(ability_implemented(api))}\n"
 
 
 def _render_index(content: SetContent) -> str:
     champs = content.champions
-    playable = [
-        api for api, c in sorted(champs.items())
-        if api.startswith(f"TFT{content.set_number}_") and 1 <= c.cost <= 5
-    ]
+    playable = [api for api, c in sorted(champs.items()) if is_playable(c, content)]
     others = [api for api in sorted(champs) if api not in set(playable)]
     abilities_ok = sum(1 for api in playable if ability_implemented(api))
     aug_engine = sum(1 for api in sorted(content.augments) if augment_in_engine(api))
@@ -107,23 +114,20 @@ def _render_index(content: SetContent) -> str:
     md += "\n"
 
     md += "## Augments\n\n"
-    for tier in ("god", "prismatic", "gold", "silver"):
+    for tier in _AUG_TIER_ORDER:
         of_tier = [api for api, a in sorted(content.augments.items()) if a.tier == tier]
         if not of_tier:
             continue
         md += f"### {tier} ({len(of_tier)})\n\n"
         for api in of_tier:
-            status = "✅" if augment_in_engine(api) else "🟡"
-            md += f"- [{content.augments[api].name}](augments/{api}.md) {status}\n"
+            md += f"- [{content.augments[api].name}](augments/{api}.md) {_glyph(augment_in_engine(api))}\n"
         md += "\n"
     other_tiers = [
-        api for api, a in sorted(content.augments.items())
-        if a.tier not in ("god", "prismatic", "gold", "silver")
+        api for api, a in sorted(content.augments.items()) if a.tier not in _AUG_TIER_ORDER
     ]
     if other_tiers:
         md += f"### autres tiers ({len(other_tiers)})\n\n"
         for api in other_tiers:
-            status = "✅" if augment_in_engine(api) else "🟡"
-            md += f"- [{content.augments[api].name}](augments/{api}.md) {status}\n"
+            md += f"- [{content.augments[api].name}](augments/{api}.md) {_glyph(augment_in_engine(api))}\n"
         md += "\n"
     return md
