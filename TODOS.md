@@ -3,16 +3,6 @@
 Backlog technique fin (le [ROADMAP.md](ROADMAP.md) public porte les grands axes).
 Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complétés en bas.
 
-## Env / Encoding
-
-- **Encoder les features Realm of the Gods dans l'observation**
-  **Priority:** P1
-  L'agent vote pour des dieux sans les voir : `encoding.py` n'expose ni `god_offer_gods`
-  (quel dieu correspond à chaque choix), ni les compteurs de votes, ni `aligned_god`/`god_boon`.
-  Ajouter ces features → bump des dims d'observation → nouveau réseau (les checkpoints
-  existants deviennent invalides — à faire AVANT le RL sérieux).
-  *Déféré du ship feat/realism-audit-and-gods (2026-06-10).*
-
 ## Env / Rounds
 
 - **Coupler le champion offert et le dieu du vote**
@@ -55,6 +45,11 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   Un helper `tests/_helpers.py::play_random_game(...)` évite 5 mises à jour synchrones.
 
 ## Completed
+
+- **Encoder les features Realm of the Gods dans l'observation**
+  Vecteur `gods` 31 dims (lobby, slots d'offre, votes, aligné, boon) + réseau adapté.
+  Checkpoints antérieurs invalidés (réentraîner).
+  **Completed:** v0.4.0.0 (2026-06-10)
 
 - **Variables `*_Health` de traits jamais appliquées (`"heal"` matche `"health"`)**
   Tri par variable effectué : `HealthBonus` (Brawler %) et `BonusHealth` (Meeple flat)
