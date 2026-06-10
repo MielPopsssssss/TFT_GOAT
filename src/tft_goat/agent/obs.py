@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-OBS_KEYS = ("scalars", "shop", "bench", "board", "traits", "opponents")
+OBS_KEYS = ("scalars", "shop", "bench", "board", "traits", "opponents", "gods")
 
 
 def batch_obs(obs_list: list[dict[str, np.ndarray]], device: str = "cpu") -> dict[str, torch.Tensor]:

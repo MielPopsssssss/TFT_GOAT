@@ -3,6 +3,18 @@
 Toutes les évolutions notables du projet. Format inspiré de
 [Keep a Changelog](https://keepachangelog.com/) ; versions `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.4.0.0] - 2026-06-10
+
+### Added
+- **L'agent voit enfin les dieux** : nouveau vecteur d'observation `gods` (31 dims) —
+  dieux du lobby, dieu associé à chaque choix d'offrande, votes cumulés, dieu aligné,
+  God Boon. L'agent peut maintenant APPRENDRE la mécanique du Realm of the Gods au lieu
+  de voter au hasard.
+
+### Breaking
+- Les dimensions d'entrée du réseau changent : les checkpoints antérieurs
+  (`runs/ppo*/policy*.pt`) ne sont plus chargeables — réentraîner.
+
 ## [0.3.1.0] - 2026-06-10
 
 ### Fixed

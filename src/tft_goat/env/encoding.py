@@ -9,6 +9,7 @@ from __future__ import annotations
 import numpy as np
 from gymnasium import spaces
 
+from ..data.gods import SET17_GODS
 from ..data.models import SetContent
 from .actions import NUM_ACTIONS, legal_mask
 from .economy import BENCH_CAP, MAX_LEVEL, SHOP_SIZE
@@ -18,6 +19,14 @@ MAX_BOARD = 10
 MAX_OPP = 7
 N_SCALARS = 10  # gold,level,xp,hp,streak,round,maxlvl,components,augment_power,augment_available
 UNIT_FEATS = 3  # champ_idx, star, items
+
+# Realm of the Gods : l'agent doit VOIR pour qui il vote (sinon le vote est du bruit).
+# 9 (lobby one-hot) + 3 (slot d'offre : 0=vide, 1=dieu A, 2=dieu B) + 9 (votes /3)
+# + 9 (dieu aligné one-hot) + 1 (boon présent). Ordre canonique = SET17_GODS.
+_GOD_ORDER = tuple(SET17_GODS)
+_N_GODS = len(_GOD_ORDER)
+GOD_VOTE_SLOTS = 3
+GOD_FEATS = _N_GODS + GOD_VOTE_SLOTS + _N_GODS + _N_GODS + 1  # = 31
 
 
 class Encoder:
@@ -46,6 +55,7 @@ class Encoder:
                 "board": spaces.Box(0.0, c, shape=(MAX_BOARD, UNIT_FEATS), dtype=np.float32),
                 "traits": spaces.Box(0.0, 10.0, shape=(self.n_trait,), dtype=np.float32),
                 "opponents": spaces.Box(0.0, 1e4, shape=(MAX_OPP, 3), dtype=np.float32),
+                "gods": spaces.Box(0.0, 3.0, shape=(GOD_FEATS,), dtype=np.float32),
             }
         )
 
@@ -71,6 +81,28 @@ class Encoder:
                 vec[idx] = tier
         return vec
 
+    def _gods_vec(self, state: GameState, p: PlayerState) -> np.ndarray:
+        vec = np.zeros(GOD_FEATS, dtype=np.float32)
+        lobby = tuple(state.lobby_gods)
+        for god in lobby:  # lobby one-hot (toujours visible)
+            if god in _GOD_ORDER:
+                vec[_GOD_ORDER.index(god)] = 1.0
+        base = _N_GODS
+        for i, god in enumerate(p.god_offer_gods[:GOD_VOTE_SLOTS]):  # slots d'offre
+            # invariant : _offer_gods ne tire QUE dans lobby_gods -> le 0 ne signifie
+            # jamais « dieu hors lobby », uniquement « slot vide »
+            if god in lobby:
+                vec[base + i] = float(lobby.index(god) + 1)  # 1=dieu A, 2=dieu B
+        base += GOD_VOTE_SLOTS
+        for god, n in p.god_votes.items():  # votes cumulés, normalisés sur les 3 votes
+            if god in _GOD_ORDER:
+                vec[base + _GOD_ORDER.index(god)] = n / 3.0
+        base += _N_GODS
+        if p.aligned_god in _GOD_ORDER:  # dieu aligné one-hot
+            vec[base + _GOD_ORDER.index(p.aligned_god)] = 1.0
+        vec[-1] = 1.0 if p.god_boon else 0.0
+        return vec
+
     def encode(self, state: GameState, agent: str) -> dict[str, np.ndarray]:
         p = state.players[agent]
         scalars = np.array(
@@ -92,6 +124,7 @@ class Encoder:
             "board": self._units(p.board, MAX_BOARD),
             "traits": self._traits_vec(p),
             "opponents": opp,
+            "gods": self._gods_vec(state, p),
         }
 
     def action_mask(self, state: GameState, agent: str) -> np.ndarray:
