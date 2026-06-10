@@ -34,9 +34,15 @@ def _board(carry: str, star: int = 2) -> list[BoardUnit]:
 def win_rate(carry: str, content, rng) -> float:
     baseline = _board(BASELINE_CARRY)
     test = _board(carry)
-    wins = sum(
-        run_combat(test, baseline, content, rng).winner == 0 for _ in range(N_FIGHTS)
-    )
+    # Camps alternés : tout biais résiduel team0/team1 du moteur s'annule en espérance
+    # (le pathing est désormais rng-équitable, mais on ne mesure jamais à travers un
+    # biais de camp — cf. tests/test_pathing_symmetry.py).
+    wins = 0
+    for i in range(N_FIGHTS):
+        if i % 2 == 0:
+            wins += run_combat(test, baseline, content, rng).winner == 0
+        else:
+            wins += run_combat(baseline, test, content, rng).winner == 1
     return wins / N_FIGHTS
 
 
