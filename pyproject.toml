@@ -1,6 +1,6 @@
 [project]
 name = "tft-goat"
-version = "0.2.0"
+version = "0.3.0"
 description = "IA pour jouer a Teamfight Tactics par reinforcement learning / self-play"
 readme = "README.md"
 requires-python = ">=3.11"
