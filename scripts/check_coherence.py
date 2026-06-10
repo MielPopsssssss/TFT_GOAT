@@ -88,13 +88,19 @@ def check(results):
     bad_perm = sum(1 for g in results if sorted(g["placements"]) != list(range(1, 9)))
     add("placements = permutation 1..8 par partie", bad_perm == 0, f"{bad_perm} parties invalides")
 
-    # 3. équité des sièges (toutes ~4.5)
+    # 3. équité des sièges (toutes ~4.5) — bande N-AWARE : la place d'un siège a un écart-type
+    # de 2.291 (uniforme 1..8), donc SE(moyenne) = 2.291/sqrt(N). Bande = 4.5 ± 3.2·SE
+    # (z=3.2 ≈ correction de Bonferroni pour 8 sièges à ~1 % global). L'ancienne bande FIXE
+    # [3.8, 5.2] produisait des FAUX FAIL à petit N (vérifié : aucun biais réel à N=400).
     seat = defaultdict(list)
     for g in results:
         for r in g["rows"]:
             seat[r["seat"]].append(r["placement"])
     means = {s: sum(v) / len(v) for s, v in seat.items()}
-    add("équité sièges (tous ∈ [3.8,5.2])", all(3.8 <= m <= 5.2 for m in means.values()),
+    half_band = 3.2 * 2.291 / max(1, len(results)) ** 0.5
+    lo, hi = 4.5 - half_band, 4.5 + half_band
+    add(f"équité sièges (tous ∈ [{lo:.2f},{hi:.2f}], N-aware)",
+        all(lo <= m <= hi for m in means.values()),
         " ".join(f"{s.split('_')[-1]}:{m:.2f}" for s, m in sorted(means.items())))
 
     # 4. gradient placement->board (top2 > bottom2)
