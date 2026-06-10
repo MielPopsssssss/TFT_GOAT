@@ -150,11 +150,70 @@ Un agent expert TFT indépendant a vérifié les **proba de chaque événement**
     pas numéro de round) avec **filet au 4-7** si un vote a été manqué ; (4) l'offre des dieux est
     tirée du **roster jouable du pool** (plus d'unité PvE offerte puis refusée silencieusement).
     Pins : `tests/test_gods.py` (4 tests de régression).
-  - **Restant (sous-étapes)** : (1) **effets de combat des god augments** — même long-tail que les
-    augments réguliers : **6/17 God Boons seulement** sont dans le registre `augments_set17` (les
-    11 autres = no-op silencieux, comme les ~202 augments non implémentés — tracé `TODOS.md` P2).
-    Effets ambigus (clés hashées, quêtes/loot) → non devinés. (2) effets des Minor Blessings,
-    (3) artefacts de dieu.
+  - **✅ Effets de combat des 17 God Boons (2026-06-10)** : **17/17 dans le registre**
+    (`augments_set17/batch_6.py`), plus aucun skip silencieux. Pins :
+    `tests/test_god_boons_engine.py` (chaque chiffre référence sa source CDragon).
+    Détail des modélisations et approximations assumées :
+    - **AurelionSol (parent « choisis 1 de 3 quêtes »)** : choix non modélisé → approx quête
+      Small (team +15 AD/AP plats, seule quête à effet combat immédiat).
+    - **AurelionSol LargeQuest (« +1 traits non-uniques »)** : **fidèle**, appliqué au BUILD
+      des équipes (`active_traits(bonus_units=1)` → `_build_team(trait_bonus)`) ; approx :
+      actif dès l'octroi (le vrai jeu attend 8 combats joueurs) ; traits uniques jamais boostés.
+    - **Soraka** : +2.5 HP team par PV tacticien manquant ; le moteur n'a pas le contexte
+      joueur → **30 PV manquants supposés** au 4-7 (même esprit que Ahri niveau 9 supposé).
+      Le « +1 PV joueur par combat » est de l'éco (env, non câblé).
+    - **Thresh** : d6 réel par combat (`ctx.rng`) ; faces combat = Health (`{b386f143}`=75 HP
+      team) et Attack Speed (`{7eafa4c6}`=+6% team), les 4 autres faces = éco (no-op).
+    - **Ekko (Anomaly)** : évolution par rôle data sur l'unité la plus costaud — *Tank +1100 HP,
+      *Carry +75% AS (Marksman) ; Caster/Specialist/autres ≈ Fighter (+35 AD/+35 AP). Chiffres
+      de l'item global `TFT17_EkkoOffering_AnomalyItem` (hors setData), pinnés vs JSON brut.
+    - **Kayle Scrapper** : « 3 composants → items complets temporaires » ≈ +1 item générique
+      (`unit._GENERIC_ITEM`) sur les 3 unités les plus costauds.
+    - **Yasuo MoreHexes / PaintedPower** : les hexes des Minor Blessings ne sont pas modélisés
+      → approx 1 hex (valeurs Golden Hex lues via `ctx.content`, jamais en dur) : MoreHexes =
+      hex + 2 « adjacents » (les 2 suivantes par PV) à 100% ; PaintedPower = hex ×1.5.
+    - **No-ops FIDÈLES (aucun effet combat dans le vrai jeu)** : BoonOfResurrection (survie
+      joueur), MediumQuest (anvil + or), BloodPrice (shop contre PV) — leur effet éco/joueur
+      côté env reste un backlog dédié (« Décider du sort du God Boon hors moteur réel »).
+  - **Restant (sous-étapes)** : (1) effets des Minor Blessings, (2) artefacts de dieu,
+    (3) effets env des boons éco (BoonOfResurrection, MediumQuest, BloodPrice, or/heal
+    périphériques de Thresh/Soraka/Yasuo).
+
+### Gaps moteur découverts par l'investigation du spread de win rates (2026-06-10)
+
+- **✅ CORRIGÉ — pathing asymétrique entre équipes** : les tie-breaks de `grid.step_toward`
+  dépendaient de l'ordre fixe des listes de voisins (parité odd-r) → deux marcheurs en
+  positions MIROIRS prenaient des chemins différents (biais structurel : miroir parfait perdu
+  0.29–0.39 par team0 en comps réelles, 0.00 en synthétique). En plus, le sidestep à distance
+  égale **oscillait A↔B indéfiniment** (tank backline : 1er coup à 24.1s vs 3.1s pour son
+  jumeau miroir). Fix : départage **rng** des égalités + mémoire 1 case (`prev_pos`, jamais
+  revenir d'où l'on vient → flanking émergent). Miroirs après fix : 0.47–0.58 ≈ 0.50.
+  Pins : `tests/test_pathing_symmetry.py`. Pénalisait surtout les compos MELEE (Shen
+  0.21→0.72, Fiora 0.05→0.31, Zed 0.05→0.19 dans realism_vs_datatft).
+- **✅ CORRIGÉ — friendly fire des AoE « autour de la cible »** : `enemies_in_radius(target, r)`
+  renvoie les ennemis DE la cible = les **alliés du caster** — 10 sites d'abilities (dont
+  Vex, le baseline de la métrique de réalisme) nukaient leur propre équipe et ne touchaient
+  AUCUN ennemi supplémentaire. Fix : helper `enemies_around(src, center, r)` + correction
+  mécanique des 10 sites. Garde systémique : `test_no_ability_friendly_fire` (itère les 65
+  abilities — aucune ne doit blesser sa propre équipe).
+- **✅ CORRIGÉ — 3 abilities outliers vs data CDragon** (pins `tests/test_ability_fidelity.py`) :
+  - **Sona** : le slam (SlamDamage, « every @NumCasts@ casts ») était appliqué + stun à
+    CHAQUE cast (~3-4× sur-tunée, win rate saturé 1.00) → amorti slam/NumCasts, stun
+    rng-gaté 1/NumCasts.
+  - **Blitzcrank** : passive bolt (BoltDamage/2s) et knockup du clump (GrooveDurationPerTarget)
+    absents → bolts amortis (~3/cast, cycle de mana ~6s) + stun de la cible et du clump.
+  - **Graves** : passive « 5 projectiles × 33% AD » (= 165% AD par auto) absente → buff AD
+    one-shot au 1er cast (`triggered`).
+- **🟡 Métrique realism_vs_datatft** : camps désormais alternés (annule tout biais de camp
+  résiduel). Limites assumées : win rates saturables (1.00 = plus de discrimination au
+  sommet) et `avg_place` datatft confondu (méta/itemisation ≠ force de combat pure) — le
+  Spearman n'est qu'un détecteur d'outliers, PAS la métrique de vérité.
+- **✅ Benchmark de vérité terrain `realism_vs_matches` (2026-06-10)** : pour chaque vraie
+  partie challenger, round-robin moteur des 8 boards finaux réels (champions/étoiles/items)
+  vs placements réels. **Baseline : Spearman +0.44 ± 0.06 (50 parties), gagnant moteur en
+  top2 réel 60%, médiane +0.54.** C'est LA métrique de fidélité à faire monter ; à re-runner
+  après tout changement moteur. Limites assumées : pas d'augments (retirés de match-v1 par
+  Riot), pas de positionnement réel, boards d'éliminés = instantané à l'élimination.
 
 ### Gaps moteur découverts par l'audit des fiches (2026-06-10)
 - **✅ CORRIGÉ (v0.3.1.0) — variables `*_Health` de traits jamais appliquées** : `attrs_for`

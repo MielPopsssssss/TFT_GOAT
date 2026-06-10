@@ -21,20 +21,36 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   jeu laquelle s'active et selon quoi, puis modéliser. Les fiches marquent les variantes
   masquées ⛔ en attendant.
 
-## Engine / Resolvers
+## Engine / Abilities
 
-- **Câbler les 11 God Boons absents du registre d'augments moteur**
-  **Priority:** P2
-  Seuls 6/17 God Boons ont un effet implémenté dans `AUGMENT_REGISTRY`
-  (`engine/simulate.py` skippe silencieusement les non-enregistrés). Les 11 autres entrent
-  dans `chosen_augments` mais n'ont AUCUN effet combat — gap de fidélité silencieux.
-  À tracer aussi dans `docs/COMBAT_COVERAGE.md`.
+- **Multiplicateur d'autos dédié (passives auto-only : Graves, Jhin)**
+  **Priority:** P3
+  Les passives « par auto-attaque » (Graves 5 projectiles ×33% AD, Jhin ADConversionRate)
+  sont modélisées en buff d'AD global, ce qui gonfle AUSSI leurs sorts (qui scalent AD)
+  — divergence vs vrai jeu où seules les autos sont touchées. Ajouter un champ
+  multiplicateur d'autos sur CombatUnit, appliqué dans la formule d'attaque uniquement,
+  et migrer les deux champions + pins. (Trouvé par red team, décision D3, 2026-06-10.)
 
-- **Décider du sort du God Boon hors moteur réel**
+## Surrogate
+
+- **Encoder les augments dans les features du CombatNet**
   **Priority:** P2
-  Le God Boon entre dans `chosen_augments` (consommé par l'EngineResolver) mais est inerte
-  sous le HeuristicResolver v0 (qui ignore les augments) et n'alimente pas `augment_power`.
-  Décider : impact heuristique dédié, ou documenter+tester « engine-only ».
+  Le NeuralResolver reçoit `augments_a/b` mais les ignore (prédiction boards-only), alors
+  que Heuristic (augment_power) et Engine (registre) sont désormais augment-aware. C'est
+  le resolver PRIMAIRE d'entraînement RL : les God Boons y sont inertes. Ajouter les
+  augments aux features du surrogate (et au dataset), ou documenter/gater l'entraînement
+  boon-sensible sur Heuristic/Engine en attendant. (Trouvé par red team, 2026-06-10.)
+
+## Data
+
+- **Scraper les stats d'augments metatft (pick-rate/placement)**
+  **Priority:** P3
+  Riot a RETIRÉ les augments de match-v1 (champ absent des participants, vérifié sur
+  matches_17.4.jsonl — 1200 joueurs, 0 augments) : aucun proxy d'usage challenger possible
+  en interne. Un scrape metatft (même infra que scrape_datatft) donnerait pick-rate +
+  avg place par augment → prioriser la long tail par usage réel et ancrer
+  `AUGMENT_TIER_WEIGHT` (env/combat.py) dans la vraie data. En attendant, priorisation
+  par tier (exposition uniforme → prismatic combat d'abord, cf. batch_7).
 
 ## Tests
 
@@ -45,6 +61,20 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   Un helper `tests/_helpers.py::play_random_game(...)` évite 5 mises à jour synchrones.
 
 ## Completed
+
+- **Décider du sort du God Boon hors moteur réel**
+  Décision : impact heuristique dédié. `env/combat.py::augment_power` — multiplicateur de
+  force pour les augments à effet COMBAT uniquement (présents dans `AUGMENT_REGISTRY` ;
+  les augments éco payent déjà via l'économie : pas de double-comptage). Poids par tier
+  assumés (documentés comme heuristiques, pas de la data). Pins : `tests/test_combat.py`.
+  **Completed:** v0.5.0.0 (2026-06-10)
+
+- **Câbler les 11 God Boons absents du registre d'augments moteur**
+  17/17 God Boons dans `AUGMENT_REGISTRY` (`augments_set17/batch_6.py`) : 8 effets combat
+  (dont LargeQuest fidèle via `active_traits(bonus_units=1)` au build, Thresh d6 réel,
+  Ekko Anomaly par rôle) + 3 no-ops FIDÈLES (boons purement éco/joueur). `ctx.content`
+  ajouté à `CombatContext` (lecture data cross-augment). Approximations détaillées dans
+  `docs/COMBAT_COVERAGE.md` ; pins `tests/test_god_boons_engine.py`. **Completed:** v0.5.0.0 (2026-06-10)
 
 - **Enquête équité des sièges**
   Root cause double : (1) tie-break déterministe des morts simultanées à HP égaux
