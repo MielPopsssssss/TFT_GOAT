@@ -54,3 +54,26 @@ def test_roll_shop_only_available_units(sample_content):
     slots = roll_shop(1, pool, rng)
     # plus aucun 1-cost dispo -> tous les slots None au niveau 1
     assert all(s is None for s in slots)
+
+
+def test_real_pool_roster_matches_verified_set17():
+    """Le pool achetable = roster jouable Set 17 vérifié (15/13/13/14/10), PvE exclus.
+
+    Vérifié 2026-06-08 : les unités PvE/evergreen (Golem, Rift Scuttler, Training Dummy)
+    ont cost=1 dans setData mais ne sont PAS en boutique → exclues par le préfixe TFT17_.
+    """
+    from tft_goat.data.content import load_set
+
+    pool = Pool(load_set())
+    expected = {1: 15, 2: 13, 3: 13, 4: 14, 5: 10}
+    for cost, n in expected.items():
+        assert len(pool.champions_of_cost(cost)) == n, (
+            f"{cost}-cost: {len(pool.champions_of_cost(cost))} != {n} attendu"
+        )
+    # aucune unité PvE/evergreen dans le pool
+    for cost in range(1, 6):
+        for api in pool.champions_of_cost(cost):
+            assert api.startswith("TFT17_"), f"unité non-Set17 dans le pool: {api}"
+    # nommément : ces PvE ne sont jamais achetables
+    for pve in ("TFT_BlueGolem", "TFT9_SLIME_Crab", "TFT_TrainingDummy"):
+        assert pool.remaining(pve) == 0

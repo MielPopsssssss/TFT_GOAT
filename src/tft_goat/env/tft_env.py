@@ -12,9 +12,10 @@ import numpy as np
 from pettingzoo import ParallelEnv
 
 from ..data.content import load_set
+from ..data.gods import choose_lobby_gods
 from ..data.models import SetContent
 from ..data.stats_models import MetaStats
-from .actions import PASS, apply_action, legal_mask
+from .actions import NUM_ACTIONS, PASS, apply_action, legal_mask
 from .combat import CombatResolver, HeuristicResolver
 from .encoding import Encoder
 from .rounds import (
@@ -67,6 +68,7 @@ class TftEnv(ParallelEnv):
         self._state = GameState(
             players=players, pool=Pool(self.set_content),
             set_content=self.set_content, rng=rng, round_index=0,
+            lobby_gods=choose_lobby_gods(rng),  # 2 dieux tirés pour tout le lobby
         )
         self.agents = list(self.possible_agents)
         self._phase_steps = 0
@@ -84,14 +86,20 @@ class TftEnv(ParallelEnv):
         terminations = {a: False for a in acting}
         truncations = {a: False for a in acting}
 
-        # 1) appliquer une micro-action par agent (coercition vers PASS si illegale)
+        # 1) appliquer une micro-action par agent. Coercition d'une action illegale : vers PASS
+        # si PASS est legal, sinon vers la PREMIERE action legale — jamais vers un PASS aveugle,
+        # qui permettrait de sauter un choix force (offre de dieu/augment, mask[PASS]=False).
         for a in acting:
             p = state.players[a]
             if p.passed:
                 continue
-            act = int(actions.get(a, PASS))
-            if not legal_mask(state, p)[act]:
+            try:
+                act = int(actions.get(a, PASS))
+            except (TypeError, ValueError):  # payload malformé (frontière de confiance)
                 act = PASS
+            mask = legal_mask(state, p)
+            if act < 0 or act >= NUM_ACTIONS or not mask[act]:
+                act = PASS if mask[PASS] else int(np.flatnonzero(mask)[0])
             apply_action(state, p, act)
 
         self._phase_steps += 1

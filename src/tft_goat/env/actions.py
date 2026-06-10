@@ -32,6 +32,7 @@ from .economy import (
     sell_value,
 )
 from .items import combine as combine_components
+from .rounds import GOD_CHOICES, GOD_VOTE_STAGES, finalize_god_alignment
 from .shop import roll_shop
 from .state import BoardUnit, GameState, PlayerState
 
@@ -46,7 +47,7 @@ EQUIP = 35
 PICK_AUGMENT_START = 36
 N_AUGMENT_CHOICES = 3
 PICK_GOD_START = 39
-N_GOD_CHOICES = 3
+N_GOD_CHOICES = GOD_CHOICES  # single-sourcé avec rounds.py (offre = 3 choix)
 REROLL_AUGMENT = 42  # reroll de l'offre d'augment (vrai TFT) — change les 3 augments proposes
 NUM_ACTIONS = 43
 
@@ -251,8 +252,27 @@ def _pick_augment(state: GameState, player: PlayerState, idx: int) -> None:
     player.augment_offer = []
 
 
+def _record_god_vote(state: GameState, player: PlayerState, idx: int) -> None:
+    """Minor Blessing = un vote pour le dieu lié au choix `idx`.
+
+    Au round 4-4 (3e vote), la majorité fixe le **dieu aligné** et tire son **God Boon** réel
+    (apiName d'un augment tier="god" du dieu — data CDragon). La consommation du boon en combat
+    est une sous-étape suivante (le champ god_boon est posé avec la vraie data).
+    """
+    if idx >= len(player.god_offer_gods):
+        return
+    god = player.god_offer_gods[idx]
+    player.god_votes[god] = player.god_votes.get(god, 0) + 1
+    player.god_offer_gods = []
+    # 3e et dernier vote -> alignement. Déclenché par le COMPTE de votes (pas le numéro de
+    # round) : robuste même si un vote a lieu hors du chemin nominal 2-4/3-4/4-4.
+    if sum(player.god_votes.values()) >= len(GOD_VOTE_STAGES):
+        finalize_god_alignment(state, player)
+
+
 def _pick_god(state: GameState, player: PlayerState, idx: int) -> None:
-    """Realm of the Gods : recoit gratuitement le champion choisi (au banc, sinon board)."""
+    """Realm of the Gods : Minor Blessing = vote pour un dieu + champion offert (banc, sinon board)."""
+    _record_god_vote(state, player, idx)
     if idx >= len(player.god_offer):
         return
     champ = player.god_offer[idx]
