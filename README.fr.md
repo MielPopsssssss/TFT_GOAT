@@ -21,7 +21,7 @@ env (éco/shop/traits/items/augments) → combat (heuristique / moteur / surroga
 adversaires scriptés. Couverture combat : **[docs/COMBAT_COVERAGE.md](docs/COMBAT_COVERAGE.md)**.
 
 ```
-.venv/bin/python -m pytest -q                          # 96 tests
+.venv/bin/python -m pytest -q                          # 147 tests
 .venv/bin/python -m tft_goat.scripts.scrape_datatft    # fige les vraies stats meta (datatft)
 .venv/bin/python -m tft_goat.scripts.random_rollout    # partie 8 joueurs complete (Set 17)
 .venv/bin/python -m tft_goat.scripts.train --content real --resolver neural \
@@ -56,7 +56,7 @@ Surrogate régénéré sur le **vrai moteur** (vérité terrain combat, le plus 
 1. ✅ **Data & Knowledge Layer** — contenu CommunityDragon (Set 17), shop odds, collecteur Riot match-v1
 2. ✅ **Macro Environment + combat placeholder** — env PettingZoo 8 joueurs jouable de bout en bout
 3. ✅ **Agent RL (PPO self-play)** — PPO custom (masquage + self-play) + adversaire scripté pour
-   l'éval. ⚠️ L'agent écrase le random mais **perd encore contre le scripté** (top4 ~10%) : le
+   l'éval. ⚠️ L'agent écrase le random mais **perd encore contre le scripté** (top4 ~40%) : le
    pipeline est complet, l'agent demande un **entraînement à l'échelle** (gros rollouts, tuning,
    éventuellement curriculum vs scripté) — c'est le prochain gros chantier RL.
 4. ✅ **Combat surrogate** — `CombatNet` entraîné sur 150 vraies parties challenger (val_acc ~0.85), enfiché via `NeuralResolver`

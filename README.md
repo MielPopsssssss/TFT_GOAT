@@ -3,7 +3,7 @@
 > An AI that learns to play **Teamfight Tactics** at a high level through **reinforcement learning / self-play**.
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-113%20passing-brightgreen.svg)](#run-it)
+[![Tests](https://img.shields.io/badge/tests-147%20passing-brightgreen.svg)](#run-it)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](CONTRIBUTING.md)
 [![Set 17](https://img.shields.io/badge/TFT-Set%2017%20Space%20Gods-purple.svg)](#)
@@ -85,7 +85,7 @@ Full design doc: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-# 2. Tests (113 passing)
+# 2. Tests (147 passing)
 python -m pytest -q
 
 # 3. Play a full random 8-player game (Set 17)
@@ -119,7 +119,7 @@ python -m tft_goat.scripts.train_surrogate --source riot --matches data/matches/
 |---|---|---|
 | 1. Data & Knowledge Layer | ✅ | CommunityDragon Set 17 content, shop odds, Riot match-v1 collector |
 | 2. Macro Environment + placeholder combat | ✅ | Playable end-to-end PettingZoo 8-player env |
-| 3. RL Agent (PPO self-play) | ✅ pipeline / 🔧 strength | Beats random; **still loses to scripted** — needs training at scale |
+| 3. RL Agent (PPO self-play) | ✅ pipeline / 🔧 strength | Beats random; **still loses to scripted** (top-4 ~40%) — needs training at scale |
 | 4. Combat surrogate | ✅ | `CombatNet` on real games (val ~0.85) via `NeuralResolver` |
 | 5. Items & augments in env + hybrid surrogate | ✅ | Robust hybrid surrogate (real val ~0.88), agent ~1.5–2 placement vs 4.5 random |
 | 6. Real tick-by-tick engine | 🔧 | Core shipped; ability/item/augment long-tail being filled in |
