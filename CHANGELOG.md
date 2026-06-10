@@ -3,6 +3,30 @@
 Toutes les évolutions notables du projet. Format inspiré de
 [Keep a Changelog](https://keepachangelog.com/) ; versions `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.3.0.0] - 2026-06-10
+
+### Added
+- **Fiches d'audit générées** (`docs/fiches/`, 1090 fichiers) : une vue markdown par
+  champion (stats réelles 1★/2★/3★, sort + statut moteur ✅/🟡), trait (paliers, variables
+  auto-appliquées), item (recette, procs) et augment (tier, dieu du God Boon, statut
+  combat) — liées par `docs/fiches/INDEX.md`. On peut maintenant auditer chaque entité
+  du jeu en ouvrant un fichier lisible et comparer au vrai TFT.
+- Générateur : module `src/tft_goat/fiches/` + CLI `scripts/generate_fiches.py`
+  (déterministe : régénérer après un refresh de data donne un diff git propre) ; 17 tests.
+
+### Fixed
+- Les 8 traits homonymes « Stargazer » sont rendus honnêtement : seule la variante que le
+  moteur résout réellement revendique des effets ; les 7 variantes masquées sont marquées
+  ⛔ (collision de nom explicite) au lieu d'afficher de fausses applications.
+
+### Changed
+- `engine/trait_effects.attrs_for` devient une API publique (consommée par les fiches).
+
+### Known gaps (tracés TODOS.md / COMBAT_COVERAGE)
+- Les variables `*_Health` de traits ne sont jamais auto-appliquées en combat (`heal`
+  matche `health` en substring) — découvert par l'audit des fiches, correctif à trier
+  variable par variable.
+
 ## [0.2.0.0] - 2026-06-10
 
 ### Added

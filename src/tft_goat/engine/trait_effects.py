@@ -26,8 +26,12 @@ def _pct(v: float) -> float:
     return v / 100.0 if abs(v) > 1.0 else v
 
 
-def _attrs_for(key: str) -> list[str]:
-    """Liste des attributs de stat vises par une cle de trait (vide si non-stat)."""
+def attrs_for(key: str) -> list[str]:
+    """Liste des attributs de stat vises par une cle de trait (vide si non-stat).
+
+    API publique : utilisee aussi par les fiches d'audit (fiches/status.py) pour afficher
+    quelles variables de trait sont auto-appliquees par le moteur.
+    """
     if key.startswith("{"):
         return []
     k = key.lower()
@@ -100,6 +104,6 @@ def apply_team_traits(units: list[CombatUnit], content: SetContent) -> None:
             if not isinstance(val, (int, float)) or val == 0:
                 continue
             targets = units if "teamwide" in key.lower() else members  # team-wide vs porteurs
-            for attr in _attrs_for(key):
+            for attr in attrs_for(key):
                 for u in targets:
                     _apply_stat(u, attr, float(val))

@@ -21,6 +21,24 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   ne porte aucun sens en jeu pour le choix du champion. Le vrai TFT lie chaque Minor Blessing
   à son dieu. Renforce l'item ROADMAP « Realm of the Gods (full) ».
 
+## Engine / Traits
+
+- **Variables `*_Health` de traits jamais appliquées (`"heal"` matche `"health"`)**
+  **Priority:** P1
+  `engine/trait_effects.py::attrs_for` skippe toute clé contenant `heal` — or `heal` est un
+  substring de `health`, donc la branche `health -> hp` est du **code mort** : aucun bonus
+  HP de trait n'est auto-appliqué en combat (ex. `Wolf_Health`, `TeamHealth`). Corriger
+  demande un tri par variable (certaines clés Health sont des soins, pas des stats).
+  *Découvert par la review adversariale des fiches (2026-06-10).*
+
+- **Clarifier les 8 variantes homonymes « Stargazer »**
+  **Priority:** P2
+  8 apiNames partagent le nom « Stargazer » (Wolf/Medallion/Huntress/Serpent/Shield/
+  Fountain/Mountain + base). Le moteur résout par nom -> seule `TFT17_Stargazer` est
+  utilisée. Hypothèse : variantes liées au dieu aligné (Realm of the Gods) — vérifier en
+  jeu laquelle s'active et selon quoi, puis modéliser. Les fiches marquent les variantes
+  masquées ⛔ en attendant.
+
 ## Engine / Resolvers
 
 - **Câbler les 11 God Boons absents du registre d'augments moteur**
