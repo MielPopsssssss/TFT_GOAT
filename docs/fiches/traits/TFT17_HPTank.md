@@ -18,7 +18,7 @@
 
 | Variable | Application moteur |
 |---|---|
-| `HealthBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `HealthBonus` | ✅ stat auto-appliquée (hp) |
 | `TeamwideBonus` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait

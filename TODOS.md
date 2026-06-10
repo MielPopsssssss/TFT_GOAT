@@ -23,14 +23,6 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
 
 ## Engine / Traits
 
-- **Variables `*_Health` de traits jamais appliquées (`"heal"` matche `"health"`)**
-  **Priority:** P1
-  `engine/trait_effects.py::attrs_for` skippe toute clé contenant `heal` — or `heal` est un
-  substring de `health`, donc la branche `health -> hp` est du **code mort** : aucun bonus
-  HP de trait n'est auto-appliqué en combat (ex. `Wolf_Health`, `TeamHealth`). Corriger
-  demande un tri par variable (certaines clés Health sont des soins, pas des stats).
-  *Découvert par la review adversariale des fiches (2026-06-10).*
-
 - **Clarifier les 8 variantes homonymes « Stargazer »**
   **Priority:** P2
   8 apiNames partagent le nom « Stargazer » (Wolf/Medallion/Huntress/Serpent/Shield/
@@ -63,3 +55,8 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   Un helper `tests/_helpers.py::play_random_game(...)` évite 5 mises à jour synchrones.
 
 ## Completed
+
+- **Variables `*_Health` de traits jamais appliquées (`"heal"` matche `"health"`)**
+  Tri par variable effectué : `HealthBonus` (Brawler %) et `BonusHealth` (Meeple flat)
+  appliqués en hp (fraction/flat) ; heals/seuils/percent-health toujours skippés.
+  **Completed:** v0.3.1.0 (2026-06-10)

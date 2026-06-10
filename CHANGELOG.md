@@ -3,6 +3,16 @@
 Toutes les évolutions notables du projet. Format inspiré de
 [Keep a Changelog](https://keepachangelog.com/) ; versions `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.3.1.0] - 2026-06-10
+
+### Fixed
+- **Les bonus de HP de traits atteignent enfin le combat** : `heal` (substring) matchait
+  `health` dans le filtre des variables de traits, rendant la branche HP morte — **Brawler**
+  (+25/45/65 % HP max) et **Meeple** (+100..500 HP flat) n'avaient AUCUN effet en combat
+  moteur. Corrigé (`heal(?!th)` + heuristique fraction/flat) ; les soins (`Heal`,
+  `Huntress_Heal`), seuils et mécaniques percent-health restent correctement ignorés.
+  Découvert par l'audit des fiches v0.3.0.0.
+
 ## [0.3.0.0] - 2026-06-10
 
 ### Added

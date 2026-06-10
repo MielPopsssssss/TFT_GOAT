@@ -33,7 +33,7 @@
 | `Mountain_ADAP` | ✅ stat auto-appliquée (ad, ap) |
 | `Mountain_AS` | ✅ stat auto-appliquée (as) |
 | `Mountain_DR` | ✅ stat auto-appliquée (dr) |
-| `Mountain_Health` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Mountain_Health` | ✅ stat auto-appliquée (hp) |
 | `Mountain_Resists` | ✅ stat auto-appliquée (armor, mr) |
 | `Mountain_RoundsPerEmblem` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Mountain_StatIncrease` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
@@ -51,8 +51,8 @@
 | `Shield_NumDeaths` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `Wolf_ADAP` | ✅ stat auto-appliquée (ad, ap) |
 | `Wolf_Gold` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
-| `Wolf_Health` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
-| `Wolf_Health_Teamwide` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `Wolf_Health` | ✅ stat auto-appliquée (hp) |
+| `Wolf_Health_Teamwide` | ✅ stat auto-appliquée (hp) |
 | `{13a2a786}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `{326db998}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `{37204635}` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
