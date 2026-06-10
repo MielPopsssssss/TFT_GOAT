@@ -3,7 +3,7 @@
 > An AI that learns to play **Teamfight Tactics** at a high level through **reinforcement learning / self-play**.
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-147%20passing-brightgreen.svg)](#run-it)
+[![Tests](https://img.shields.io/badge/tests-164%20passing-brightgreen.svg)](#run-it)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](CONTRIBUTING.md)
 [![Set 17](https://img.shields.io/badge/TFT-Set%2017%20Space%20Gods-purple.svg)](#)
@@ -85,7 +85,7 @@ Full design doc: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-# 2. Tests (147 passing)
+# 2. Tests (164 passing)
 python -m pytest -q
 
 # 3. Play a full random 8-player game (Set 17)
@@ -125,7 +125,9 @@ python -m tft_goat.scripts.train_surrogate --source riot --matches data/matches/
 | 6. Real tick-by-tick engine | 🔧 | Core shipped; ability/item/augment long-tail being filled in |
 | 7. Perception + Actuation | ⏸️ optional | ⚠️ ToS — out of scope for the core |
 
-Combat fidelity is tracked honestly in [`docs/COMBAT_COVERAGE.md`](docs/COMBAT_COVERAGE.md).
+Combat fidelity is tracked honestly in [`docs/COMBAT_COVERAGE.md`](docs/COMBAT_COVERAGE.md), and
+per-entity engine support (every champion / trait / item / augment, ✅ implemented vs 🟡 partial vs
+⛔ shadowed) is audited in [`docs/fiches/INDEX.md`](docs/fiches/INDEX.md).
 
 ---
 

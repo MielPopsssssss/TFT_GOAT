@@ -18,10 +18,12 @@ contenu est data-driven (CommunityDragon + datatft) → un nouveau set = un refr
 
 Architecture figée (→ **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**). Pipeline complet : data →
 env (éco/shop/traits/items/augments) → combat (heuristique / moteur / surrogate) → agent RL +
-adversaires scriptés. Couverture combat : **[docs/COMBAT_COVERAGE.md](docs/COMBAT_COVERAGE.md)**.
+adversaires scriptés. Couverture combat : **[docs/COMBAT_COVERAGE.md](docs/COMBAT_COVERAGE.md)** ;
+support moteur par entité (chaque champion / trait / item / augment, ✅ implémenté vs 🟡 partiel vs
+⛔ masqué) audité dans **[docs/fiches/INDEX.md](docs/fiches/INDEX.md)**.
 
 ```
-.venv/bin/python -m pytest -q                          # 147 tests
+.venv/bin/python -m pytest -q                          # 164 tests
 .venv/bin/python -m tft_goat.scripts.scrape_datatft    # fige les vraies stats meta (datatft)
 .venv/bin/python -m tft_goat.scripts.random_rollout    # partie 8 joueurs complete (Set 17)
 .venv/bin/python -m tft_goat.scripts.train --content real --resolver neural \
