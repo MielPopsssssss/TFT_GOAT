@@ -19,7 +19,7 @@
 
 | Variable | Application moteur |
 |---|---|
-| `BonusHealth` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
+| `BonusHealth` | ✅ stat auto-appliquée (hp) |
 | `Meeps` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 
 ## Champions avec ce trait

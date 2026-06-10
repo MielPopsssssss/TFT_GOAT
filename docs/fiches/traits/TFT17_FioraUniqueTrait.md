@@ -17,7 +17,7 @@
 | Variable | Application moteur |
 |---|---|
 | `DUHeal` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
-| `PVEHP` | ✅ stat auto-appliquée (hp) |
+| `PVEHP` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `PVENumWins` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 | `PlayerOmnivamp` | 🟡 non appliquée automatiquement (effet codé uniquement si présent dans le long-tail moteur) |
 

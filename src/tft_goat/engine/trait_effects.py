@@ -10,16 +10,29 @@ Les effets NON-stat (invocations, exécutions, dégâts, durées, économie) et 
 
 from __future__ import annotations
 
+import re
+
 from ..data.models import SetContent
 from ..env.traits import active_traits
 from .unit import CombatUnit
 
-# tokens de clés a IGNORER (non applicables comme stat plate sur l'unite)
+# tokens de clés a IGNORER (non applicables comme stat plate sur l'unite).
+# NB : « heal » n'est PAS dans cette liste — il est testé via _HEAL_NOT_HEALTH ci-dessous,
+# car en substring brut il matchait aussi « health » et tuait la branche health->hp
+# (aucun bonus HP de trait n'était appliqué — bug corrigé 2026-06-10).
 _SKIP = (
     "round", "gold", "nummark", "duration", "threshold", "poison", "sharepercent",
     "interval", "numdeaths", "increaseper", "statincrease", "percenthealth", "executehp",
-    "burst", "supermassive", "heal", "cashout", "stacks", "count", "mana", "omnivamp",
+    "burst", "supermassive", "cashout", "stacks", "count", "mana", "omnivamp",
+    # Clés *health* qui ne sont PAS des buffs de HP max (politique : jamais deviner) :
+    "pvehp",          # flag PvE (Fiora unique) — PVEHP=1.0 doublerait ses HP en fraction
+    "healthratio",    # ratio d'ability (Commander/Sona), pas un buff direct vérifié
+    "shield_health",  # paramètre de bouclier Stargazer (8.0 = ni fraction ni flat sensé)
 )
+
+# « heal » non suivi de « th » : matche Heal/HealAmount/Huntress_Heal (soins, à skipper)
+# mais PAS Health/HealthBonus (vraies stats HP).
+_HEAL_NOT_HEALTH = re.compile(r"heal(?!th)")
 
 
 def _pct(v: float) -> float:
@@ -35,7 +48,7 @@ def attrs_for(key: str) -> list[str]:
     if key.startswith("{"):
         return []
     k = key.lower()
-    if any(tok in k for tok in _SKIP):
+    if any(tok in k for tok in _SKIP) or _HEAL_NOT_HEALTH.search(k):
         return []
     attrs: list[str] = []
     if "adap" in k:
@@ -64,8 +77,13 @@ def attrs_for(key: str) -> list[str]:
 
 def _apply_stat(u: CombatUnit, attr: str, v: float) -> None:
     if attr == "hp":
-        u.max_hp += v
-        u.hp += v
+        # Heuristique fraction/flat du module : |v| <= 1 = fraction de HP max (ex. Brawler
+        # HealthBonus 0.25/0.45/0.65), sinon bonus plat (ex. Meeple BonusHealth 100..500).
+        # Plusieurs fractions se COMPOSENT multiplicativement (max_hp*(1+a)*(1+b)) — commutatif,
+        # donc indépendant de l'ordre d'application des traits.
+        bonus = u.max_hp * v if abs(v) <= 1.0 else v
+        u.max_hp += bonus
+        u.hp += bonus
     elif attr == "armor":
         u.armor += v
     elif attr == "mr":
