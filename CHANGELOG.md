@@ -3,6 +3,17 @@
 Toutes les évolutions notables du projet. Format inspiré de
 [Keep a Changelog](https://keepachangelog.com/) ; versions `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.4.1.0] - 2026-06-10
+
+### Fixed
+- **Départage équitable des éliminations** : à HP exactement égaux entre morts simultanées,
+  le siège le plus bas prenait déterministiquement la pire place (tri stable sur l'ordre des
+  joueurs). Le départage est désormais aléatoire uniforme — aucun siège n'est structurellement
+  défavorisé. Même correction pour le classement de fin forcée.
+- **Invariant d'équité statistiquement honnête** : la bande de `check_coherence` s'adapte au
+  nombre de parties (4.5 ± 3.2·σ/√N) au lieu d'une bande fixe qui produisait des faux échecs
+  à petit N. Mesure de contrôle : aucun biais de siège réel détecté sur 400 parties policy.
+
 ## [0.4.0.0] - 2026-06-10
 
 ### Added
