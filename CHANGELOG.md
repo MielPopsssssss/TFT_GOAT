@@ -3,6 +3,20 @@
 Toutes les évolutions notables du projet. Format inspiré de
 [Keep a Changelog](https://keepachangelog.com/) ; versions `MAJOR.MINOR.PATCH.MICRO`.
 
+## [0.5.1.0] - 2026-06-11
+
+### Added
+- **CI GitHub Actions** : la suite pytest complète tourne désormais sur chaque PR et
+  chaque push main — plus aucun push cassé ne passe silencieusement. Torch installé en
+  CPU-only, snapshot CDragon téléchargé par un step dédié avec retries puis mis en cache
+  (clé dérivée de `CURRENT_PATCH`, save protégé contre les téléchargements partiels),
+  token en lecture seule.
+
+### Changed
+- **Le snapshot datatft (48 K) est commité** : les tests de réalisme tournent sur une
+  meta figée au lieu de re-télécharger des stats qui driftent depuis l'API non-officielle
+  — la CI est déterministe et ne frappe plus `api.datatft.com` depuis les runners.
+
 ## [0.5.0.0] - 2026-06-10
 
 ### Added

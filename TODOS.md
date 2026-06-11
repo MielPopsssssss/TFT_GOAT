@@ -52,6 +52,14 @@ Format : groupé par composant, priorité P0 (urgent) → P4 (un jour), complét
   `AUGMENT_TIER_WEIGHT` (env/combat.py) dans la vraie data. En attendant, priorisation
   par tier (exposition uniforme → prismatic combat d'abord, cf. batch_7).
 
+- **Servir le snapshot CDragon depuis une source versionnée (pas `latest`)**
+  **Priority:** P3
+  `CDRAGON_LATEST_URL` pointe sur `latest` : en CI, un cache évincé après un changement
+  de patch Riot re-télécharge une data plus récente que `CURRENT_PATCH` et la fige sous
+  la même clé — tests pin cassés ou (pire) corpus silencieusement faux si peu de chiffres
+  bougent. Pistes : URL CommunityDragon versionnée par patch, release asset GitHub, ou
+  vérification de contenu post-download. (Trouvé par revue adversariale, 2026-06-11.)
+
 ## Tests
 
 - **Extraire un helper partagé de boucle de jeu aléatoire**
