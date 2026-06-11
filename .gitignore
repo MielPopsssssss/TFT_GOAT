@@ -7,8 +7,8 @@ __pycache__/
 
 # Donnees lourdes : snapshots CDragon pines (24+ MB) — pas dans le repo
 /data/cdragon/*.json
-# Snapshots datatft pines (regenerables via scrape_datatft)
-/data/datatft/*.json
+# Snapshots datatft : COMMITES (48 K, pinnes pour une CI deterministe qui ne frappe
+# pas l'API non-officielle depuis les runners ; regenerables via scrape_datatft)
 # Parties collectees (regenerables via collect_matches)
 /data/matches/
 
