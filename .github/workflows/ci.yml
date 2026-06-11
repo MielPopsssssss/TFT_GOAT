@@ -37,13 +37,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           # Le token n'est pas nécessaire après le clone ; ne pas le laisser
           # dans .git/config, lisible par le code de test des PRs de fork.
           persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: pip
@@ -72,7 +72,7 @@ jobs:
 
       - name: Restore CDragon snapshot cache
         id: cdragon-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: data/cdragon
           key: cdragon-${{ steps.patch.outputs.patch }}
@@ -100,7 +100,7 @@ jobs:
         # hashFiles ne matche pas les *.json.part : un téléchargement interrompu
         # ne peut pas être figé sous la clé immuable.
         if: always() && steps.cdragon-cache.outputs.cache-hit != 'true' && hashFiles('data/cdragon/cdragon_*.json') != ''
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: data/cdragon
           key: cdragon-${{ steps.patch.outputs.patch }}
