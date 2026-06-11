@@ -3,7 +3,7 @@
 > An AI that learns to play **Teamfight Tactics** at a high level through **reinforcement learning / self-play**.
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-215%20passing-brightgreen.svg)](#run-it)
+[![CI](https://github.com/MielPopsssssss/TFT_GOAT/actions/workflows/ci.yml/badge.svg)](https://github.com/MielPopsssssss/TFT_GOAT/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg)](CONTRIBUTING.md)
 [![Set 17](https://img.shields.io/badge/TFT-Set%2017%20Space%20Gods-purple.svg)](#)
