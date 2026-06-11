@@ -1,0 +1,106 @@
+# CI : lance la suite pytest complète (~75 s en local) sur chaque PR et push main.
+#
+# Particularités :
+# - torch est installé depuis l'index CPU-only (la roue CUDA par défaut pèse ~2.5 GB).
+# - Le snapshot CDragon (23 MB, gitignoré) est téléchargé par un step dédié AVANT les
+#   tests (no-op sur cache hit, 3 tentatives) puis mis en cache. Restore/save sont
+#   scindés : le save tourne même si la suite échoue (un drift de data n'est pas une
+#   raison de re-télécharger 23 MB à chaque run rouge), mais jamais si la clé existe
+#   déjà ni si le snapshot est absent/partiel — les clés de cache GitHub sont immuables,
+#   un téléchargement interrompu figé là serait permanent.
+#   La clé dérive de la valeur de CURRENT_PATCH : seul un vrai changement de patch
+#   invalide le cache (pas une retouche quelconque de config.py).
+#   Caveat : l'URL CommunityDragon pointe sur `latest` — un téléchargement frais après un
+#   changement de patch côté Riot peut servir une data plus récente que CURRENT_PATCH et
+#   casser les tests pin. C'est un signal data, pas un bug CI.
+# - Le snapshot datatft (48 K) est commité dans le repo : zéro requête réseau meta en CI.
+#   Un step l'asserte pour empêcher le fallback silencieux vers l'API non-officielle.
+# - `python -m pytest` (et non `pytest`) : les tests importent scripts/ via le CWD.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  # N'annule que les runs de PR superseded — jamais un run de main.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Le token n'est pas nécessaire après le clone ; ne pas le laisser
+          # dans .git/config, lisible par le code de test des PRs de fork.
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Extract CURRENT_PATCH
+        id: patch
+        run: |
+          PATCH=$(grep -oE 'CURRENT_PATCH = "[^"]+"' src/tft_goat/config.py | head -n1 | cut -d'"' -f2)
+          if [ -z "$PATCH" ]; then
+            echo "::error::CURRENT_PATCH introuvable dans src/tft_goat/config.py"
+            exit 1
+          fi
+          echo "patch=$PATCH" >> "$GITHUB_OUTPUT"
+
+      - name: Assert committed datatft snapshot
+        env:
+          PATCH: ${{ steps.patch.outputs.patch }}
+        run: |
+          # Sans ce garde, un snapshot manquant déclencherait silencieusement
+          # l'auto-download datatft (API non-officielle) depuis le runner.
+          test -f "data/datatft/datatft_${PATCH}.json" || {
+            echo "::error::data/datatft/datatft_${PATCH}.json manquant — le commiter (scrape_datatft + verify_datatft)"
+            exit 1
+          }
+
+      - name: Restore CDragon snapshot cache
+        id: cdragon-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/cdragon
+          key: cdragon-${{ steps.patch.outputs.patch }}
+
+      - name: Install torch (CPU-only)
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install package + dev deps
+        run: pip install -e ".[dev]"
+
+      - name: Download CDragon snapshot (no-op on cache hit, 3 retries)
+        run: |
+          for i in 1 2 3; do
+            python -c "from tft_goat.data.cdragon import download_snapshot; download_snapshot()" && exit 0
+            echo "tentative $i/3 échouée, retry dans 15 s" >&2
+            sleep 15
+          done
+          echo "::error::téléchargement du snapshot CDragon impossible après 3 tentatives"
+          exit 1
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Save CDragon snapshot cache
+        # hashFiles ne matche pas les *.json.part : un téléchargement interrompu
+        # ne peut pas être figé sous la clé immuable.
+        if: always() && steps.cdragon-cache.outputs.cache-hit != 'true' && hashFiles('data/cdragon/cdragon_*.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: data/cdragon
+          key: cdragon-${{ steps.patch.outputs.patch }}
