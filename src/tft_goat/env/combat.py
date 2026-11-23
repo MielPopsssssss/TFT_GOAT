@@ -89,7 +89,7 @@ def board_strength(
             contrib *= meta_stats.unit_power(unit.champion_api)
         strength += contrib
 
-    active = active_traits([u.champion_api for u in board], set_content)
+    active = active_traits(board, set_content)
     name_to_api = (
         {t.name: t.api_name for t in set_content.traits.values()} if meta_stats else {}
     )

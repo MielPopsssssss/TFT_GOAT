@@ -16,24 +16,43 @@ def _traits_by_name(set_content: SetContent) -> dict[str, Trait]:
     return {t.name: t for t in set_content.traits.values()}
 
 
-def trait_counts(board_champions: Iterable[str], set_content: SetContent) -> dict[str, int]:
-    """Nombre de champions uniques par trait sur le board."""
+def unit_trait_names(unit: str | object, set_content: SetContent) -> set[str]:
+    """Traits d'affichage d'une unite : traits natifs, plus ceux d'un emblem equipe.
+
+    CDragon n'a pas de champ « granted trait ». Sur un emblem, le trait accorde est
+    `incompatibleTraits` (on ne peut pas l'equiper a un porteur natif de ce trait).
+    """
+    api = unit if isinstance(unit, str) else unit.champion_api
+    champ = set_content.champions.get(api)
+    names = set(champ.traits) if champ is not None else set()
+    if isinstance(unit, str):
+        return names
+    for item_api in getattr(unit, "item_apis", ()) or ():
+        item = set_content.items.get(item_api)
+        if item is None or "Emblem" not in item.api_name:
+            continue
+        for trait_api in item.incompatible_traits:
+            trait = set_content.traits.get(trait_api)
+            if trait is not None and trait.name:
+                names.add(trait.name)
+    return names
+
+
+def trait_counts(board_units: Iterable, set_content: SetContent) -> dict[str, int]:
+    """Nombre de champions uniques par trait. Accepte des apiNames ou des unites (`item_apis`)."""
+    per_champ: dict[str, set[str]] = {}
+    for unit in board_units:
+        api = unit if isinstance(unit, str) else unit.champion_api
+        per_champ.setdefault(api, set()).update(unit_trait_names(unit, set_content))
     counts: dict[str, int] = {}
-    seen: set[str] = set()
-    for api in board_champions:
-        if api in seen:
-            continue
-        seen.add(api)
-        champ = set_content.champions.get(api)
-        if champ is None:
-            continue
-        for trait_name in champ.traits:
+    for names in per_champ.values():
+        for trait_name in names:
             counts[trait_name] = counts.get(trait_name, 0) + 1
     return counts
 
 
 def active_traits(
-    board_champions: Iterable[str], set_content: SetContent, *, bonus_units: int = 0
+    board_units: Iterable, set_content: SetContent, *, bonus_units: int = 0
 ) -> dict[str, int]:
     """Retourne {nom_trait: tier} pour les traits ayant atteint au moins leur 1er palier.
 
@@ -44,7 +63,7 @@ def active_traits(
     """
     by_name = _traits_by_name(set_content)
     result: dict[str, int] = {}
-    for name, count in trait_counts(board_champions, set_content).items():
+    for name, count in trait_counts(board_units, set_content).items():
         trait = by_name.get(name)
         if trait is None:
             continue

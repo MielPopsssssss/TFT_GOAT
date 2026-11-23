@@ -66,6 +66,25 @@ def test_multi_trait_champion(sample_content):
     assert "Mage" not in active
 
 
+def test_emblem_counts_once(sample_content):
+    """Un emblem ajoute son trait ; un porteur natif qui le porte ne compte pas deux fois."""
+    from tft_goat.data.models import Item
+    from tft_goat.env.state import BoardUnit
+
+    emblem = Item(
+        api_name="TFT_Item_BrawlerEmblemItem",
+        name="Brawler Emblem",
+        incompatible_traits=("T_Brawler",),
+    )
+    content = sample_content.model_copy(
+        update={"items": {**sample_content.items, emblem.api_name: emblem}}
+    )
+    board = [BoardUnit("c3", item_apis=(emblem.api_name,)), BoardUnit("c1")]
+    assert trait_counts(board, content)["Brawler"] == 2
+    assert active_traits(board, content)["Brawler"] == 1
+    assert trait_counts([BoardUnit("c1", item_apis=(emblem.api_name,))], content)["Brawler"] == 1
+
+
 def test_set17_trait_breakpoints_match_real_data():
     """Les breakpoints réels (CDragon) == table vérifiée pour les 23 traits standard."""
     from tft_goat.data.content import load_set

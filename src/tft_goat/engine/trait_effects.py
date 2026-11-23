@@ -13,7 +13,7 @@ from __future__ import annotations
 import re
 
 from ..data.models import SetContent
-from ..env.traits import active_traits
+from ..env.traits import active_traits, unit_trait_names
 from .unit import CombatUnit
 
 # tokens de clés a IGNORER (non applicables comme stat plate sur l'unite).
@@ -110,7 +110,7 @@ def apply_team_traits(
     """
     if not units:
         return
-    active = active_traits([u.champion_api for u in units], content, bonus_units=bonus_units)
+    active = active_traits(units, content, bonus_units=bonus_units)
     if not active:
         return
     by_name = {t.name: t for t in content.traits.values()}
@@ -120,10 +120,7 @@ def apply_team_traits(
             continue
         effs = sorted(trait.effects, key=lambda e: e.min_units)
         eff = effs[min(tier - 1, len(effs) - 1)]
-        members = [
-            u for u in units
-            if (c := content.champions.get(u.champion_api)) and trait_name in c.traits
-        ]
+        members = [u for u in units if trait_name in unit_trait_names(u, content)]
         for key, val in eff.variables.items():
             if not isinstance(val, (int, float)) or val == 0:
                 continue

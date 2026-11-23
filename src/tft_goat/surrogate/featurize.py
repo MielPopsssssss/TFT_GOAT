@@ -26,7 +26,7 @@ def encode_board(board: list[BoardUnit], encoder: Encoder) -> dict[str, np.ndarr
         star[i] = u.star
         items[i] = getattr(u, "items", 0)
     trait_vec = np.zeros(encoder.n_trait, dtype=np.float32)
-    for name, tier in active_traits([u.champion_api for u in board], encoder._set_content).items():
+    for name, tier in active_traits(board, encoder._set_content).items():
         idx = encoder.trait_index.get(name)
         if idx is not None:
             trait_vec[idx] = tier

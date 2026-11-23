@@ -72,7 +72,7 @@ def _augment_offers_snapshot(state: GameState) -> dict[str, list[str]]:
 
 
 def _top_traits(player: PlayerState, content) -> str:
-    active = active_traits(player.board_champions, content)
+    active = active_traits(player.board, content)
     if not active:
         return "-"
     top = sorted(active.items(), key=lambda kv: -kv[1])[:2]

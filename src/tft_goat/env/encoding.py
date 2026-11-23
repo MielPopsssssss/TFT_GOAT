@@ -75,7 +75,7 @@ class Encoder:
         from .traits import active_traits
 
         vec = np.zeros(self.n_trait, dtype=np.float32)
-        for name, tier in active_traits(player.board_champions, self._set_content).items():
+        for name, tier in active_traits(player.board, self._set_content).items():
             idx = self.trait_index.get(name)
             if idx is not None:
                 vec[idx] = tier
